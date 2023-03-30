@@ -3,20 +3,24 @@
 
 
 .AnchorPane{
-    -fx-background-color: #202040;
+    -fx-background-color: #18122B;
 }
 .button{
-    -fx-background-color: #B030B0;
+    -fx-background-color: #443C68;
     -fx-text-fill: white;
     -fx-font-family: 'Concert One', cursive;
-    -fx-font-size: 12;
+    -fx-font-size: 17;
 
 }
 
 .SidePane{
-    -fx-background-color: #602080;
+    -fx-background-color: #393053;
 }
 
 .whiteText{
     -fx-background-color: white;
+}
+
+.Ticket{
+    -fx-background-color: #635985;
 }

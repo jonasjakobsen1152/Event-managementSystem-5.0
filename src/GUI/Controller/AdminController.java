@@ -22,6 +22,7 @@ public class AdminController extends BaseController implements Initializable {
     public TextField txtCoordPassword;
     public TableColumn clmUsername;
     public TableColumn clmPassword;
+    public TableView CoordToEvents;
     private User selectedUser;
     public AdminModel adminModel = new AdminModel();
 
