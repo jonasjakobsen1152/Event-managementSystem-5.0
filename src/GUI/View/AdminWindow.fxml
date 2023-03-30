@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="431.0" prefWidth="1187.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.AdminController">
+<AnchorPane prefHeight="431.0" prefWidth="1197.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.AdminController">
     <children>
         <TableView fx:id="tableViewCoord" layoutX="14.0" layoutY="14.0" prefHeight="255.0" prefWidth="398.0">
             <columns>
@@ -37,5 +37,7 @@
                 <TableColumn prefWidth="255.0" text="Event Coordinators til eventet" />
             </columns>
         </TableView>
+      <Button layoutX="952.0" layoutY="279.0" mnemonicParsing="false" onAction="#handleAddEventCoordinator" text="Tilføj" />
+      <Button layoutX="1105.0" layoutY="279.0" mnemonicParsing="false" onAction="#handleRemoveEventCoordinator" text="Fjern" />
     </children>
 </AnchorPane>
