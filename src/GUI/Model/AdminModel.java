@@ -24,6 +24,11 @@ public class AdminModel {
         usersToBeViewed.remove(selectedUser);
     }
 
+    public void removeCoord(User selectedUser) {
+        adminManager.removeCoord(selectedUser);
+        usersToBeViewed.remove(selectedUser);
+    }
+
     public ObservableList<User> getObservableUsers() {
         return usersToBeViewed;
     }

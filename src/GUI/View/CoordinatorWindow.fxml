@@ -3,7 +3,7 @@
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="537.0" prefWidth="1157.0" styleClass="AnchorPane" stylesheets="@CoordinatorWindow.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.MainController">
+<AnchorPane prefHeight="537.0" prefWidth="1157.0" styleClass="AnchorPane" stylesheets="@CoordinatorWindow.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.EventCoordController">
    <children>
       <AnchorPane prefHeight="607.0" prefWidth="200.0" styleClass="SidePane" stylesheets="@CoordinatorWindow.css">
          <children>

@@ -10,9 +10,10 @@ public interface IAdminDAO {
 
     public void deleteUser(int LogInID, String UserName);
 
-    public void deleteEvent(int EventID, String EventName);
+    void deleteEvent(int EventID, String EventName);
 
     public List<User> getAllUsers();
 
 
+   public void removeUser(int id, String userName);
 }

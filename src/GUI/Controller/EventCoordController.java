@@ -1,24 +1,17 @@
 package GUI.Controller;
 
-import GUI.Model.MainModel;
+import GUI.Model.EventCoordModel;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
-import java.io.IOException;
-
-public class MainController {
+public class EventCoordController {
     public MFXButton btnCreateNewEvent;
     public MFXButton btnUpdateEvent;
     public MFXButton btnViewTickets;
     public MFXButton btnDeleteTickets;
-    private MainModel model;
+    private EventCoordModel model;
     
-    public void setModel(MainModel model) {
+    public void setModel(EventCoordModel model) {
             this.model = model;
 
     }
