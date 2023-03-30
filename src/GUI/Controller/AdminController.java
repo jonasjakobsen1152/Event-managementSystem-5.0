@@ -107,7 +107,7 @@ public class AdminController extends BaseController implements Initializable {
 
     //View notes about an event
     public void handleViewEventNotes(ActionEvent actionEvent) {
-        
+
     }
 
     @Override

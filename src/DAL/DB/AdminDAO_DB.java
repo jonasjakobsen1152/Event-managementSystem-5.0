@@ -76,6 +76,7 @@ public class AdminDAO_DB implements IAdminDAO {
 
     }
 
+
     @Override
     public void deleteEvent(int EventID, String EventName) {
 
