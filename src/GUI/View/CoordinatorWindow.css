@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap%27%27');
+
+
+
+.AnchorPane{
+    -fx-background-color: #202040;
+}
+.button{
+    -fx-background-color: #B030B0;
+    -fx-text-fill: white;
+    -fx-font-family: 'Concert One', cursive;
+    -fx-font-size: 12;
+
+}
+
+.SidePane{
+    -fx-background-color: #602080;
+}
+
+.whiteText{
+    -fx-background-color: white;
+}

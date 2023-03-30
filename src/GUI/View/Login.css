@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap%27%27');
+
+.background{
+-fx-background-color: #5928ED;
+}
+
+.whitetext{
+-fx-fill: white;
+}
+
+.button{
+-fx-font-family: 'Concert One', cursive;
+}

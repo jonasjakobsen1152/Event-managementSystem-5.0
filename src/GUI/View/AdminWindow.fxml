@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="431.0" prefWidth="906.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.AdminController">
+   <children>
+      <TableView fx:id="tableViewCoord" layoutX="14.0" layoutY="14.0" prefHeight="255.0" prefWidth="398.0">
+        <columns>
+          <TableColumn fx:id="clmUsername" prefWidth="142.0" text="Username" />
+          <TableColumn fx:id="clmPassword" prefWidth="165.0" text="Password" />
+            <TableColumn prefWidth="90.0" text="Event" />
+        </columns>
+      </TableView>
+      <Button layoutX="150.0" layoutY="279.0" mnemonicParsing="false" onAction="#handleCreateCoord" text="Create Coordinator" />
+      <TextField fx:id="txtCoordUsername" layoutX="150.0" layoutY="315.0" />
+      <TextField fx:id="txtCoordPassword" layoutX="150.0" layoutY="350.0" />
+      <Label layoutX="27.0" layoutY="319.0" text="Coordinator username" />
+      <Label layoutX="28.0" layoutY="354.0" text="Coordinator password" />
+      <TableView layoutX="446.0" layoutY="14.0" prefHeight="255.0" prefWidth="445.0">
+        <columns>
+          <TableColumn prefWidth="129.0" text="Event name" />
+          <TableColumn minWidth="7.0" prefWidth="97.0" text="Start time" />
+            <TableColumn prefWidth="82.0" text="End time" />
+            <TableColumn prefWidth="136.0" text="Location" />
+        </columns>
+      </TableView>
+      <Button layoutX="294.0" layoutY="279.0" mnemonicParsing="false" onAction="#handleDeleteCoord" text="Delete Coordinator" />
+      <Button layoutX="508.0" layoutY="279.0" mnemonicParsing="false" onAction="#handleDeleteEvent" text="Delete Event" />
+      <Button layoutX="706.0" layoutY="279.0" mnemonicParsing="false" onAction="#handleViewEventNotes" text="View event notes" />
+   </children>
+</AnchorPane>
