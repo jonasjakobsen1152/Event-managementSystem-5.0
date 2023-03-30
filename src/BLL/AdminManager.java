@@ -23,4 +23,8 @@ public AdminManager(){
     public void deleteCoord(User selectedUser) {
         adminDAO.deleteUser(selectedUser.getId(),selectedUser.getUserName());
     }
+
+    public void removeCoord(User selectedUser) {
+    adminDAO.removeUser(selectedUser.getId(),selectedUser.getUserName());
+    }
 }

@@ -15,4 +15,5 @@ public interface IAdminDAO {
     public List<User> getAllUsers();
 
 
+   public void removeUser(int id, String userName);
 }

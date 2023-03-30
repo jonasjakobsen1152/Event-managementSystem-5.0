@@ -22,7 +22,7 @@ public class AdminController extends BaseController implements Initializable {
     public TextField txtCoordPassword;
     public TableColumn clmUsername;
     public TableColumn clmPassword;
-    public TableView CoordToEvents;
+    public TableView<User> CoordToEvents;
     private User selectedUser;
     public AdminModel adminModel = new AdminModel();
 
@@ -118,9 +118,29 @@ public class AdminController extends BaseController implements Initializable {
 
     public void handleAddEventCoordinator(ActionEvent actionEvent) {
 
+        /** TODO ADD EVENTCOORDINATOR TO NEW EVENT
+         *
+         */
+
     }
 
     public void handleRemoveEventCoordinator(ActionEvent actionEvent) {
-
-    }
+            selectedUser = CoordToEvents.getSelectionModel().getSelectedItem();
+            if (selectedUser == null) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Select a user");
+                alert.setHeaderText("Choose a user to remove");
+                alert.show();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Warning");
+                alert.setHeaderText("Are you sure you want to remove: " + selectedUser.getUserName().concat("?"));
+                Optional<ButtonType> action = alert.showAndWait();
+                if (action.get() == ButtonType.OK) {
+                    adminModel.deleteCoord(getSelectedUser());
+                    updateUserModel();
+                    showUsersAndEvent();
+                }
+            }
+        }
 }
