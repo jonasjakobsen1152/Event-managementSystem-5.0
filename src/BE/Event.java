@@ -1,15 +1,15 @@
 package BE;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class Event {
     private int id;
     private String eventName;
-    private LocalDate eventDate;
+    private Date eventDate;
     private String eventTime;
     private String eventNotes;
     private String eventLocation;
-    public Event(int id, String eventName, LocalDate eventDate, String eventTime, String eventNotes, String eventLocation){
+    public Event(int id, String eventName, Date eventDate, String eventTime, String eventNotes, String eventLocation){
         this.id = id;
         this.eventName = eventName;
         this.eventDate = eventDate;
@@ -27,9 +27,9 @@ public class Event {
         return eventName;
     }
 
-    public LocalDate getEventDate() {
-        return eventDate;
-    }
+//    public java.sql.Date getEventDate() {
+//        return eventDate;
+//    }
 
     public String getEventTime() {
         return eventTime;
@@ -51,7 +51,7 @@ public class Event {
         this.eventName = eventName;
     }
 
-    public void setEventDate(LocalDate eventDate) {
+    public void setEventDate(Date eventDate) {
         this.eventDate = eventDate;
     }
 

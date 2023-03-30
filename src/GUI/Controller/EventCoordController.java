@@ -20,6 +20,7 @@ public class EventCoordController {
     }
 
     public void handleUpdateEvent(ActionEvent actionEvent) {
+
     }
 
     public void handleViewTickets(ActionEvent actionEvent) {

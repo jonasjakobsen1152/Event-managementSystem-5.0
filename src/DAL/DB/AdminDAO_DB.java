@@ -120,6 +120,11 @@ public class AdminDAO_DB implements IAdminDAO {
         }
         return allUsers;
     }
+
+    @Override
+    public void removeUser(int id, String userName) {
+
+    }
 }
 
 
