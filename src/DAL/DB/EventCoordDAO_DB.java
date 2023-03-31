@@ -2,10 +2,11 @@ package DAL.DB;
 
 import BE.Event;
 import DAL.IEventCoordDAO;
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EventCoordDAO_DB implements IEventCoordDAO {
     private MyDatabaseConnector databaseConnector;
@@ -14,6 +15,35 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
         databaseConnector = new MyDatabaseConnector();
     }
 
+    public List<Event> getAllEvents() throws Exception {
+        ArrayList<Event> allEvents = new ArrayList<>();
+
+        try(Connection conn = databaseConnector.getConnection();
+            Statement stmt = conn.createStatement()) {
+
+            //SQL string that gets all information from the Event table
+            String sql = "Select * From dbo.Events;";
+
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next()){
+                int id = rs.getInt("ID");
+                String eventName = rs.getString("EventName");
+                String eventDate = rs.getString("EventDate");
+                String eventTime = rs.getString("EventTime");
+                String eventNotes = rs.getString("EventNotes");
+                String eventLocation = rs.getString("EventLocation");
+            Event event = new Event(id,eventName,eventDate,eventTime,eventNotes,eventLocation);
+            allEvents.add(event);
+            }
+            return allEvents;
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new Exception("Could not get Songs from database", e);
+        }
+    }
 
     public void updateEvent(Event event) {
 
