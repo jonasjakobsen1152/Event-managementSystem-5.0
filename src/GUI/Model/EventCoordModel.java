@@ -10,6 +10,7 @@ import java.util.Date;
 public class EventCoordModel {
 
     EventCoordManager eventCoordManager;
+    private Event selectedEvent;
     private ObservableList<Event> eventsToBeViewed;
 
     public EventCoordModel() throws Exception {
@@ -29,5 +30,9 @@ public class EventCoordModel {
 
     public ObservableList<Event> getObservableEvents() {
         return eventsToBeViewed;
+    }
+
+    public void setSelectedEvent(Event selectedEvent) {
+        this.selectedEvent = selectedEvent;
     }
 }

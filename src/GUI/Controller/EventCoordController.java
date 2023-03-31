@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -24,9 +25,11 @@ public class EventCoordController extends BaseController implements Initializabl
     public MFXButton btnUpdateEvent;
     public MFXButton btnViewTickets;
     public MFXButton btnDeleteTickets;
-    public TableView tblAllEvents;
+    public TableView<Event> tblAllEvents;
     public TableColumn clmEventName;
     private EventCoordModel eventCoordModel = new EventCoordModel();
+
+
 
     public EventCoordController() throws Exception {
     }
@@ -72,7 +75,31 @@ public class EventCoordController extends BaseController implements Initializabl
 
     }
 
-    public void handleUpdateEvent(ActionEvent actionEvent) {
+    public void handleUpdateEvent(ActionEvent actionEvent) throws IOException {
+
+        Event selectedEvent = tblAllEvents.getSelectionModel().getSelectedItem();
+
+        if (selectedEvent == null) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Needed Info");
+            alert.setHeaderText("Please choose the event you would like to edit...");
+            alert.show();
+        }else{
+            eventCoordModel.setSelectedEvent(selectedEvent);
+        }
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/GUI/View/EventCRUDWindow.fxml"));
+        AnchorPane pane = loader.load();
+
+
+        EventCoordController eventCoordController = loader.getController();
+        eventCoordController.setModel(super.getModel);
+        eventCoordController.setup();
+        Stage dialogWindow = new Stage();
+        Scene scene = new Scene(pane);
+        dialogWindow.setScene(scene);
+        dialogWindow.show();
 
     }
 
