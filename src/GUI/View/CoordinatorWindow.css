@@ -24,3 +24,7 @@
 .Ticket{
     -fx-background-color: #635985;
 }
+
+AllEvents{
+    -fx-font-fill:  white;
+}
