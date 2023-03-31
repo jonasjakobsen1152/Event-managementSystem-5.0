@@ -25,6 +25,10 @@ public class AdminController extends BaseController implements Initializable {
     public TableColumn clmPassword;
     public TableView<User> CoordToEvents;
     public TableView<Event> tblShowEvents;
+    public TableColumn clmEventName;
+    public TableColumn clmStartTime;
+    public TableColumn clmEndTime;
+    public TableColumn clmLocation;
     private User selectedUser;
     public AdminModel adminModel = new AdminModel();
 
@@ -98,6 +102,13 @@ public class AdminController extends BaseController implements Initializable {
         clmPassword.setCellValueFactory(new PropertyValueFactory<User, String>("passWord"));
 
         tableViewCoord.setItems(adminModel.getObservableUsers());
+
+        clmEventName.setCellValueFactory(new PropertyValueFactory<Event, String>("eventName"));
+        clmStartTime.setCellValueFactory(new PropertyValueFactory<Event, String>("eventTime"));
+        //clmEndTime.setCellValueFactory(new PropertyValueFactory<Event, String>("eventEndTime"));
+        clmLocation.setCellValueFactory(new PropertyValueFactory<Event, String>("eventLocation"));
+
+        tblShowEvents.setItems(adminModel.getObservableEvents());
 
     }
 

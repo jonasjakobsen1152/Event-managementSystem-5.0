@@ -23,10 +23,10 @@
         <Label layoutX="28.0" layoutY="354.0" text="Coordinator password" />
         <TableView fx:id="tblShowEvents" layoutX="446.0" layoutY="14.0" prefHeight="255.0" prefWidth="445.0">
             <columns>
-                <TableColumn prefWidth="129.0" text="Event name" />
-                <TableColumn minWidth="7.0" prefWidth="97.0" text="Start time" />
-                <TableColumn prefWidth="82.0" text="End time" />
-                <TableColumn prefWidth="136.0" text="Location" />
+                <TableColumn fx:id="clmEventName" prefWidth="129.0" text="Event name" />
+                <TableColumn fx:id="clmStartTime" minWidth="7.0" prefWidth="97.0" text="Start time" />
+                <TableColumn fx:id="clmEndTime" prefWidth="82.0" text="End time" />
+                <TableColumn fx:id="clmLocation" prefWidth="136.0" text="Location" />
             </columns>
         </TableView>
         <Button layoutX="294.0" layoutY="279.0" mnemonicParsing="false" onAction="#handleDeleteCoord" text="Delete Coordinator" />
