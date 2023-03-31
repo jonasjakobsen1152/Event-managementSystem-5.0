@@ -1,5 +1,6 @@
 package DAL;
 
+import BE.Event;
 import BE.User;
 
 import java.util.List;
@@ -16,4 +17,6 @@ public interface IAdminDAO {
 
 
    public void removeUser(int id, String userName);
+
+    List<Event> getAllEvent();
 }

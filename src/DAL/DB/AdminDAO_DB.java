@@ -1,5 +1,6 @@
 package DAL.DB;
 
+import BE.Event;
 import BE.User;
 
 import com.microsoft.sqlserver.jdbc.SQLServerException;
@@ -78,25 +79,6 @@ public class AdminDAO_DB implements IAdminDAO {
 
 
     @Override
-    public void deleteEvent(int EventID, String EventName) {
-
-        try (Connection conn = databaseConnector.getConnection()) {
-
-            String sql = "DELETE FROM Events WHERE EventID = ? AND EventName = ?;";
-
-            PreparedStatement stmt = conn.prepareStatement(sql);
-
-            stmt.setInt(1, EventID);
-            stmt.setString(2, EventName);
-
-            stmt.executeUpdate();
-
-        } catch (SQLException e) {
-            throw new RuntimeException("Could not delete event", e);
-        }
-    }
-
-    @Override
     public List<User> getAllUsers() {
         ArrayList<User> allUsers = new ArrayList<>();
 
@@ -123,8 +105,57 @@ public class AdminDAO_DB implements IAdminDAO {
 
     @Override
     public void removeUser(int id, String userName) {
-
+        //TODO Remove user from events as admin
     }
+
+    @Override
+    public List<Event> getAllEvent() {
+        ArrayList<Event> allEvents = new ArrayList<>();
+
+        try (Connection conn = databaseConnector.getConnection();
+             Statement stmt = conn.createStatement()) {
+
+            //SQL string that gets all information from the Event table
+            String sql = "Select * From dbo.Events;";
+
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next()) {
+                int id = rs.getInt("ID");
+                String eventName = rs.getString("EventName");
+                String eventDate = rs.getString("EventDate");
+                String eventTime = rs.getString("EventTime");
+                String eventNotes = rs.getString("EventNotes");
+                String eventLocation = rs.getString("EventLocation");
+                Event event = new Event(id, eventName, eventDate, eventTime, eventNotes, eventLocation);
+                allEvents.add(event);
+            }
+            return allEvents;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    @Override
+    public void deleteEvent(int EventID, String EventName) {
+
+        try (Connection conn = databaseConnector.getConnection()) {
+
+            String sql = "DELETE FROM Events WHERE EventID = ? AND EventName = ?;";
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setInt(1, EventID);
+            stmt.setString(2, EventName);
+
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Could not delete event", e);
+        }
+    }
+
 }
 
 
