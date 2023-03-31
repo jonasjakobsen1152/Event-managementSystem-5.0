@@ -12,4 +12,7 @@ public class EventCoordModel {
       //  eventCoordManager.updateEvent(EventName, EventDate, EventTime, EventNotes, EventLocation);
     }
 
+    public void createEvent(String name, String date, String time, String location, String notes) {
+        eventCoordManager.createEvent(name, date, time, location, notes);
+    }
 }
