@@ -21,7 +21,7 @@
         <TextField fx:id="txtCoordPassword" layoutX="150.0" layoutY="350.0" />
         <Label layoutX="27.0" layoutY="319.0" text="Coordinator username" />
         <Label layoutX="28.0" layoutY="354.0" text="Coordinator password" />
-        <TableView layoutX="446.0" layoutY="14.0" prefHeight="255.0" prefWidth="445.0">
+        <TableView fx:id="tblShowEvents" layoutX="446.0" layoutY="14.0" prefHeight="255.0" prefWidth="445.0">
             <columns>
                 <TableColumn prefWidth="129.0" text="Event name" />
                 <TableColumn minWidth="7.0" prefWidth="97.0" text="Start time" />

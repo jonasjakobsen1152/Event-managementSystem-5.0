@@ -1,5 +1,6 @@
 package BLL;
 
+import BE.Event;
 import BE.User;
 import DAL.DB.AdminDAO_DB;
 import DAL.IAdminDAO;
@@ -18,6 +19,10 @@ public AdminManager(){
 
     public List<User> getAllUsers() {
         return adminDAO.getAllUsers();
+    }
+
+    public List<Event> getAllEvent() {
+        return adminDAO.getAllEvent();
     }
 
     public void deleteCoord(User selectedUser) {

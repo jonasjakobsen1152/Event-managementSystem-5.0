@@ -1,5 +1,6 @@
 package GUI.Controller;
 
+import BE.Event;
 import BE.User;
 import GUI.Model.AdminModel;
 import javafx.collections.ObservableList;
@@ -23,6 +24,7 @@ public class AdminController extends BaseController implements Initializable {
     public TableColumn clmUsername;
     public TableColumn clmPassword;
     public TableView<User> CoordToEvents;
+    public TableView<Event> tblShowEvents;
     private User selectedUser;
     public AdminModel adminModel = new AdminModel();
 
@@ -33,6 +35,7 @@ public class AdminController extends BaseController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         updateUserModel();
+        updateEventModel();
         showUsersAndEvent();
     }
 
@@ -83,6 +86,12 @@ public class AdminController extends BaseController implements Initializable {
         tableViewCoord.setItems(adminModel.getObservableUsers());
     }
 
+    private void updateEventModel() {
+        AdminModel updateEventModel = new AdminModel();
+        adminModel = updateEventModel;
+        tblShowEvents.setItems(adminModel.getObservableEvents());
+    }
+
     //Used to update and show the list in real time
     private void showUsersAndEvent(){
         clmUsername.setCellValueFactory(new PropertyValueFactory<User, String>("userName"));
@@ -100,8 +109,10 @@ public class AdminController extends BaseController implements Initializable {
         
     }
 
+
     //Deletes an event
     public void handleDeleteEvent(ActionEvent actionEvent) {
+
 
     }
 
