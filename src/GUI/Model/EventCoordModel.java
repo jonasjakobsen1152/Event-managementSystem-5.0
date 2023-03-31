@@ -16,7 +16,7 @@ public class EventCoordModel {
       //  eventCoordManager.updateEvent(EventName, EventDate, EventTime, EventNotes, EventLocation);
     }
 
-    public void createEvent(String name, String date, String time, String location, String notes) {
+    public void createEvent(String name, String date, String time, String location, String notes) throws Exception {
         eventCoordManager.createEvent(name, date, time, location, notes);
     }
 }

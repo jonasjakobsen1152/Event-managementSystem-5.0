@@ -12,7 +12,7 @@ import java.util.List;
 public class EventCoordDAO_DB implements IEventCoordDAO {
     private MyDatabaseConnector databaseConnector;
 
-    private EventCoordDAO_DB(){
+    public EventCoordDAO_DB(){
         databaseConnector = new MyDatabaseConnector();
     }
 
@@ -94,7 +94,7 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
         try (Connection conn = databaseConnector.getConnection()){
             String sql = "INSERT INTO Events (EventName, EventDate, EventTime, EventNotes, EventLocation) VALUES (?,?,?,?,?)";
 
-            PreparedStatement stmt = conn.prepareStatement(sql);
+            PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             stmt.setString(1,name);
             stmt.setString(2,date);
@@ -107,12 +107,13 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
             ResultSet rs = stmt.getGeneratedKeys();
             int id = 0;
 
-            if (rs.next())
-                id =rs.getInt(1);
+            if (rs.next()) {
+                id = rs.getInt(1);
+            }
             Event event = new Event(id, name, date, time, location, location);
             return event;
         }catch (SQLException e){
-            throw new RuntimeException("SQL Error: could not create Event");
+            throw new RuntimeException("SQL Error: could not create Event", e);
         }
     }
 
