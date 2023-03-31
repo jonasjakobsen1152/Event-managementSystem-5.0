@@ -21,6 +21,9 @@ public class EventCRUDController {
     public MFXTextField txtNotes;
     public EventCoordModel eventCoordModel = new EventCoordModel();
 
+    public EventCRUDController() throws Exception {
+    }
+
     public void handleCreateEvent(ActionEvent actionEvent) {
         String name = txtName.getText();
         String date = txtDate.getText();

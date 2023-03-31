@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import io.github.palexdev.materialfx.controls.MFXButton?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import io.github.palexdev.materialfx.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="607.0" prefWidth="1369.0" styleClass="AnchorPane" stylesheets="@CoordinatorWindow.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.EventCoordController">
+<AnchorPane prefHeight="607.0" prefWidth="1369.0" styleClass="AnchorPane" stylesheets="@CoordinatorWindow.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.EventCoordController">
    <children>
       <AnchorPane prefHeight="607.0" prefWidth="200.0" styleClass="SidePane" stylesheets="@CoordinatorWindow.css">
          <children>
@@ -19,7 +18,7 @@
       <AnchorPane layoutX="242.0" layoutY="40.0" prefHeight="431.0" prefWidth="809.0" AnchorPane.bottomAnchor="136.0" AnchorPane.leftAnchor="242.0" AnchorPane.rightAnchor="318.0" AnchorPane.topAnchor="40.0" />
       <TableView fx:id="tblAllEvents" layoutX="1113.0" layoutY="104.0" prefHeight="353.0" prefWidth="200.0" styleClass="SidePane" stylesheets="@CoordinatorWindow.css" AnchorPane.bottomAnchor="136.0" AnchorPane.topAnchor="40.0">
         <columns>
-          <TableColumn prefWidth="199.0" styleClass="CoordinatorWindow.css" text="All Events" />
+          <TableColumn fx:id="clmEventName" prefWidth="199.0" styleClass="CoordinatorWindow.css" text="Event name" />
         </columns>
       </TableView>
    </children>
