@@ -1,6 +1,7 @@
 package DAL.DB;
 
 import BE.Event;
+import BE.User;
 import DAL.IEventCoordDAO;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 
@@ -85,6 +86,33 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
 
         } catch (SQLException e) {
             throw new RuntimeException("Could not delete event", e);
+        }
+    }
+
+    @Override
+    public Event createEvent(String name, String date, String time, String location, String notes) {
+        try (Connection conn = databaseConnector.getConnection()){
+            String sql = "INSERT INTO Events (EventName, EventDate, EventTime, EventNotes, EventLocation) VALUES (?,?,?,?,?)";
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setString(1,name);
+            stmt.setString(2,date);
+            stmt.setString(3,time);
+            stmt.setString(4,location);
+            stmt.setString(5,notes);
+
+            stmt.executeUpdate();
+
+            ResultSet rs = stmt.getGeneratedKeys();
+            int id = 0;
+
+            if (rs.next())
+                id =rs.getInt(1);
+            Event event = new Event(id, name, date, time, location, location);
+            return event;
+        }catch (SQLException e){
+            throw new RuntimeException("SQL Error: could not create Event");
         }
     }
 
