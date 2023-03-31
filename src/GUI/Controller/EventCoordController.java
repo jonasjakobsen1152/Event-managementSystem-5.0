@@ -5,6 +5,7 @@ import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -15,6 +16,7 @@ public class EventCoordController {
     public MFXButton btnUpdateEvent;
     public MFXButton btnViewTickets;
     public MFXButton btnDeleteTickets;
+    public TableView tblAllEvents;
     private EventCoordModel model;
     
     public void setModel(EventCoordModel model) {
