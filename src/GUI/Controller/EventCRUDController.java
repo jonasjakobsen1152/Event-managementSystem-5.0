@@ -4,6 +4,7 @@ import GUI.Model.EventCoordModel;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
@@ -31,8 +32,16 @@ public class EventCRUDController {
             Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
             stage.close();
         } catch (Exception e) {
+            alertUser("Invalid data inputs");
             throw new RuntimeException(e);
         }
 
+    }
+
+    private void alertUser(String error) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(error);
+        alert.setHeaderText(error + "");
+        alert.showAndWait();
     }
 }

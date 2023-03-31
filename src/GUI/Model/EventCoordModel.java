@@ -8,7 +8,7 @@ public class EventCoordModel {
 
     EventCoordManager eventCoordManager;
 
-    public void updateEvent(String EventName, Date EventDate, String EventTime, String EventNotes, String EventLocation) {
+    public void updateEvent(String EventName, String EventDate, String EventTime, String EventNotes, String EventLocation) {
       //  eventCoordManager.updateEvent(EventName, EventDate, EventTime, EventNotes, EventLocation);
     }
 
