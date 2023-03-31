@@ -27,10 +27,15 @@ public class LoginController {
 
     private LoginModel loginModel;
 
+    ArrayList<User> allUsers;
+
     int userId = 0;
 
-    public LoginController(){
+    public LoginController() throws SQLException {
         loginModel = new LoginModel();
+
+        // Get a list of all users and use it to check against the entered userName and passWord
+        allUsers = loginModel.getAllUsers();
     }
 
     /**
@@ -40,8 +45,6 @@ public class LoginController {
     public void HandlelogInToApplication(ActionEvent actionEvent) throws SQLException, IOException {
         String userNameToCheck = txtUserName.getText();
         String passWordToCheck = txtPassWord.getText();
-        // Get a list of all users and use it to check against the entered userName and passWord
-        ArrayList<User> allUsers = loginModel.getAllUsers();
 
         for (User userToCheck : allUsers) {
             if (userToCheck.getUserName().equals(userNameToCheck) && userToCheck.getPassWord().equals(passWordToCheck)) {
@@ -57,11 +60,9 @@ public class LoginController {
                     stage.close();
                 }
             }
-            else {
-                txtFailedLogin.setText("Failed Login");
-            }
 
         }
+        txtFailedLogin.setText("Failed Login");
     }
 
     public void handleOpenAdmin(ActionEvent actionEvent) throws IOException {
