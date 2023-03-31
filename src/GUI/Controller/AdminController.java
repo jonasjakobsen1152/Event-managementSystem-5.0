@@ -30,6 +30,7 @@ public class AdminController extends BaseController implements Initializable {
     public TableColumn clmEndTime;
     public TableColumn clmLocation;
     private User selectedUser;
+    private Event selectedEvent;
     public AdminModel adminModel = new AdminModel();
 
 
@@ -119,11 +120,32 @@ public class AdminController extends BaseController implements Initializable {
         return user;
         
     }
+    private Event getSelectedEvent(){
+        Event event;
+        event = tblShowEvents.getSelectionModel().getSelectedItem();
+        return event;
+    }
 
 
     //Deletes an event
     public void handleDeleteEvent(ActionEvent actionEvent) {
-
+        selectedEvent = tblShowEvents.getSelectionModel().getSelectedItem();
+        if (selectedEvent == null) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Select an Event");
+            alert.setHeaderText("Choose an event to delete");
+            alert.show();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Warning");
+            alert.setHeaderText("Are you sure you want to delete: " + selectedEvent.getEventName().concat("?"));
+            Optional<ButtonType> action = alert.showAndWait();
+            if (action.get() == ButtonType.OK) {
+                adminModel.deleteEvent(getSelectedEvent());
+                updateEventModel();
+                showUsersAndEvent();
+            }
+        }
 
     }
 

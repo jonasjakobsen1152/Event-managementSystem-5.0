@@ -47,4 +47,9 @@ public class AdminModel {
     public ObservableList<Event> getObservableEvents() {
         return eventsToBeViewed;
     }
+
+    public void deleteEvent(Event selectedEvent) {
+        adminManager.deleteEvent(selectedEvent);
+        eventsToBeViewed.remove(selectedEvent);
+    }
 }

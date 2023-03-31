@@ -142,7 +142,7 @@ public class AdminDAO_DB implements IAdminDAO {
 
         try (Connection conn = databaseConnector.getConnection()) {
 
-            String sql = "DELETE FROM Events WHERE EventID = ? AND EventName = ?;";
+            String sql = "DELETE FROM Events WHERE ID = ? AND EventName = ?;";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
 
