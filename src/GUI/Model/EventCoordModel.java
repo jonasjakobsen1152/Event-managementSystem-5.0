@@ -20,8 +20,9 @@ public class EventCoordModel {
         eventsToBeViewed.addAll(eventCoordManager.getAllEvent());
     }
 
-    public void updateEvent(String EventName, String EventDate, String EventTime, String EventNotes, String EventLocation) {
-      //  eventCoordManager.updateEvent(EventName, EventDate, EventTime, EventNotes, EventLocation);
+    public void updateEvent(Event selectedEvent) throws Exception {
+        eventCoordManager.updateEvent(selectedEvent);
+        showList();
     }
 
     public void createEvent(String name, String date, String time, String location, String notes) throws Exception {
@@ -34,5 +35,12 @@ public class EventCoordModel {
 
     public void setSelectedEvent(Event selectedEvent) {
         this.selectedEvent = selectedEvent;
+    }
+    public void showList() throws Exception {
+        eventsToBeViewed.clear();
+        eventsToBeViewed.addAll(eventCoordManager.getAllEvent());
+    }
+    public Event getSelectedEvent(){
+        return selectedEvent;
     }
 }

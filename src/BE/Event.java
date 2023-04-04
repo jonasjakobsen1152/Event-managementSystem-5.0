@@ -66,4 +66,8 @@ public class Event {
     public void setEventLocation(String eventLocation) {
         this.eventLocation = eventLocation;
     }
+
+    public String getEventDate() {
+        return eventDate;
+    }
 }

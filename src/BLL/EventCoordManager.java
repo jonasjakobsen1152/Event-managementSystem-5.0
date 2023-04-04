@@ -23,6 +23,10 @@ public class EventCoordManager {
         return eventDAO.getAllEvents();
     }
 
+    public void updateEvent(Event selectedEvent) {
+
+    }
+
 //    public Event updateEvent(String EventName, String EventDate, String EventTime, String EventNotes, String EventLocation) {
 //        return eventDAO.updateEvent();
 //    }

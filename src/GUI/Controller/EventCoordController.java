@@ -3,6 +3,7 @@ package GUI.Controller;
 import BE.Event;
 import BE.User;
 import GUI.Model.AdminModel;
+import GUI.Model.ETEBModel;
 import GUI.Model.EventCoordModel;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.event.ActionEvent;
@@ -27,11 +28,23 @@ public class EventCoordController extends BaseController implements Initializabl
     public MFXButton btnDeleteTickets;
     public TableView<Event> tblAllEvents;
     public TableColumn clmEventName;
-    private EventCoordModel eventCoordModel = new EventCoordModel();
+    private EventCoordModel eventCoordModel;
+    public EventCRUDController eventCRUDController;
 
+    private ETEBModel model;
+    private BaseController baseController;
 
 
     public EventCoordController() throws Exception {
+        eventCoordModel = new EventCoordModel();
+        eventCRUDController = new EventCRUDController();
+        eventCRUDController.setModel(new ETEBModel());
+        eventCRUDController.setup();
+        setModel(new ETEBModel());
+
+
+
+
     }
 
     @Override
@@ -42,6 +55,9 @@ public class EventCoordController extends BaseController implements Initializabl
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+
+
+
     }
     
     public void setModel(EventCoordModel model) {
@@ -84,23 +100,22 @@ public class EventCoordController extends BaseController implements Initializabl
             alert.setTitle("Needed Info");
             alert.setHeaderText("Please choose the event you would like to edit...");
             alert.show();
-        }else{
+        } else {
             eventCoordModel.setSelectedEvent(selectedEvent);
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/GUI/View/EventCRUDWindow.fxml"));
+            AnchorPane pane = loader.load();
+
+            eventCRUDController = loader.getController();
+            eventCRUDController.setModel(super.getModel());
+            eventCRUDController.setEvent(selectedEvent);
+            eventCRUDController.setup();
+
+            Stage dialogWindow = new Stage();
+            Scene scene = new Scene(pane);
+            dialogWindow.setScene(scene);
+            dialogWindow.show();
         }
-
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/GUI/View/EventCRUDWindow.fxml"));
-        AnchorPane pane = loader.load();
-
-
-        EventCoordController eventCoordController = loader.getController();
-        eventCoordController.setModel(super.getModel);
-        eventCoordController.setup();
-        Stage dialogWindow = new Stage();
-        Scene scene = new Scene(pane);
-        dialogWindow.setScene(scene);
-        dialogWindow.show();
-
     }
 
     public void handleViewTickets(ActionEvent actionEvent) {
@@ -111,7 +126,7 @@ public class EventCoordController extends BaseController implements Initializabl
 
     @Override
     public void setup() {
-
+        eventCoordModel = getModel().getEventCoordModel();
     }
 
 
