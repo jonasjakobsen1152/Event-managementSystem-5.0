@@ -39,7 +39,6 @@ public class EventCoordController extends BaseController implements Initializabl
         eventCoordModel = new EventCoordModel();
         eventCRUDController = new EventCRUDController();
         eventCRUDController.setModel(new ETEBModel());
-        eventCRUDController.setup();
         setModel(new ETEBModel());
 
 
@@ -108,13 +107,13 @@ public class EventCoordController extends BaseController implements Initializabl
 
             eventCRUDController = loader.getController();
             eventCRUDController.setModel(super.getModel());
-            eventCRUDController.setEvent(selectedEvent);
+            //eventCRUDController.setEvent(selectedEvent);
             eventCRUDController.setup();
 
             Stage dialogWindow = new Stage();
             Scene scene = new Scene(pane);
             dialogWindow.setScene(scene);
-            dialogWindow.show();
+            dialogWindow.showAndWait();
         }
     }
 

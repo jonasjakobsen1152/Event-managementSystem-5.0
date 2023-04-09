@@ -26,6 +26,7 @@ public class EventCRUDController extends BaseController implements Initializable
     public MFXTextField txtNotes;
     public EventCoordModel eventCoordModel;
     public TextField txtTest;
+    public Button btnUpdate;
     private Event selectedEvent;
 
     public EventCRUDController() throws Exception {
@@ -43,6 +44,10 @@ public class EventCRUDController extends BaseController implements Initializable
             txtLocation.setText(eventCoordModel.getSelectedEvent().getEventLocation());
             txtNotes.setText(eventCoordModel.getSelectedEvent().getEventNotes());
             txtTest.setText(eventCoordModel.getSelectedEvent().getEventName());
+            btnCreateEvent.setVisible(false);
+        }
+        else {
+            btnUpdate.setVisible(false);
         }
     }
 
@@ -70,12 +75,12 @@ public class EventCRUDController extends BaseController implements Initializable
         alert.showAndWait();
     }
 
-    public void setEvent(Event event){
-        selectedEvent = event;
-    }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+    }
+
+    public void handleUpdateEvent(ActionEvent actionEvent) {
 
     }
 }
