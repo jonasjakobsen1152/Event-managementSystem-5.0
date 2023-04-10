@@ -26,8 +26,7 @@ public class EventCRUDController extends BaseController implements Initializable
     public MFXTextField txtLocation;
     public MFXTextField txtNotes;
     public EventCoordModel eventCoordModel;
-    @FXML
-    public TextField txtTest;
+
     public Button btnUpdate;
     private Event selectedEvent;
 
@@ -45,7 +44,6 @@ public class EventCRUDController extends BaseController implements Initializable
             txtTime.setText(selectedEvent.getEventTime());
             txtLocation.setText(selectedEvent.getEventLocation());
             txtNotes.setText(selectedEvent.getEventNotes());
-            txtTest.setText(selectedEvent.getEventName());
             btnCreateEvent.setVisible(false);
         }
         else {
