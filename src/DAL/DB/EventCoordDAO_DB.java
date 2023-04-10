@@ -35,7 +35,6 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
                 String eventNotes = rs.getString("EventNotes");
                 String eventLocation = rs.getString("EventLocation");
             Event event = new Event(id,eventName,eventDate,eventTime,eventNotes,eventLocation);
-                System.out.println(event.toString());
             allEvents.add(event);
             }
             return allEvents;
