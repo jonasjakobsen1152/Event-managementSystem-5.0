@@ -8,14 +8,30 @@
 .button{
     -fx-background-color: #443C68;
     -fx-text-fill: white;
-    -fx-font-family: 'Concert One', cursive;
     -fx-font-size: 17;
 
 }
 
-.SidePane{
+.SidePane {
     -fx-background-color: #393053;
 }
+
+.cell {
+    -fx-text-fill: white;
+}
+
+.label{
+    -fx-text-fill: white;
+}
+
+.table-row-cell .text{
+    -fx-fill: white;
+}
+
+.table-row-cell:selected .text {
+    -fx-fill: orange;
+}
+
 
 .whiteText{
     -fx-background-color: white;

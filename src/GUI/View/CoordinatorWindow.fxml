@@ -1,25 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import io.github.palexdev.materialfx.controls.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="607.0" prefWidth="1369.0" styleClass="AnchorPane" stylesheets="@CoordinatorWindow.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.EventCoordController">
+<AnchorPane prefHeight="607.0" prefWidth="1369.0" styleClass="AnchorPane" stylesheets="@CoordinatorWindow.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.EventCoordController">
    <children>
-      <AnchorPane prefHeight="607.0" prefWidth="200.0" styleClass="SidePane" stylesheets="@CoordinatorWindow.css">
+      <AnchorPane prefHeight="607.0" prefWidth="263.0" styleClass="SidePane" stylesheets="@CoordinatorWindow.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <MFXButton fx:id="btnCreateNewEvent" buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="42.0" onAction="#handleCreateNewEvent" prefHeight="48.0" prefWidth="160.0" text="Create New Event" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="42.0" />
-            <MFXButton fx:id="btnUpdateEvent" buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="157.0" onAction="#handleUpdateEvent" prefHeight="48.0" prefWidth="160.0" text="Update Event" AnchorPane.leftAnchor="20.0" />
-            <MFXButton fx:id="btnViewTickets" buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="280.0" onAction="#handleViewTickets" prefHeight="48.0" prefWidth="160.0" text="View Tickets" AnchorPane.leftAnchor="20.0" />
-            <MFXButton fx:id="btnDeleteTickets" buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="398.0" onAction="#handleDeleteTickets" prefHeight="48.0" prefWidth="160.0" text="Delete Tickets" AnchorPane.leftAnchor="20.0" />
-            <MFXButton buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="519.0" prefHeight="48.0" prefWidth="160.0" text="Exit" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+            <MFXButton fx:id="btnCreateNewEvent" buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="42.0" onAction="#handleCreateNewEvent" prefHeight="48.0" prefWidth="215.0" text="Create New Event" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="42.0" />
+            <MFXButton fx:id="btnUpdateEvent" buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="157.0" onAction="#handleUpdateEvent" prefHeight="48.0" prefWidth="215.0" text="Update Event" AnchorPane.leftAnchor="20.0" />
+            <MFXButton fx:id="btnViewTickets" buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="280.0" onAction="#handleViewTickets" prefHeight="48.0" prefWidth="215.0" text="View Tickets" AnchorPane.leftAnchor="20.0" />
+            <MFXButton fx:id="btnDeleteTickets" buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="398.0" onAction="#handleDeleteTickets" prefHeight="48.0" prefWidth="215.0" text="Delete Tickets" AnchorPane.leftAnchor="20.0" />
+            <MFXButton buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="519.0" prefHeight="48.0" prefWidth="215.0" text="Exit" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="28.0" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="242.0" layoutY="40.0" prefHeight="431.0" prefWidth="809.0" AnchorPane.bottomAnchor="136.0" AnchorPane.leftAnchor="242.0" AnchorPane.rightAnchor="318.0" AnchorPane.topAnchor="40.0" />
-      <TableView fx:id="tblAllEvents" layoutX="1113.0" layoutY="104.0" prefHeight="353.0" prefWidth="200.0" styleClass="SidePane" stylesheets="@CoordinatorWindow.css" AnchorPane.bottomAnchor="136.0" AnchorPane.topAnchor="40.0">
+      <AnchorPane layoutX="300.0" layoutY="40.0" prefHeight="431.0" prefWidth="751.0" AnchorPane.bottomAnchor="136.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="318.0" AnchorPane.topAnchor="40.0" />
+      <TableView fx:id="tblAllEvents" layoutX="1113.0" layoutY="23.0" prefHeight="554.0" prefWidth="200.0" style="-fx-selection-bar: red;" styleClass="SidePane" stylesheets="@CoordinatorWindow.css" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="56.0" AnchorPane.topAnchor="23.0">
         <columns>
-          <TableColumn fx:id="clmEventName" prefWidth="199.0" styleClass="CoordinatorWindow.css" text="Event name" />
+          <TableColumn fx:id="clmEventName" prefWidth="199.0" styleClass="SidePane" text="Event name" />
         </columns>
+         <effect>
+            <ColorAdjust />
+         </effect>
       </TableView>
    </children>
 </AnchorPane>
