@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -23,6 +24,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class EventCoordController extends BaseController implements Initializable {
@@ -34,7 +36,14 @@ public class EventCoordController extends BaseController implements Initializabl
     public TableColumn clmEventName;
     private EventCoordModel eventCoordModel;
     public EventCRUDController eventCRUDController;
-
+    private Event selectedEvent;
+    public TableView<Event> tblShowEvents;
+    public TableColumn clmUsername;
+    public TableColumn clmPassword;
+    public TableView<User> tableViewCoord;
+    public TableColumn clmStartTime;
+    public TableColumn clmLocation;
+    public TableColumn clmEndTime;
     private ETEBModel model;
     private BaseController baseController;
 
@@ -134,17 +143,67 @@ public class EventCoordController extends BaseController implements Initializabl
         }
     }
 
+    private Event getSelectedEvent(){
+        Event event;
+        event = tblShowEvents.getSelectionModel().getSelectedItem();
+        return event;
+    }
+
+
+    private void updateEventModel() throws Exception {
+        EventCoordModel updateEventModel = new EventCoordModel();
+        eventCoordModel = updateEventModel;
+        tblShowEvents.setItems(eventCoordModel.getObservableEvents());
+    }
+    private void showUsersAndEvent(){
+        clmUsername.setCellValueFactory(new PropertyValueFactory<User, String>("userName"));
+        clmPassword.setCellValueFactory(new PropertyValueFactory<User, String>("passWord"));
+
+        tableViewCoord.setItems(eventCoordModel.getObservableUsers());
+
+        clmEventName.setCellValueFactory(new PropertyValueFactory<Event, String>("eventName"));
+        clmStartTime.setCellValueFactory(new PropertyValueFactory<Event, String>("eventTime"));
+        //clmEndTime.setCellValueFactory(new PropertyValueFactory<Event, String>("eventEndTime"));
+        clmLocation.setCellValueFactory(new PropertyValueFactory<Event, String>("eventLocation"));
+
+        tblShowEvents.setItems(eventCoordModel.getObservableEvents());
+
+    }
+
+
+    public void handleDeleteEvent(ActionEvent actionEvent) throws Exception {
+        Event selectedEvent = tblAllEvents.getSelectionModel().getSelectedItem();
+        if (selectedEvent == null) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Select an Event");
+            alert.setHeaderText("Choose an event to delete");
+            alert.show();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Warning");
+            alert.setHeaderText("Are you sure you want to delete: " + selectedEvent.getEventName().concat("?"));
+            Optional<ButtonType> action = alert.showAndWait();
+            if (action.get() == ButtonType.OK) {
+                eventCoordModel.deleteEvent(selectedEvent);
+                try {
+                    updateEventModel();
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+                showUsersAndEvent();
+            }
+        }
+    }
+
+
+
     public void handleViewTickets(ActionEvent actionEvent) {
     }
 
-    public void handleDeleteTickets(ActionEvent actionEvent) {
-    }
 
     @Override
     public void setup() {
         eventCoordModel = getModel().getEventCoordModel();
         showEvent();
     }
-
-
 }
