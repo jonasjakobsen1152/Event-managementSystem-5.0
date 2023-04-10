@@ -22,11 +22,14 @@ public class EventCoordModel {
 
     public void updateEvent(Event selectedEvent) throws Exception {
         eventCoordManager.updateEvent(selectedEvent);
+
         showList();
     }
 
     public void createEvent(String name, String date, String time, String location, String notes) throws Exception {
         eventCoordManager.createEvent(name, date, time, location, notes);
+
+        showList();
     }
 
     public ObservableList<Event> getObservableEvents() {
@@ -40,6 +43,7 @@ public class EventCoordModel {
     public void showList() throws Exception {
         eventsToBeViewed.clear();
         eventsToBeViewed.addAll(eventCoordManager.getAllEvent());
+        System.out.println(eventsToBeViewed.toString());
     }
     public Event getSelectedEvent(){
         return selectedEvent;

@@ -27,6 +27,7 @@ public class EventCRUDController extends BaseController implements Initializable
     public MFXTextField txtNotes;
     public EventCoordModel eventCoordModel;
 
+
     public Button btnUpdate;
     private Event selectedEvent;
 
@@ -34,9 +35,8 @@ public class EventCRUDController extends BaseController implements Initializable
         eventCoordModel = new EventCoordModel();
     }
 
-    public void setup2(Event selectedEvent) {
+    public void setupUpdate(Event selectedEvent) {
         eventCoordModel = getModel().getEventCoordModel();
-        System.out.println(txtName);
 
         if(selectedEvent != null){
             txtName.setText(selectedEvent.getEventName());
@@ -91,6 +91,7 @@ public class EventCRUDController extends BaseController implements Initializable
         eventCoordModel.updateEvent(updatedEvent);
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         stage.close();
+
     }
 
     public void setup() {
@@ -98,5 +99,8 @@ public class EventCRUDController extends BaseController implements Initializable
 
     public void setEvent(Event selectedEvent) {
         this.selectedEvent = selectedEvent;
+    }
+
+    public void setOnEventUpdated(Object o) {
     }
 }
