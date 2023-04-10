@@ -81,14 +81,16 @@ public class EventCoordController extends BaseController implements Initializabl
         tblAllEvents.setItems(eventCoordModel.getObservableEvents());
     }
 
-    public void handleCreateNewEvent(ActionEvent actionEvent) throws IOException {
+    public void handleCreateNewEvent(ActionEvent actionEvent) throws Exception {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/GUI/View/EventCRUDWindow.fxml"));
         AnchorPane pane = loader.load();
         Stage dialogWindow = new Stage();
         Scene scene = new Scene(pane);
         dialogWindow.setScene(scene);
+        eventCRUDController.setup();
         dialogWindow.showAndWait();
+        updateEventCoordModel();
     }
 
     void showEvent(){

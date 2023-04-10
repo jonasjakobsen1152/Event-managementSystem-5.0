@@ -37,13 +37,12 @@ public class EventCoordModel {
     }
 
     public void setSelectedEvent(Event selectedEvent) {
-        System.out.println(selectedEvent);
+
         this.selectedEvent = selectedEvent;
     }
     public void showList() throws Exception {
         eventsToBeViewed.clear();
         eventsToBeViewed.addAll(eventCoordManager.getAllEvent());
-        System.out.println(eventsToBeViewed.toString());
     }
     public Event getSelectedEvent(){
         return selectedEvent;

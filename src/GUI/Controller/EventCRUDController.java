@@ -33,6 +33,7 @@ public class EventCRUDController extends BaseController implements Initializable
 
     public EventCRUDController() throws Exception {
         eventCoordModel = new EventCoordModel();
+
     }
 
     public void setupUpdate(Event selectedEvent) {
@@ -95,6 +96,7 @@ public class EventCRUDController extends BaseController implements Initializable
     }
 
     public void setup() {
+        btnUpdate.setVisible(false);
     }
 
     public void setEvent(Event selectedEvent) {
