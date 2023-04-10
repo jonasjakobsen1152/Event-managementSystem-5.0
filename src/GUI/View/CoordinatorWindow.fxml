@@ -5,6 +5,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="607.0" prefWidth="1369.0" styleClass="AnchorPane" stylesheets="@CoordinatorWindow.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.EventCoordController">
    <children>
@@ -17,7 +18,7 @@
             <MFXButton buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="519.0" prefHeight="48.0" prefWidth="215.0" text="Exit" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="28.0" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="300.0" layoutY="40.0" prefHeight="431.0" prefWidth="751.0" AnchorPane.bottomAnchor="136.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="318.0" AnchorPane.topAnchor="40.0" />
+      <AnchorPane layoutX="309.0" layoutY="85.0" prefHeight="431.0" prefWidth="751.0" styleClass="SidePane" AnchorPane.bottomAnchor="91.0" AnchorPane.leftAnchor="309.0" AnchorPane.rightAnchor="309.0" AnchorPane.topAnchor="85.0" />
       <TableView fx:id="tblAllEvents" layoutX="1113.0" layoutY="23.0" prefHeight="554.0" prefWidth="200.0" style="-fx-selection-bar: red;" styleClass="SidePane" stylesheets="@CoordinatorWindow.css" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="56.0" AnchorPane.topAnchor="23.0">
         <columns>
           <TableColumn fx:id="clmEventName" prefWidth="199.0" styleClass="SidePane" text="Event name" />
@@ -26,5 +27,6 @@
             <ColorAdjust />
          </effect>
       </TableView>
+      <Text layoutX="572.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Event management System" wrappingWidth="225.4375" AnchorPane.topAnchor="38.0" />
    </children>
 </AnchorPane>
