@@ -50,15 +50,16 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
 
         try (Connection conn = databaseConnector.getConnection()) {
 
-            String sql = "UPDATE event SET EventName = ?, EventDate = ?, EventTime = ?, EventNotes = ?, EventLocation = ? WHERE ID = ?";
+            String sql = "UPDATE Events SET EventName = ?, EventDate = ?, EventTime = ?, EventNotes = ?, EventLocation = ? WHERE ID = ?";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
 
             stmt.setString(1, event.getEventName());
-          //  stmt.setDate(2, event.getEventDate());
+            stmt.setString(2, event.getEventDate());
             stmt.setString(3, event.getEventTime());
             stmt.setString(4, event.getEventNotes());
             stmt.setString(5, event.getEventLocation());
+            stmt.setInt(6, event.getId());
 
             stmt.executeUpdate();
 

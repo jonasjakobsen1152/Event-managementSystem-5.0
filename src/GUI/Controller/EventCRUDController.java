@@ -40,18 +40,17 @@ public class EventCRUDController extends BaseController implements Initializable
         System.out.println(txtName);
 
         if(selectedEvent != null){
-            System.out.println("selected Event is not null");
             txtName.setText(selectedEvent.getEventName());
             txtDate.setText(selectedEvent.getEventDate());
             txtTime.setText(selectedEvent.getEventTime());
             txtLocation.setText(selectedEvent.getEventLocation());
             txtNotes.setText(selectedEvent.getEventNotes());
             txtTest.setText(selectedEvent.getEventName());
-            //btnCreateEvent.setVisible(false);
+            btnCreateEvent.setVisible(false);
         }
         else {
 
-            //btnUpdate.setVisible(false);
+            btnUpdate.setVisible(false);
         }
     }
 
@@ -84,8 +83,16 @@ public class EventCRUDController extends BaseController implements Initializable
 
     }
 
-    public void handleUpdateEvent(ActionEvent actionEvent) {
-
+    public void handleUpdateEvent(ActionEvent actionEvent) throws Exception {
+        String updatedName = txtName.getText();
+        String updatedDate = txtDate.getText();
+        String updatedTime = txtTime.getText();
+        String updatedLocation = txtLocation.getText();
+        String updatedNotes = txtNotes.getText();
+        Event updatedEvent = new Event(selectedEvent.getId(), updatedName, updatedDate, updatedTime, updatedNotes, updatedLocation);
+        eventCoordModel.updateEvent(updatedEvent);
+        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        stage.close();
     }
 
     public void setup() {

@@ -24,7 +24,7 @@ public class EventCoordManager {
     }
 
     public void updateEvent(Event selectedEvent) {
-
+        eventDAO.updateEvent(selectedEvent);
     }
 
 //    public Event updateEvent(String EventName, String EventDate, String EventTime, String EventNotes, String EventLocation) {
