@@ -96,7 +96,6 @@ public class EventCRUDController extends BaseController implements Initializable
     }
 
     public void setup() {
-        btnUpdate.setVisible(false);
     }
 
     public void setEvent(Event selectedEvent) {
