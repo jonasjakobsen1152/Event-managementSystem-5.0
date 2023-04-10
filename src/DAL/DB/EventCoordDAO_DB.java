@@ -35,6 +35,7 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
                 String eventNotes = rs.getString("EventNotes");
                 String eventLocation = rs.getString("EventLocation");
             Event event = new Event(id,eventName,eventDate,eventTime,eventNotes,eventLocation);
+                System.out.println(event.toString());
             allEvents.add(event);
             }
             return allEvents;
@@ -42,7 +43,7 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new Exception("Could not get Songs from database", e);
+            throw new Exception("Could not get Events from database", e);
         }
     }
 

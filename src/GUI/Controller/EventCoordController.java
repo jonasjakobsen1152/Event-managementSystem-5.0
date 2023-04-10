@@ -6,6 +6,8 @@ import GUI.Model.AdminModel;
 import GUI.Model.ETEBModel;
 import GUI.Model.EventCoordModel;
 import io.github.palexdev.materialfx.controls.MFXButton;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -63,6 +65,9 @@ public class EventCoordController extends BaseController implements Initializabl
 
 
 
+
+
+
     }
     
     public void setModel(EventCoordModel model) {
@@ -83,16 +88,21 @@ public class EventCoordController extends BaseController implements Initializabl
         Stage dialogWindow = new Stage();
         Scene scene = new Scene(pane);
         dialogWindow.setScene(scene);
-        dialogWindow.show();
+        dialogWindow.showAndWait();
     }
 
-    private void showEvent(){
-
-
-        clmEventName.setCellValueFactory(new PropertyValueFactory<Event, String>("eventName"));
-
+    void showEvent(){
 
         tblAllEvents.setItems(eventCoordModel.getObservableEvents());
+        clmEventName.setCellValueFactory(new PropertyValueFactory<Event, String>("eventName"));
+
+        tblAllEvents.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Event>() {
+            @Override
+            public void changed(ObservableValue<? extends Event> observable, Event oldValue, Event newValue) {
+                eventCoordModel.setSelectedEvent(newValue);
+            }
+        });
+
 
     }
 
@@ -114,7 +124,7 @@ public class EventCoordController extends BaseController implements Initializabl
             EventCRUDController eventCRUDController = loader.getController();
             eventCRUDController.setModel(super.getModel());
 
-            eventCRUDController.setup2(selectedEvent);
+            eventCRUDController.setupUpdate(selectedEvent);
             eventCRUDController.setEvent(selectedEvent);
 
             Stage dialogWindow = new Stage();
@@ -123,6 +133,8 @@ public class EventCoordController extends BaseController implements Initializabl
             dialogWindow.initOwner((((Node)actionEvent.getSource()).getScene().getWindow()));
             dialogWindow.setScene(scene);
             dialogWindow.showAndWait();
+            showEvent();
+
         }
     }
 
@@ -135,6 +147,7 @@ public class EventCoordController extends BaseController implements Initializabl
     @Override
     public void setup() {
         eventCoordModel = getModel().getEventCoordModel();
+        showEvent();
     }
 
 
