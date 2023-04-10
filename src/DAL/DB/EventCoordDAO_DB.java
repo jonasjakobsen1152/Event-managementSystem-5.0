@@ -72,15 +72,15 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
     }
 
 
-    public void deleteEvent(int EventID, String EventName) {
+    public void deleteEvent(int ID, String EventName) {
 
         try (Connection conn = databaseConnector.getConnection()) {
 
-            String sql = "DELETE FROM Events WHERE EventID = ? AND EventName = ?;";
+            String sql = "DELETE FROM Events WHERE ID = ? AND EventName = ?;";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
 
-            stmt.setInt(1, EventID);
+            stmt.setInt(1, ID);
             stmt.setString(2, EventName);
 
             stmt.executeUpdate();
@@ -118,5 +118,28 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
         }
     }
 
+    @Override
+    public List<User> getAllUsers() {
+        ArrayList<User> allUsers = new ArrayList<>();
 
+        try (Connection conn = databaseConnector.getConnection();
+             Statement stmt = conn.createStatement()) {
+            String sql = "Select * From Users";
+
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next()) {
+                int id = rs.getInt("LogInID");
+                String userName = rs.getString("UserName");
+                String userPassWord = rs.getString("Password");
+                String roles = rs.getString("Roles");
+
+                User user = new User(id, userName, userPassWord, roles);
+                allUsers.add(user);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return allUsers;
+    }
 }

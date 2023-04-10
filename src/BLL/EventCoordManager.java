@@ -1,6 +1,7 @@
 package BLL;
 
 import BE.Event;
+import BE.User;
 import DAL.DB.EventCoordDAO_DB;
 import DAL.IEventCoordDAO;
 
@@ -23,8 +24,16 @@ public class EventCoordManager {
         return eventDAO.getAllEvents();
     }
 
+    public List<User> getAllUsers() {
+        return eventDAO.getAllUsers();
+    }
+
     public void updateEvent(Event selectedEvent) {
         eventDAO.updateEvent(selectedEvent);
+    }
+
+    public void deleteEvent(Event selectedEvent) {
+        eventDAO.deleteEvent(selectedEvent.getId(),selectedEvent.getEventName());
     }
 
 //    public Event updateEvent(String EventName, String EventDate, String EventTime, String EventNotes, String EventLocation) {

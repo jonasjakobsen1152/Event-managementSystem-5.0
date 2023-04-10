@@ -1,6 +1,8 @@
 package GUI.Model;
 
 import BE.Event;
+import BE.User;
+import BLL.AdminManager;
 import BLL.EventCoordManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,10 +14,16 @@ public class EventCoordModel {
     EventCoordManager eventCoordManager;
     private Event selectedEvent;
     private ObservableList<Event> eventsToBeViewed;
+    private ObservableList<User> usersToBeViewed;
+
 
     public EventCoordModel() throws Exception {
         eventCoordManager = new EventCoordManager();
+        //Making usersToBeViewed Observable
+        usersToBeViewed = FXCollections.observableArrayList();
+        usersToBeViewed.addAll(eventCoordManager.getAllUsers());
 
+        //Making eventsToBeViewed Observable
         eventsToBeViewed = FXCollections.observableArrayList();
         eventsToBeViewed.addAll(eventCoordManager.getAllEvent());
     }
@@ -47,4 +55,14 @@ public class EventCoordModel {
     public Event getSelectedEvent(){
         return selectedEvent;
     }
+
+    public void deleteEvent(Event selectedEvent) {
+        eventCoordManager.deleteEvent(selectedEvent);
+        eventsToBeViewed.remove(selectedEvent);
+    }
+
+    public ObservableList<User> getObservableUsers() {
+        return usersToBeViewed;
+    }
+
 }

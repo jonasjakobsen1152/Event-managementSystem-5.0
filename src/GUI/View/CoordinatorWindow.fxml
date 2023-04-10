@@ -13,7 +13,7 @@
             <MFXButton fx:id="btnCreateNewEvent" buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="42.0" onAction="#handleCreateNewEvent" prefHeight="48.0" prefWidth="215.0" text="Create New Event" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="42.0" />
             <MFXButton fx:id="btnUpdateEvent" buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="157.0" onAction="#handleUpdateEvent" prefHeight="48.0" prefWidth="215.0" text="Update Event" AnchorPane.leftAnchor="20.0" />
             <MFXButton fx:id="btnViewTickets" buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="280.0" onAction="#handleViewTickets" prefHeight="48.0" prefWidth="215.0" text="View Tickets" AnchorPane.leftAnchor="20.0" />
-            <MFXButton fx:id="btnDeleteTickets" buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="398.0" onAction="#handleDeleteTickets" prefHeight="48.0" prefWidth="215.0" text="Delete Tickets" AnchorPane.leftAnchor="20.0" />
+            <MFXButton fx:id="btnDeleteTickets" buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="398.0" onAction="#handleDeleteEvent" prefHeight="48.0" prefWidth="215.0" text="Delete Tickets" AnchorPane.leftAnchor="20.0" />
             <MFXButton buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="519.0" prefHeight="48.0" prefWidth="215.0" text="Exit" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="28.0" />
          </children>
       </AnchorPane>

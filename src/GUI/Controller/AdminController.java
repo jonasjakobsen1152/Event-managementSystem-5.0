@@ -146,7 +146,6 @@ public class AdminController extends BaseController implements Initializable {
                 showUsersAndEvent();
             }
         }
-
     }
 
     //View notes about an event
