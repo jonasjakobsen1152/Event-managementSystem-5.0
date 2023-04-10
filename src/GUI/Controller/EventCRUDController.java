@@ -4,6 +4,7 @@ import BE.Event;
 import GUI.Model.EventCoordModel;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
@@ -25,6 +26,7 @@ public class EventCRUDController extends BaseController implements Initializable
     public MFXTextField txtLocation;
     public MFXTextField txtNotes;
     public EventCoordModel eventCoordModel;
+    @FXML
     public TextField txtTest;
     public Button btnUpdate;
     private Event selectedEvent;
@@ -33,21 +35,23 @@ public class EventCRUDController extends BaseController implements Initializable
         eventCoordModel = new EventCoordModel();
     }
 
-    @Override
-    public void setup() {
+    public void setup2(Event selectedEvent) {
         eventCoordModel = getModel().getEventCoordModel();
+        System.out.println(txtName);
 
-        if(eventCoordModel.getSelectedEvent()!=null){
-            txtName.setText(eventCoordModel.getSelectedEvent().getEventName());
-            txtDate.setText(eventCoordModel.getSelectedEvent().getEventDate());
-            txtTime.setText(eventCoordModel.getSelectedEvent().getEventTime());
-            txtLocation.setText(eventCoordModel.getSelectedEvent().getEventLocation());
-            txtNotes.setText(eventCoordModel.getSelectedEvent().getEventNotes());
-            txtTest.setText(eventCoordModel.getSelectedEvent().getEventName());
-            btnCreateEvent.setVisible(false);
+        if(selectedEvent != null){
+            System.out.println("selected Event is not null");
+            txtName.setText(selectedEvent.getEventName());
+            txtDate.setText(selectedEvent.getEventDate());
+            txtTime.setText(selectedEvent.getEventTime());
+            txtLocation.setText(selectedEvent.getEventLocation());
+            txtNotes.setText(selectedEvent.getEventNotes());
+            txtTest.setText(selectedEvent.getEventName());
+            //btnCreateEvent.setVisible(false);
         }
         else {
-            btnUpdate.setVisible(false);
+
+            //btnUpdate.setVisible(false);
         }
     }
 
@@ -82,5 +86,12 @@ public class EventCRUDController extends BaseController implements Initializable
 
     public void handleUpdateEvent(ActionEvent actionEvent) {
 
+    }
+
+    public void setup() {
+    }
+
+    public void setEvent(Event selectedEvent) {
+        this.selectedEvent = selectedEvent;
     }
 }

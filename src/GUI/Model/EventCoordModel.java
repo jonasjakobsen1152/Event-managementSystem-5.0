@@ -34,6 +34,7 @@ public class EventCoordModel {
     }
 
     public void setSelectedEvent(Event selectedEvent) {
+        System.out.println(selectedEvent);
         this.selectedEvent = selectedEvent;
     }
     public void showList() throws Exception {

@@ -9,12 +9,14 @@ import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -54,6 +56,10 @@ public class EventCoordController extends BaseController implements Initializabl
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+        tblAllEvents.setOnMouseClicked(event -> {
+            Event selectedEvent = tblAllEvents.getSelectionModel().getSelectedItem();
+            eventCoordModel.setSelectedEvent(selectedEvent);
+        });
 
 
 
@@ -105,13 +111,16 @@ public class EventCoordController extends BaseController implements Initializabl
             loader.setLocation(getClass().getResource("/GUI/View/EventCRUDWindow.fxml"));
             AnchorPane pane = loader.load();
 
-            eventCRUDController = loader.getController();
+            EventCRUDController eventCRUDController = loader.getController();
             eventCRUDController.setModel(super.getModel());
-            //eventCRUDController.setEvent(selectedEvent);
-            eventCRUDController.setup();
+
+            eventCRUDController.setup2(selectedEvent);
+            eventCRUDController.setEvent(selectedEvent);
 
             Stage dialogWindow = new Stage();
             Scene scene = new Scene(pane);
+            dialogWindow.initModality(Modality.WINDOW_MODAL);
+            dialogWindow.initOwner((((Node)actionEvent.getSource()).getScene().getWindow()));
             dialogWindow.setScene(scene);
             dialogWindow.showAndWait();
         }
