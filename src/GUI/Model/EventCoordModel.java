@@ -56,9 +56,10 @@ public class EventCoordModel {
         return selectedEvent;
     }
 
-    public void deleteEvent(Event selectedEvent) {
+    public void deleteEvent(Event selectedEvent) throws Exception {
         eventCoordManager.deleteEvent(selectedEvent);
         eventsToBeViewed.remove(selectedEvent);
+        showList();
     }
 
     public ObservableList<User> getObservableUsers() {

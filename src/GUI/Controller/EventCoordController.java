@@ -145,7 +145,7 @@ public class EventCoordController extends BaseController implements Initializabl
 
     private Event getSelectedEvent(){
         Event event;
-        event = tblShowEvents.getSelectionModel().getSelectedItem();
+        event = tblAllEvents.getSelectionModel().getSelectedItem();
         return event;
     }
 
@@ -153,8 +153,9 @@ public class EventCoordController extends BaseController implements Initializabl
     private void updateEventModel() throws Exception {
         EventCoordModel updateEventModel = new EventCoordModel();
         eventCoordModel = updateEventModel;
-        tblShowEvents.setItems(eventCoordModel.getObservableEvents());
+        tblAllEvents.setItems(eventCoordModel.getObservableEvents());
     }
+
     private void showUsersAndEvent(){
         clmUsername.setCellValueFactory(new PropertyValueFactory<User, String>("userName"));
         clmPassword.setCellValueFactory(new PropertyValueFactory<User, String>("passWord"));
@@ -166,13 +167,14 @@ public class EventCoordController extends BaseController implements Initializabl
         //clmEndTime.setCellValueFactory(new PropertyValueFactory<Event, String>("eventEndTime"));
         clmLocation.setCellValueFactory(new PropertyValueFactory<Event, String>("eventLocation"));
 
-        tblShowEvents.setItems(eventCoordModel.getObservableEvents());
+        tblAllEvents.setItems(eventCoordModel.getObservableEvents());
 
     }
 
 
     public void handleDeleteEvent(ActionEvent actionEvent) throws Exception {
-        Event selectedEvent = tblAllEvents.getSelectionModel().getSelectedItem();
+        selectedEvent = tblAllEvents.getSelectionModel().getSelectedItem();
+
         if (selectedEvent == null) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Select an Event");
@@ -190,7 +192,7 @@ public class EventCoordController extends BaseController implements Initializabl
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
-                showUsersAndEvent();
+                showEvent();
             }
         }
     }
