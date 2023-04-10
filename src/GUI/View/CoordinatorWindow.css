@@ -1,7 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap%27%27');
-
-
-
 .AnchorPane{
     -fx-background-color: #18122B;
 }
@@ -31,7 +27,6 @@
 .table-row-cell:selected .text {
     -fx-fill: red;
 }
-
 
 .whiteText{
     -fx-background-color: white;
