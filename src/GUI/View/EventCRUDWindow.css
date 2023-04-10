@@ -5,3 +5,10 @@
 
 }
 
+.AnchorPane{
+    -fx-background-color: #393053;
+}
+
+.label{
+    -fx-text-fill: white;
+}
