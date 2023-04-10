@@ -29,7 +29,7 @@
 }
 
 .table-row-cell:selected .text {
-    -fx-fill: orange;
+    -fx-fill: red;
 }
 
 
