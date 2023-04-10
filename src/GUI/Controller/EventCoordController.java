@@ -96,17 +96,11 @@ public class EventCoordController extends BaseController implements Initializabl
         tblAllEvents.setItems(eventCoordModel.getObservableEvents());
         clmEventName.setCellValueFactory(new PropertyValueFactory<Event, String>("eventName"));
 
-        tblAllEvents.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Event>() {
-            @Override
-            public void changed(ObservableValue<? extends Event> observable, Event oldValue, Event newValue) {
-                eventCoordModel.setSelectedEvent(newValue);
-            }
-        });
 
 
     }
 
-    public void handleUpdateEvent(ActionEvent actionEvent) throws IOException {
+    public void handleUpdateEvent(ActionEvent actionEvent) throws Exception {
 
         Event selectedEvent = tblAllEvents.getSelectionModel().getSelectedItem();
 
@@ -133,7 +127,7 @@ public class EventCoordController extends BaseController implements Initializabl
             dialogWindow.initOwner((((Node)actionEvent.getSource()).getScene().getWindow()));
             dialogWindow.setScene(scene);
             dialogWindow.showAndWait();
-            showEvent();
+            updateEventCoordModel();
 
         }
     }

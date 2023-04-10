@@ -28,6 +28,8 @@ public class EventCoordModel {
 
     public void createEvent(String name, String date, String time, String location, String notes) throws Exception {
         eventCoordManager.createEvent(name, date, time, location, notes);
+
+        showList();
     }
 
     public ObservableList<Event> getObservableEvents() {
