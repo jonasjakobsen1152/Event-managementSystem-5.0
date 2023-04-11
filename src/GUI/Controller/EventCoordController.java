@@ -19,6 +19,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -34,6 +35,11 @@ public class EventCoordController extends BaseController implements Initializabl
     public MFXButton btnDeleteTickets;
     public TableView<Event> tblAllEvents;
     public TableColumn clmEventName;
+    public Text txtEventName;
+    public Text txtEventTime;
+    public Text txtEventNotes;
+    public Text txtEventLocation;
+    public Text txtEventDate;
     private EventCoordModel eventCoordModel;
     public EventCRUDController eventCRUDController;
     private Event selectedEvent;
@@ -70,13 +76,12 @@ public class EventCoordController extends BaseController implements Initializabl
         tblAllEvents.setOnMouseClicked(event -> {
             Event selectedEvent = tblAllEvents.getSelectionModel().getSelectedItem();
             eventCoordModel.setSelectedEvent(selectedEvent);
+            txtEventName.setText(getSelectedEvent().getEventName());
+            txtEventDate.setText(getSelectedEvent().getEventDate());
+            txtEventLocation.setText(getSelectedEvent().getEventLocation());
+            txtEventNotes.setText(getSelectedEvent().getEventNotes());
+            txtEventTime.setText(getSelectedEvent().getEventTime());
         });
-
-
-
-
-
-
     }
     
     public void setModel(EventCoordModel model) {
@@ -154,21 +159,6 @@ public class EventCoordController extends BaseController implements Initializabl
         EventCoordModel updateEventModel = new EventCoordModel();
         eventCoordModel = updateEventModel;
         tblAllEvents.setItems(eventCoordModel.getObservableEvents());
-    }
-
-    private void showUsersAndEvent(){
-        clmUsername.setCellValueFactory(new PropertyValueFactory<User, String>("userName"));
-        clmPassword.setCellValueFactory(new PropertyValueFactory<User, String>("passWord"));
-
-        tableViewCoord.setItems(eventCoordModel.getObservableUsers());
-
-        clmEventName.setCellValueFactory(new PropertyValueFactory<Event, String>("eventName"));
-        clmStartTime.setCellValueFactory(new PropertyValueFactory<Event, String>("eventTime"));
-        //clmEndTime.setCellValueFactory(new PropertyValueFactory<Event, String>("eventEndTime"));
-        clmLocation.setCellValueFactory(new PropertyValueFactory<Event, String>("eventLocation"));
-
-        tblAllEvents.setItems(eventCoordModel.getObservableEvents());
-
     }
 
 

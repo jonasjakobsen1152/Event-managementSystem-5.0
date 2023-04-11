@@ -14,6 +14,8 @@ public class AdminModel {
     private ObservableList<User> usersToBeViewed;
     private ObservableList<Event> eventsToBeViewed;
 
+    private ObservableList<User> usersInEvenTBV;
+
     public AdminModel() {
         adminManager = new AdminManager();
         //Making usersToBeViewed Observable
@@ -52,4 +54,6 @@ public class AdminModel {
         adminManager.deleteEvent(selectedEvent);
         eventsToBeViewed.remove(selectedEvent);
     }
+
+
 }

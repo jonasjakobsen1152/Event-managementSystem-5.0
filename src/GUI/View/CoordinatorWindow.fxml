@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="607.0" prefWidth="1369.0" styleClass="AnchorPane" stylesheets="@CoordinatorWindow.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.EventCoordController">
+<AnchorPane prefHeight="607.0" prefWidth="1369.0" styleClass="AnchorPane" stylesheets="@CoordinatorWindow.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.EventCoordController">
    <children>
       <AnchorPane prefHeight="607.0" prefWidth="263.0" styleClass="SidePane" stylesheets="@CoordinatorWindow.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -18,7 +18,19 @@
             <MFXButton buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="519.0" prefHeight="48.0" prefWidth="215.0" text="Exit" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="28.0" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="309.0" layoutY="85.0" prefHeight="431.0" prefWidth="751.0" styleClass="SidePane" AnchorPane.bottomAnchor="91.0" AnchorPane.leftAnchor="309.0" AnchorPane.rightAnchor="309.0" AnchorPane.topAnchor="85.0" />
+      <AnchorPane layoutX="309.0" layoutY="85.0" prefHeight="431.0" prefWidth="751.0" styleClass="SidePane" AnchorPane.bottomAnchor="91.0" AnchorPane.leftAnchor="309.0" AnchorPane.rightAnchor="309.0" AnchorPane.topAnchor="85.0">
+         <children>
+            <Text fx:id="txtEventName" layoutX="96.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="EventName" AnchorPane.bottomAnchor="361.0" AnchorPane.topAnchor="42.517578125" />
+            <Text fx:id="txtEventDate" layoutX="86.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="EventDate" />
+            <Text fx:id="txtEventNotes" layoutX="102.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="EventLocation" />
+            <Text fx:id="txtEventLocation" layoutX="96.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="EventNotes" />
+            <Text fx:id="txtEventTime" layoutX="85.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="EventTime" />
+            <Text layoutX="34.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Name:" AnchorPane.bottomAnchor="361.0" AnchorPane.topAnchor="42.517578125" />
+            <Text layoutX="39.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Date:" />
+            <Text layoutX="23.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Location:" />
+            <Text layoutX="33.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Notes:" />
+            <Text layoutX="38.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Time:" />
+         </children></AnchorPane>
       <TableView fx:id="tblAllEvents" layoutX="1113.0" layoutY="23.0" prefHeight="554.0" prefWidth="200.0" style="-fx-selection-bar: red;" styleClass="SidePane" stylesheets="@CoordinatorWindow.css" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="56.0" AnchorPane.topAnchor="23.0">
         <columns>
           <TableColumn fx:id="clmEventName" prefWidth="199.0" styleClass="SidePane" text="Event name" />
@@ -28,5 +40,6 @@
          </effect>
       </TableView>
       <Text layoutX="572.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Event management System" wrappingWidth="225.4375" AnchorPane.topAnchor="38.0" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
    </children>
 </AnchorPane>

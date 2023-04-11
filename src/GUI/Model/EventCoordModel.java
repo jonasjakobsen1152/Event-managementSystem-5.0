@@ -34,8 +34,8 @@ public class EventCoordModel {
         showList();
     }
 
-    public void createEvent(String name, String date, String time, String location, String notes) throws Exception {
-        eventCoordManager.createEvent(name, date, time, location, notes);
+    public void createEvent(String name, String date, String time, String notes, String location) throws Exception {
+        eventCoordManager.createEvent(name, date, time, notes, location);
 
         showList();
     }

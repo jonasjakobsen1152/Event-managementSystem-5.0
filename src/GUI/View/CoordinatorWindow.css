@@ -14,6 +14,7 @@
     -fx-fill: white;
     -fx-font-size: 18;
     -fx-font-family: 'Concert One', cursive;
+
 }
 
 .SidePane {
@@ -46,4 +47,7 @@
 
 AllEvents{
     -fx-font-fill:  white;
+}
+.text{
+    -fx-text-fill: white;
 }

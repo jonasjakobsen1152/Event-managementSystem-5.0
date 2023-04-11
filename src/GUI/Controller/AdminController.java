@@ -3,6 +3,7 @@ package GUI.Controller;
 import BE.Event;
 import BE.User;
 import GUI.Model.AdminModel;
+import GUI.Model.UsersInEventModel;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -32,6 +33,7 @@ public class AdminController extends BaseController implements Initializable {
     private User selectedUser;
     private Event selectedEvent;
     public AdminModel adminModel = new AdminModel();
+    public UsersInEventModel usersInEventModel = new UsersInEventModel();
 
 
     public AdminController() throws Exception {
@@ -161,9 +163,23 @@ public class AdminController extends BaseController implements Initializable {
 
     public void handleAddEventCoordinator(ActionEvent actionEvent) {
 
-        /** TODO ADD EVENTCOORDINATOR TO NEW EVENT
-         *
-         */
+        selectedEvent = tblShowEvents.getSelectionModel().getSelectedItem();
+        selectedUser = tableViewCoord.getSelectionModel().getSelectedItem();
+        if(selectedEvent == null){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Select an event");
+            alert.setHeaderText("Choose a event to add to");
+            alert.show();
+        }
+        else if (selectedUser == null){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Select a user");
+            alert.setHeaderText("Choose a user to add");
+            alert.show();
+        }
+        else {
+            usersInEventModel.addEventCoordinatorToEvent(selectedEvent, selectedUser);
+        }
 
     }
 

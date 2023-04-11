@@ -16,8 +16,8 @@ public class EventCoordManager {
         eventDAO = new EventCoordDAO_DB();
     }
 
-    public Event createEvent(String name, String date, String time, String location, String notes) {
-       return eventDAO.createEvent(name,date,time,location,notes);
+    public Event createEvent(String name, String date, String time, String notes, String location) {
+       return eventDAO.createEvent(name,date,time,notes, location);
     }
 
     public List<Event> getAllEvent() throws Exception {
