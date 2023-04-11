@@ -2,9 +2,17 @@ package BLL;
 
 import BE.Event;
 import BE.User;
+import DAL.DB.UsersInEventDAO_DB;
+import DAL.IUsersInEventDAO;
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 
 public class UsersInEventManager {
-    public void addEventCoordinatorToEvent(Event selectedEvent, User selectedUser) {
 
+    IUsersInEventDAO usersInEventDAO;
+    public UsersInEventManager(){
+        usersInEventDAO = new UsersInEventDAO_DB();
+    }
+    public void addEventCoordinatorToEvent(Event selectedEvent, User selectedUser) throws SQLServerException {
+        usersInEventDAO.addEventCoordinatorToEvent(selectedEvent,selectedUser);
     }
 }

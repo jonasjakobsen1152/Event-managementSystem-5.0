@@ -4,6 +4,7 @@ import BE.Event;
 import BE.User;
 import GUI.Model.AdminModel;
 import GUI.Model.UsersInEventModel;
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -161,7 +162,7 @@ public class AdminController extends BaseController implements Initializable {
     }
 
 
-    public void handleAddEventCoordinator(ActionEvent actionEvent) {
+    public void handleAddEventCoordinator(ActionEvent actionEvent) throws SQLServerException {
 
         selectedEvent = tblShowEvents.getSelectionModel().getSelectedItem();
         selectedUser = tableViewCoord.getSelectionModel().getSelectedItem();

@@ -37,6 +37,4 @@ public AdminManager(){
     adminDAO.deleteEvent(selectedEvent.getId(),selectedEvent.getEventName());
     }
 
-    public void addEventCoordinatorToEvent(Event selectedEvent, User selectedUser) {
-    }
 }

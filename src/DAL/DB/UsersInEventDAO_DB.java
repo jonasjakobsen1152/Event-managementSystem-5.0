@@ -14,6 +14,10 @@ public class UsersInEventDAO_DB implements IUsersInEventDAO {
 
     private MyDatabaseConnector dbConnector;
 
+    public UsersInEventDAO_DB(){
+        dbConnector = new MyDatabaseConnector();
+    }
+
     @Override
     public void addEventCoordinatorToEvent(Event selectedEvent, User selectedUser) throws SQLServerException {
         String sql ="INSERT INTO UserEvent (UserID, EventID) VALUES (?,?);";
