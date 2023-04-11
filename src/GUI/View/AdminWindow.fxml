@@ -25,7 +25,7 @@
             <columns>
                 <TableColumn fx:id="clmEventName" prefWidth="129.0" text="Event name" />
                 <TableColumn fx:id="clmStartTime" minWidth="7.0" prefWidth="97.0" text="Start time" />
-                <TableColumn fx:id="clmEndTime" prefWidth="82.0" text="End time" />
+                <TableColumn fx:id="clmEventDate" prefWidth="82.0" text="Event Date" />
                 <TableColumn fx:id="clmLocation" prefWidth="136.0" text="Location" />
             </columns>
         </TableView>
