@@ -26,5 +26,9 @@ public class TicketModel {
         return instance;
     }
 
+    public ObservableList<Customer> getCustomersToBeViewed(){
+        return customersToBeViewed;
+    }
+
 
 }

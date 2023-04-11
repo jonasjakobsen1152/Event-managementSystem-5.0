@@ -75,12 +75,14 @@ public class EventCoordController extends BaseController implements Initializabl
         }
         tblAllEvents.setOnMouseClicked(event -> {
             Event selectedEvent = tblAllEvents.getSelectionModel().getSelectedItem();
-            eventCoordModel.setSelectedEvent(selectedEvent);
-            txtEventName.setText(getSelectedEvent().getEventName());
-            txtEventDate.setText(getSelectedEvent().getEventDate());
-            txtEventLocation.setText(getSelectedEvent().getEventLocation());
-            txtEventNotes.setText(getSelectedEvent().getEventNotes());
-            txtEventTime.setText(getSelectedEvent().getEventTime());
+            if(selectedEvent != null) {
+                eventCoordModel.setSelectedEvent(selectedEvent);
+                txtEventName.setText(getSelectedEvent().getEventName());
+                txtEventDate.setText(getSelectedEvent().getEventDate());
+                txtEventLocation.setText(getSelectedEvent().getEventLocation());
+                txtEventNotes.setText(getSelectedEvent().getEventNotes());
+                txtEventTime.setText(getSelectedEvent().getEventTime());
+            }
         });
     }
     
