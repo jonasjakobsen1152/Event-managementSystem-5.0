@@ -191,14 +191,22 @@ public class EventCoordController extends BaseController implements Initializabl
 
     public void handleViewTickets(ActionEvent actionEvent) throws IOException {
         selectedEvent = tblAllEvents.getSelectionModel().getSelectedItem();
+        if(selectedEvent != null){
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/GUI/View/Tickets.fxml"));
+            AnchorPane pane = loader.load();
+            Stage dialogWindow = new Stage();
+            Scene scene = new Scene(pane);
+            dialogWindow.setScene(scene);
+            dialogWindow.showAndWait();
+        }
+        else{
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Select an Event");
+            alert.setHeaderText("Choose an event to create tickets for");
+            alert.show();
+        }
 
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/GUI/View/TicketController"));
-        AnchorPane pane = loader.load();
-        Stage dialogWindow = new Stage();
-        Scene scene = new Scene(pane);
-        dialogWindow.setScene(scene);
-        dialogWindow.showAndWait();
     }
 
 
