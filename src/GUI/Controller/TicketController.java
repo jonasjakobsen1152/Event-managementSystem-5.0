@@ -14,7 +14,7 @@ public class TicketController {
     public TableColumn CLMTicketQR;
 
     public void handleCreateCustomer(ActionEvent actionEvent) {
-    
+
     }
 
     public void handleDeleteCustomer(ActionEvent actionEvent) {

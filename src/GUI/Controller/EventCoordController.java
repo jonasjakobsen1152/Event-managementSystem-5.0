@@ -189,7 +189,16 @@ public class EventCoordController extends BaseController implements Initializabl
 
 
 
-    public void handleViewTickets(ActionEvent actionEvent) {
+    public void handleViewTickets(ActionEvent actionEvent) throws IOException {
+        selectedEvent = tblAllEvents.getSelectionModel().getSelectedItem();
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/GUI/View/TicketController"));
+        AnchorPane pane = loader.load();
+        Stage dialogWindow = new Stage();
+        Scene scene = new Scene(pane);
+        dialogWindow.setScene(scene);
+        dialogWindow.showAndWait();
     }
 
 
