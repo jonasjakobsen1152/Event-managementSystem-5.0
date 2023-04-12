@@ -14,6 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -25,13 +26,15 @@ public class AdminController extends BaseController implements Initializable {
     public TextField txtCoordPassword;
     public TableColumn clmUsername;
     public TableColumn clmPassword;
-    public TableView<User> CoordToEvents;
+    public TableView<User> tblCoordToEvents;
     public TableView<Event> tblShowEvents;
     public TableColumn clmEventName;
     public TableColumn clmStartTime;
     public TableColumn clmEndTime;
     public TableColumn clmLocation;
+    public TableColumn clmUsersToEvent;
     private User selectedUser;
+    private int selectedEventId;
     private Event selectedEvent;
     public AdminModel adminModel = new AdminModel();
     public UsersInEventModel usersInEventModel = new UsersInEventModel();
@@ -44,7 +47,26 @@ public class AdminController extends BaseController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         updateUserModel();
         updateEventModel();
+        updateUsersInEventModel();
         showUsersAndEvent();
+
+        tblShowEvents.setOnMouseClicked(event -> {
+            selectedEvent = tblShowEvents.getSelectionModel().getSelectedItem();
+            if (selectedEvent == null){ //Fortæller user at personen skal lave en category
+                alertUser("Please choose an event");
+            }
+            else {
+                selectedEventId = selectedEvent.getId();
+            }
+            try{
+                usersInEventModel.showlist(selectedEventId);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        tblCoordToEvents.setOnMouseClicked(event -> {
+            selectedUser = tblCoordToEvents.getSelectionModel().getSelectedItem();
+        });
     }
 
     //Creates a new event coordinator
@@ -58,6 +80,12 @@ public class AdminController extends BaseController implements Initializable {
         updateUserModel();
         showUsersAndEvent();
 
+    }
+    private void alertUser(String error) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(error);
+        alert.setHeaderText(error + "");
+        alert.showAndWait();
     }
 
     //Deletes an event coordinator
@@ -100,6 +128,13 @@ public class AdminController extends BaseController implements Initializable {
         tblShowEvents.setItems(adminModel.getObservableEvents());
     }
 
+    private void updateUsersInEventModel(){
+        UsersInEventModel updateUsersInEventModel = new UsersInEventModel();
+        usersInEventModel = updateUsersInEventModel;
+        tblCoordToEvents.setItems(usersInEventModel.getUsersInEventToBeViewed());
+
+    }
+
     //Used to update and show the list in real time
     private void showUsersAndEvent(){
         clmUsername.setCellValueFactory(new PropertyValueFactory<User, String>("userName"));
@@ -113,6 +148,10 @@ public class AdminController extends BaseController implements Initializable {
         clmLocation.setCellValueFactory(new PropertyValueFactory<Event, String>("eventLocation"));
 
         tblShowEvents.setItems(adminModel.getObservableEvents());
+
+        clmUsersToEvent.setCellValueFactory(new PropertyValueFactory<User, String>("userName"));
+
+        tblCoordToEvents.setItems(usersInEventModel.getUsersInEventToBeViewed());
 
     }
 
@@ -184,23 +223,17 @@ public class AdminController extends BaseController implements Initializable {
 
     }
 
-    public void handleRemoveEventCoordinator(ActionEvent actionEvent) {
-            selectedUser = CoordToEvents.getSelectionModel().getSelectedItem();
-            if (selectedUser == null) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Select a user");
-                alert.setHeaderText("Choose a user to remove");
-                alert.show();
-            } else {
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Warning");
-                alert.setHeaderText("Are you sure you want to remove: " + selectedUser.getUserName().concat("?"));
-                Optional<ButtonType> action = alert.showAndWait();
-                if (action.get() == ButtonType.OK) {
-                    adminModel.deleteCoord(getSelectedUser());
-                    updateUserModel();
-                    showUsersAndEvent();
-                }
-            }
+    public void handleRemoveCoordFromEvent(ActionEvent actionEvent) throws SQLServerException {
+        if(selectedUser == null || selectedEvent == null){
+            alertUser("Please select a user and a event");
         }
+        else{
+            int userId = selectedUser.getId();
+            int eventId = selectedEvent.getId();
+            int userToBeDeletedId = usersInEventModel.getUserEventId(userId,eventId);
+            usersInEventModel.removeUserFromEvent(selectedUser,selectedEvent,userToBeDeletedId);
+            updateUsersInEventModel();
+        }
+
+    }
 }

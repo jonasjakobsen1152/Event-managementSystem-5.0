@@ -5,10 +5,9 @@ import BE.User;
 import DAL.IUsersInEventDAO;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UsersInEventDAO_DB implements IUsersInEventDAO {
 
@@ -17,6 +16,8 @@ public class UsersInEventDAO_DB implements IUsersInEventDAO {
     public UsersInEventDAO_DB(){
         dbConnector = new MyDatabaseConnector();
     }
+
+
 
     @Override
     public void addEventCoordinatorToEvent(Event selectedEvent, User selectedUser) throws SQLServerException {
@@ -41,5 +42,74 @@ public class UsersInEventDAO_DB implements IUsersInEventDAO {
         }
     }
 
+    @Override
+    public List<User> getCoordinatorsInEvent(int selectedEventId) throws SQLServerException {
+        ArrayList<User> allUser = new ArrayList<>();
+        try(Connection connection = dbConnector.getConnection()){
+
+            String sql = "SELECT * FROM Events eve, UserEvent ue, Users us \n" +
+                    "WHERE us.LogInID = ue.UserID AND eve.ID = ue.EventID AND eve.ID =" + selectedEventId + ";";
+
+            Statement stmt = connection.createStatement();
+
+            if(stmt.execute(sql)){
+                ResultSet resultSet = stmt.getResultSet();
+                while(resultSet.next()){
+                    int id = resultSet.getInt("LoginID");
+                    String name = resultSet.getString("UserName");
+                    String password = resultSet.getString("Password");
+                    String roles = resultSet.getString("Roles");
+
+                    User user = new User(id, name, password,roles);
+                    allUser.add(user);
+
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Couldn't connect to database");
+            throw new RuntimeException(e);
+        }
+        return allUser;
+    }
+
+    @Override
+    public void removeUserFromEvent(User selectedUser, Event selectedEvent, int selectedUserInEvent) {
+        String sql = "DELETE FROM UserEvent \n" +
+                "WHERE UserEvent.UserID = ? \n" +
+                "AND UserEvent.EventID = ? AND UserEvent.ID = ?;";
+
+        try(Connection connection = dbConnector.getConnection()){
+            PreparedStatement stmt = connection.prepareStatement(sql);
+
+            stmt.setInt(1,selectedUser.getId());
+            stmt.setInt(2, selectedEvent.getId());
+            stmt.setInt(3, selectedUserInEvent);
+
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public int getUserEventId(int userId, int eventId){
+        int userEventId = 0;
+
+        String sql = "SELECT * FROM UserEvent ue WHERE ue.UserID =" + userId + "\n" +
+                "AND ue.EventID = " + eventId + ";";
+
+        try(Connection connection = dbConnector.getConnection()){
+
+            Statement stmt = connection.createStatement();
+
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()){
+                userEventId = rs.getInt("ID");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return userEventId;
+    }
 
 }

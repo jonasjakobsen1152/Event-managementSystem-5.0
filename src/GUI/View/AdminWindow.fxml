@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="431.0" prefWidth="1197.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.AdminController">
+<AnchorPane prefHeight="431.0" prefWidth="1197.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.AdminController">
     <children>
         <TableView fx:id="tableViewCoord" layoutX="14.0" layoutY="14.0" prefHeight="255.0" prefWidth="398.0">
             <columns>
@@ -32,12 +28,12 @@
         <Button layoutX="294.0" layoutY="279.0" mnemonicParsing="false" onAction="#handleDeleteCoord" text="Delete Coordinator" />
         <Button layoutX="508.0" layoutY="279.0" mnemonicParsing="false" onAction="#handleDeleteEvent" text="Delete Event" />
         <Button layoutX="706.0" layoutY="279.0" mnemonicParsing="false" onAction="#handleViewEventNotes" text="View event notes" />
-        <TableView fx:id="CoordToEvents" layoutX="925.0" layoutY="16.0" prefHeight="255.0" prefWidth="256.0">
+        <TableView fx:id="tblCoordToEvents" layoutX="925.0" layoutY="16.0" prefHeight="255.0" prefWidth="256.0">
             <columns>
-                <TableColumn prefWidth="255.0" text="Event Coordinators til eventet" />
+                <TableColumn fx:id="clmUsersToEvent" prefWidth="255.0" text="Event Coordinators til eventet" />
             </columns>
         </TableView>
       <Button layoutX="952.0" layoutY="279.0" mnemonicParsing="false" onAction="#handleAddEventCoordinator" text="Tilføj" />
-      <Button layoutX="1105.0" layoutY="279.0" mnemonicParsing="false" onAction="#handleRemoveEventCoordinator" text="Fjern" />
+      <Button layoutX="1105.0" layoutY="279.0" mnemonicParsing="false" onAction="#handleRemoveCoordFromEvent" text="Fjern" />
     </children>
 </AnchorPane>
