@@ -33,17 +33,16 @@ public class TicketModel {
         customersToBeViewed.addAll(ticketManager.getAllCustomers());
     }
 
-//    public ArrayList<Customer> loadNewCustomers(){
-//        ArrayList<Customer> newCustomersToBeViewed = new ArrayList<>();
-//        newCustomersToBeViewed.addAll(ticketManager.getAllCustomers());
-//        return newCustomersToBeViewed;
-//    }
-
-
-
     public ObservableList<Customer> getCustomersToBeViewed(){
         return customersToBeViewed;
     }
 
 
+    public void createCustomer(String name, String lastName, String email) {
+        ticketManager.createCustomer(name,lastName,email);
+    }
+
+    public void deleteCustomer(Customer selectedCustomer) {
+        ticketManager.deleteCustomer(selectedCustomer);
+    }
 }

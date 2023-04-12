@@ -24,4 +24,11 @@ public class TicketManager {
         return iTicketDAO.getAllCustomers();
     }
 
+    public void createCustomer(String name, String lastName, String email) {
+        iTicketDAO.createCustomer(name,lastName,email);
+    }
+
+    public void deleteCustomer(Customer selectedCustomer) {
+        iTicketDAO.deleteCustomer(selectedCustomer);
+    }
 }

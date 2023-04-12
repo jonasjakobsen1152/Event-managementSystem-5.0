@@ -3,10 +3,15 @@ package DAL;
 import BE.Customer;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public interface ITicketDAO {
 
+    
 
     ArrayList<Customer> getAllCustomers();
+
+    Customer createCustomer(String name, String lastName, String email);
+
+
+    void deleteCustomer(Customer selectedCustomer);
 }
