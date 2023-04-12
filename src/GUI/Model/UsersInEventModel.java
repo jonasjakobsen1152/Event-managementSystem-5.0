@@ -39,4 +39,13 @@ public class UsersInEventModel {
         usersInEventToBeViewed.clear();
         usersInEventToBeViewed.addAll(usersInEventManager.getUsersInEvent(selectedEventId));
     }
+    public void removeUserFromEvent(User selectedUser,Event selectedEvent,int selectedUserInEventId) throws SQLServerException {
+        usersInEventManager.removeUserFromEvent(selectedUser,selectedEvent,selectedUserInEventId);
+        showlist(selectedEvent.getId());
+    }
+    public int getUserEventId(int userId, int eventId){
+        return usersInEventManager.getUserEventId(userId,eventId);
+
+
+    }
 }

@@ -51,9 +51,9 @@ public class AdminController extends BaseController implements Initializable {
         showUsersAndEvent();
 
         tblShowEvents.setOnMouseClicked(event -> {
-            Event selectedEvent = tblShowEvents.getSelectionModel().getSelectedItem();
+            selectedEvent = tblShowEvents.getSelectionModel().getSelectedItem();
             if (selectedEvent == null){ //Fortæller user at personen skal lave en category
-                alertUser("Please make an event");
+                alertUser("Please choose an event");
             }
             else {
                 selectedEventId = selectedEvent.getId();
@@ -63,6 +63,9 @@ public class AdminController extends BaseController implements Initializable {
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
+        });
+        tblCoordToEvents.setOnMouseClicked(event -> {
+            selectedUser = tblCoordToEvents.getSelectionModel().getSelectedItem();
         });
     }
 
@@ -220,8 +223,17 @@ public class AdminController extends BaseController implements Initializable {
 
     }
 
-    public void handleRemoveCoordFromEvent(ActionEvent actionEvent) {
-
+    public void handleRemoveCoordFromEvent(ActionEvent actionEvent) throws SQLServerException {
+        if(selectedUser == null || selectedEvent == null){
+            alertUser("Please select a user and a event");
+        }
+        else{
+            int userId = selectedUser.getId();
+            int eventId = selectedEvent.getId();
+            int userToBeDeletedId = usersInEventModel.getUserEventId(userId,eventId);
+            usersInEventModel.removeUserFromEvent(selectedUser,selectedEvent,userToBeDeletedId);
+            updateUsersInEventModel();
+        }
 
     }
 }

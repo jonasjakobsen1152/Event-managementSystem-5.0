@@ -20,4 +20,12 @@ public class UsersInEventManager {
     public List<User> getUsersInEvent(int selectedEventId) throws SQLServerException {
         return usersInEventDAO.getCoordinatorsInEvent(selectedEventId);
     }
+
+    public void removeUserFromEvent(User selectedUser, Event selectedEvent, int selectedUserInEventId){
+        usersInEventDAO.removeUserFromEvent(selectedUser,selectedEvent,selectedUserInEventId);
+    }
+
+    public int getUserEventId(int userId, int eventId){
+        return usersInEventDAO.getUserEventId(userId,eventId);
+    }
 }

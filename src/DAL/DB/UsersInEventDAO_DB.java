@@ -72,5 +72,44 @@ public class UsersInEventDAO_DB implements IUsersInEventDAO {
         return allUser;
     }
 
+    @Override
+    public void removeUserFromEvent(User selectedUser, Event selectedEvent, int selectedUserInEvent) {
+        String sql = "DELETE FROM UserEvent \n" +
+                "WHERE UserEvent.UserID = ? \n" +
+                "AND UserEvent.EventID = ? AND UserEvent.ID = ?;";
+
+        try(Connection connection = dbConnector.getConnection()){
+            PreparedStatement stmt = connection.prepareStatement(sql);
+
+            stmt.setInt(1,selectedUser.getId());
+            stmt.setInt(2, selectedEvent.getId());
+            stmt.setInt(3, selectedUserInEvent);
+
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public int getUserEventId(int userId, int eventId){
+        int userEventId = 0;
+
+        String sql = "SELECT * FROM UserEvent ue WHERE ue.UserID =" + userId + "\n" +
+                "AND ue.EventID = " + eventId + ";";
+
+        try(Connection connection = dbConnector.getConnection()){
+
+            Statement stmt = connection.createStatement();
+
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()){
+                userEventId = rs.getInt("ID");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return userEventId;
+    }
 
 }
