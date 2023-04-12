@@ -6,6 +6,8 @@ import BLL.TicketManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.util.ArrayList;
+
 public class TicketModel {
     private static TicketModel instance;
 
@@ -25,6 +27,19 @@ public class TicketModel {
         }
         return instance;
     }
+
+    public void replaceOldCustomerList(){
+        customersToBeViewed.clear();
+        customersToBeViewed.addAll(ticketManager.getAllCustomers());
+    }
+
+//    public ArrayList<Customer> loadNewCustomers(){
+//        ArrayList<Customer> newCustomersToBeViewed = new ArrayList<>();
+//        newCustomersToBeViewed.addAll(ticketManager.getAllCustomers());
+//        return newCustomersToBeViewed;
+//    }
+
+
 
     public ObservableList<Customer> getCustomersToBeViewed(){
         return customersToBeViewed;

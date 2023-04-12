@@ -20,7 +20,7 @@ public class TicketManager {
         allCustomers = new ArrayList<>();
     }
 
-    public List<Customer> getAllCustomers() {
+    public ArrayList<Customer> getAllCustomers() {
         return iTicketDAO.getAllCustomers();
     }
 

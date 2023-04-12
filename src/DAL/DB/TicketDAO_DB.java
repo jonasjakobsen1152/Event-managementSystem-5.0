@@ -19,7 +19,7 @@ public class TicketDAO_DB implements ITicketDAO {
         databaseConnector = new MyDatabaseConnector();
     }
     @Override
-    public List<Customer> getAllCustomers() {
+    public ArrayList<Customer> getAllCustomers() {
         ArrayList<Customer> allCustomers = new ArrayList<>();
 
         try(Connection conn = databaseConnector.getConnection();

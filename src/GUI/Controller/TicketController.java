@@ -75,6 +75,7 @@ public class TicketController implements Initializable {
     }
 
     public void handleDeleteCustomer(ActionEvent actionEvent) {
+        ticketModel.replaceOldCustomerList();
     }
 
     public void handleCreateTicket(ActionEvent actionEvent) {
