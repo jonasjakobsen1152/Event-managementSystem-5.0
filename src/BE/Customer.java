@@ -6,17 +6,16 @@ public class Customer {
 
     private String Name;
 
-    private String LastName;
+    private String lastName;
 
-    private String Email;
+    private String email;
 
     public Customer(int id, String name, String lastName, String email) {
         this.id = id;
-        Name = name;
-        LastName = lastName;
-        Email = email;
+        this.Name = name;
+        this.lastName = lastName;
+        this.email = email;
     }
-
 
     public int getId() {
         return id;
@@ -28,5 +27,13 @@ public class Customer {
 
     public String getName() {
         return Name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getEmail() {
+        return email;
     }
 }

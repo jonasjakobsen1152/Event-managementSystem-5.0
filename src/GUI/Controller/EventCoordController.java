@@ -75,12 +75,14 @@ public class EventCoordController extends BaseController implements Initializabl
         }
         tblAllEvents.setOnMouseClicked(event -> {
             Event selectedEvent = tblAllEvents.getSelectionModel().getSelectedItem();
-            eventCoordModel.setSelectedEvent(selectedEvent);
-            txtEventName.setText(getSelectedEvent().getEventName());
-            txtEventDate.setText(getSelectedEvent().getEventDate());
-            txtEventLocation.setText(getSelectedEvent().getEventLocation());
-            txtEventNotes.setText(getSelectedEvent().getEventNotes());
-            txtEventTime.setText(getSelectedEvent().getEventTime());
+            if(selectedEvent != null) {
+                eventCoordModel.setSelectedEvent(selectedEvent);
+                txtEventName.setText(getSelectedEvent().getEventName());
+                txtEventDate.setText(getSelectedEvent().getEventDate());
+                txtEventLocation.setText(getSelectedEvent().getEventLocation());
+                txtEventNotes.setText(getSelectedEvent().getEventNotes());
+                txtEventTime.setText(getSelectedEvent().getEventTime());
+            }
         });
     }
     
@@ -189,7 +191,26 @@ public class EventCoordController extends BaseController implements Initializabl
 
 
 
-    public void handleViewTickets(ActionEvent actionEvent) {
+    public void handleViewTickets(ActionEvent actionEvent) throws IOException {
+        selectedEvent = tblAllEvents.getSelectionModel().getSelectedItem();
+        if(selectedEvent != null){
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/GUI/View/Tickets.fxml"));
+            AnchorPane pane = loader.load();
+            Stage dialogWindow = new Stage();
+            Scene scene = new Scene(pane);
+            dialogWindow.initModality(Modality.WINDOW_MODAL);
+            dialogWindow.initOwner((((Node)actionEvent.getSource()).getScene().getWindow()));
+            dialogWindow.setScene(scene);
+            dialogWindow.showAndWait();
+        }
+        else{
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Select an Event");
+            alert.setHeaderText("Choose an event to create tickets for");
+            alert.show();
+        }
+
     }
 
 
