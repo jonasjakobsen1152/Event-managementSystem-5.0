@@ -23,7 +23,7 @@ public class UsersInEventModel {
     public void addEventCoordinatorToEvent(Event selectedEvent, User selectedUser) throws SQLServerException {
         usersInEventManager.addEventCoordinatorToEvent(selectedEvent, selectedUser);
 
-        //showlist();
+        showlist(selectedEvent.getId());
 
     }
 
