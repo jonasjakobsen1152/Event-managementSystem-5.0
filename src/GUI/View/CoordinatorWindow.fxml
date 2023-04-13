@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import io.github.palexdev.materialfx.controls.MFXButton?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.effect.ColorAdjust?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Text?>
+<?import io.github.palexdev.materialfx.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="607.0" prefWidth="1369.0" styleClass="AnchorPane" stylesheets="@CoordinatorWindow.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.EventCoordController">
+<AnchorPane prefHeight="607.0" prefWidth="1369.0" styleClass="AnchorPane" stylesheets="@CoordinatorWindow.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.EventCoordController">
    <children>
       <AnchorPane prefHeight="607.0" prefWidth="263.0" styleClass="SidePane" stylesheets="@CoordinatorWindow.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -22,8 +21,8 @@
          <children>
             <Text fx:id="txtEventName" layoutX="96.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="EventName" AnchorPane.bottomAnchor="361.0" AnchorPane.topAnchor="42.517578125" />
             <Text fx:id="txtEventDate" layoutX="86.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="EventDate" />
-            <Text fx:id="txtEventNotes" layoutX="102.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="EventLocation" />
-            <Text fx:id="txtEventLocation" layoutX="96.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="EventNotes" />
+            <Text fx:id="txtEventLocation" layoutX="102.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="EventLocation" />
+            <Text fx:id="txtEventNotes" layoutX="96.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="EventNotes" />
             <Text fx:id="txtEventTime" layoutX="85.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="EventTime" />
             <Text layoutX="34.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Name:" AnchorPane.bottomAnchor="361.0" AnchorPane.topAnchor="42.517578125" />
             <Text layoutX="39.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Date:" />

@@ -100,8 +100,8 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
             stmt.setString(1,name);
             stmt.setString(2,date);
             stmt.setString(3,time);
-            stmt.setString(4,location);
-            stmt.setString(5,notes);
+            stmt.setString(4,notes);
+            stmt.setString(5,location);
 
             stmt.executeUpdate();
 
