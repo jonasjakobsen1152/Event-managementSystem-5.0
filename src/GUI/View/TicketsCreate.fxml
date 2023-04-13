@@ -5,14 +5,16 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="325.0" prefWidth="480.0" styleClass="AnchorPane" stylesheets="@EventCRUDWindow.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.TicketCreateController">
+<AnchorPane prefHeight="409.0" prefWidth="487.0" styleClass="AnchorPane" stylesheets="@EventCRUDWindow.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.TicketCreateController">
    <children>
-      <Label layoutX="24.0" layoutY="49.0" prefHeight="17.0" prefWidth="78.0" text="Event Name:" />
+      <Label layoutX="24.0" layoutY="49.0" prefHeight="17.0" prefWidth="78.0" text="Name:" />
       <Label layoutX="24.0" layoutY="113.0" prefHeight="17.0" prefWidth="78.0" text="Last name:" />
       <Label layoutX="24.0" layoutY="177.0" prefHeight="17.0" prefWidth="78.0" text="Email:" />
       <MFXTextField fx:id="txtName" floatMode="ABOVE" layoutX="107.0" layoutY="33.0" prefHeight="49.0" prefWidth="235.0" />
       <MFXTextField fx:id="txtLastName" floatMode="ABOVE" layoutX="106.0" layoutY="97.0" prefHeight="49.0" prefWidth="235.0" />
       <MFXTextField fx:id="txtEmail" floatMode="ABOVE" layoutX="108.0" layoutY="161.0" prefHeight="49.0" prefWidth="235.0" />
-      <MFXButton fx:id="btnCreateCustomer" buttonType="RAISED" layoutX="106.0" layoutY="243.0" onAction="#handleCreateCustomer" prefHeight="49.0" prefWidth="235.0" text="Create Customer" />
+      <MFXButton fx:id="btnCreateCustomer" buttonType="RAISED" layoutX="106.0" layoutY="319.0" onAction="#handleCreateCustomer" prefHeight="49.0" prefWidth="235.0" text="Create Customer" />
+      <Label layoutX="24.0" layoutY="247.0" prefHeight="17.0" prefWidth="78.0" text="Ticket Type" />
+      <MFXTextField fx:id="txtType" floatMode="ABOVE" layoutX="106.0" layoutY="231.0" prefHeight="49.0" prefWidth="235.0" />
    </children>
 </AnchorPane>

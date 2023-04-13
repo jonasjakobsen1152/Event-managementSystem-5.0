@@ -12,6 +12,7 @@ public class TicketCreateController {
     public MFXTextField txtEmail;
     public MFXTextField txtLastName;
     public MFXTextField txtName;
+    public MFXTextField txtType;
 
     private TicketModel ticketModel;
 
@@ -23,9 +24,11 @@ public class TicketCreateController {
     String name = txtName.getText();
     String lastName = txtLastName.getText();
     String email = txtEmail.getText();
+    String ticketType = txtType.getText();
+    String QR = "";
 
-    ticketModel.createCustomer(name,lastName,email);
-    ticketModel.replaceOldCustomerList();
+    ticketModel.createTicket(name,lastName,email,ticketType,QR);
+    ticketModel.replaceOldTicketList();
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         stage.close();
     }

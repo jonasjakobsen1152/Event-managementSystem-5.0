@@ -2,6 +2,7 @@ package GUI.Model;
 
 
 import BE.Customer;
+import BE.Ticket;
 import BLL.TicketManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,12 +14,13 @@ public class TicketModel {
 
     TicketManager ticketManager;
 
-    private ObservableList<Customer> customersToBeViewed;
+    private ObservableList<Ticket> ticketsToBeViewed;
+
     private TicketModel() {
         ticketManager = new TicketManager();
 
-        customersToBeViewed = FXCollections.observableArrayList();
-        customersToBeViewed.addAll(ticketManager.getAllCustomers());
+        ticketsToBeViewed = FXCollections.observableArrayList();
+        ticketsToBeViewed.addAll(ticketManager.getAllTickets());
     }
 
     public static TicketModel getInstance() {
@@ -28,13 +30,13 @@ public class TicketModel {
         return instance;
     }
 
-    public void replaceOldCustomerList(){
-        customersToBeViewed.clear();
-        customersToBeViewed.addAll(ticketManager.getAllCustomers());
+    public void replaceOldTicketList(){
+        ticketsToBeViewed.clear();
+        ticketsToBeViewed.addAll(ticketManager.getAllTickets());
     }
 
-    public ObservableList<Customer> getCustomersToBeViewed(){
-        return customersToBeViewed;
+    public ObservableList<Ticket> getTicketsToBeViewed() {
+        return ticketsToBeViewed;
     }
 
 
@@ -42,7 +44,11 @@ public class TicketModel {
         ticketManager.createCustomer(name,lastName,email);
     }
 
-    public void deleteCustomer(Customer selectedCustomer) {
-        ticketManager.deleteCustomer(selectedCustomer);
+    public void deleteTicket(Ticket selectedTicket) {
+        ticketManager.deleteTicket(selectedTicket);
+    }
+
+    public void createTicket(String name, String lastName, String email, String ticketType, String qr) {
+        ticketManager.createTicket(name,lastName,email,ticketType,qr);
     }
 }

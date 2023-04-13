@@ -1,6 +1,7 @@
 package GUI.Controller;
 
 import BE.Customer;
+import BE.Ticket;
 import GUI.Model.TicketModel;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -25,8 +26,8 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class TicketController implements Initializable {
-    @FXML
-    private TableView<Customer> tblCustomer;
+
+    public TableView<Ticket> tblTicket;
     @FXML
     private TableColumn CLMID;
     @FXML
@@ -36,34 +37,34 @@ public class TicketController implements Initializable {
     @FXML
     private TableColumn CLMEmail;
     @FXML
-    private TableView TBLTicket;
+    private TableColumn CLMType;
     @FXML
-    private TableColumn CLMTicketNumber;
-    @FXML
-    private TableColumn CLMTicketQR;
+    private TableColumn CLMQR;
 
     private TicketModel ticketModel;
 
-    private Customer selectedCustomer;
+    private Ticket selectedTicket;
 
 
     public void initialize(URL location, ResourceBundle resources) {
         ticketModel = TicketModel.getInstance();
-        showCustomers();
+        showTickets();
 
-        tblCustomer.setOnMouseClicked(event -> {
-            selectedCustomer = tblCustomer.getSelectionModel().getSelectedItem();
+        tblTicket.setOnMouseClicked(event -> {
+            selectedTicket = tblTicket.getSelectionModel().getSelectedItem();
         });
     }
 
-    private void showCustomers(){
+    private void showTickets(){
         try {
-            tblCustomer.setItems(ticketModel.getCustomersToBeViewed());
+            tblTicket.setItems(ticketModel.getTicketsToBeViewed());
 
-            CLMID.setCellValueFactory(new PropertyValueFactory<Customer,String>("id"));
-            CLMName.setCellValueFactory(new PropertyValueFactory<Customer,String>("Name"));
-            CLMLastName.setCellValueFactory(new PropertyValueFactory<Customer,String>("LastName"));
-            CLMEmail.setCellValueFactory(new PropertyValueFactory<Customer,String>("Email"));
+            CLMID.setCellValueFactory(new PropertyValueFactory<Ticket,String>("id"));
+            CLMName.setCellValueFactory(new PropertyValueFactory<Ticket,String>("Name"));
+            CLMLastName.setCellValueFactory(new PropertyValueFactory<Ticket,String>("LastName"));
+            CLMEmail.setCellValueFactory(new PropertyValueFactory<Ticket,String>("Email"));
+            CLMType.setCellValueFactory(new PropertyValueFactory<Ticket,String>("TicketType"));
+            CLMQR.setCellValueFactory(new PropertyValueFactory<Ticket,String>("Qr"));
         } catch (Exception e) {
             e.printStackTrace();
             // Handle the exception here
@@ -84,26 +85,21 @@ public class TicketController implements Initializable {
     }
 
     public void handleDeleteCustomer(ActionEvent actionEvent) {
-        if(selectedCustomer == null){
-        alertUser("Please select a customer to delete");
+        if(selectedTicket == null){
+        alertUser("Please select a ticket to delete");
         }
         else{
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Warning");
-            alert.setHeaderText("Are you sure you want to delete: " + selectedCustomer.getName().concat("?"));
+            alert.setHeaderText("Are you sure you want to delete: " + selectedTicket.getName().concat("?"));
             Optional<ButtonType> action = alert.showAndWait();
             if(action.get() == ButtonType.OK){
-                ticketModel.deleteCustomer(selectedCustomer);
+                ticketModel.deleteTicket(selectedTicket);
             }
         }
-        ticketModel.replaceOldCustomerList();
+        ticketModel.replaceOldTicketList();
     }
 
-    public void handleCreateTicket(ActionEvent actionEvent) {
-    }
-
-    public void handleDeleteTicket(ActionEvent actionEvent) {
-    }
 
     private void alertUser(String error){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -115,7 +111,7 @@ public class TicketController implements Initializable {
     private void alertConfirmation(){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Warning");
-        alert.setHeaderText("Are you sure you want to delete: " + selectedCustomer.getName().concat("?"));
+        alert.setHeaderText("Are you sure you want to delete: " + selectedTicket.getName().concat("?"));
         Optional<ButtonType> action = alert.showAndWait();
     }
 }

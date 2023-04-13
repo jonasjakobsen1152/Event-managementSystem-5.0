@@ -1,17 +1,15 @@
 package DAL;
 
 import BE.Customer;
+import BE.Ticket;
 
 import java.util.ArrayList;
 
 public interface ITicketDAO {
 
-    
-
-    ArrayList<Customer> getAllCustomers();
+    ArrayList<Ticket> getAllTickets();
 
     Customer createCustomer(String name, String lastName, String email);
 
-
-    void deleteCustomer(Customer selectedCustomer);
+    void deleteTicket(Ticket selectedTicket);
 }
