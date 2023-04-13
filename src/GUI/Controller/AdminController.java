@@ -193,7 +193,16 @@ public class AdminController extends BaseController implements Initializable {
 
     //View notes about an event
     public void handleViewEventNotes(ActionEvent actionEvent) {
+        String eventNotes = selectedEvent.getEventNotes();
 
+        // Create and configure an Alert
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Event Notes");
+        alert.setHeaderText(null);
+        alert.setContentText(eventNotes);
+
+        // Show the Alert
+        alert.showAndWait();
     }
 
     @Override
