@@ -7,12 +7,17 @@ import GUI.Model.UsersInEventModel;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Optional;
@@ -245,5 +250,23 @@ public class AdminController extends BaseController implements Initializable {
             updateUsersInEventModel();
         }
 
+    }
+    @FXML
+    public void handleExitAdminWindow(ActionEvent actionEvent) {
+        // Close the current window
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.close();
+
+        // Show the LogIn window
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/Login.fxml"));
+            Parent root = loader.load();
+            Stage loginStage = new Stage();
+            loginStage.setTitle("LogIn");
+            loginStage.setScene(new Scene(root));
+            loginStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

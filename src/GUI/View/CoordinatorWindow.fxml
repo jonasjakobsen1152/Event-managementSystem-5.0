@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import io.github.palexdev.materialfx.controls.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="607.0" prefWidth="1369.0" styleClass="AnchorPane" stylesheets="@CoordinatorWindow.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.EventCoordController">
+<AnchorPane prefHeight="607.0" prefWidth="1369.0" styleClass="AnchorPane" stylesheets="@CoordinatorWindow.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.EventCoordController">
    <children>
       <AnchorPane prefHeight="607.0" prefWidth="263.0" styleClass="SidePane" stylesheets="@CoordinatorWindow.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -14,7 +15,7 @@
             <MFXButton fx:id="btnUpdateEvent" buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="157.0" onAction="#handleUpdateEvent" prefHeight="48.0" prefWidth="215.0" text="Update Event" AnchorPane.leftAnchor="20.0" />
             <MFXButton fx:id="btnViewTickets" buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="280.0" onAction="#handleViewTickets" prefHeight="48.0" prefWidth="215.0" text="View Tickets" AnchorPane.leftAnchor="20.0" />
             <MFXButton fx:id="btnDeleteTickets" buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="398.0" onAction="#handleDeleteEvent" prefHeight="48.0" prefWidth="215.0" text="Delete Tickets" AnchorPane.leftAnchor="20.0" />
-            <MFXButton buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="519.0" prefHeight="48.0" prefWidth="215.0" text="Exit" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="28.0" />
+            <MFXButton buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="519.0" onAction="#handleExitCoordinatorWindow" prefHeight="48.0" prefWidth="215.0" text="Exit To LogIn" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="28.0" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="309.0" layoutY="85.0" prefHeight="431.0" prefWidth="751.0" styleClass="SidePane" AnchorPane.bottomAnchor="91.0" AnchorPane.leftAnchor="309.0" AnchorPane.rightAnchor="309.0" AnchorPane.topAnchor="85.0">
