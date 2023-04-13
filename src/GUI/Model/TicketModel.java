@@ -1,13 +1,10 @@
 package GUI.Model;
 
 
-import BE.Customer;
 import BE.Ticket;
 import BLL.TicketManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
-import java.util.ArrayList;
 
 public class TicketModel {
     private static TicketModel instance;
@@ -20,7 +17,6 @@ public class TicketModel {
         ticketManager = new TicketManager();
 
         ticketsToBeViewed = FXCollections.observableArrayList();
-        ticketsToBeViewed.addAll(ticketManager.getAllTickets());
     }
 
     public static TicketModel getInstance() {
@@ -30,12 +26,14 @@ public class TicketModel {
         return instance;
     }
 
-    public void replaceOldTicketList(){
-        ticketsToBeViewed.clear();
-        ticketsToBeViewed.addAll(ticketManager.getAllTickets());
-    }
+//    public void replaceOldTicketList(){
+//        ticketsToBeViewed.clear();
+//        ticketsToBeViewed.addAll(ticketManager.getAllTickets());
+//    }
 
-    public ObservableList<Ticket> getTicketsToBeViewed() {
+    public ObservableList<Ticket> getTicketsToBeViewed(int eventID) {
+        ticketsToBeViewed.clear();
+        ticketsToBeViewed.addAll(ticketManager.getAllTickets(eventID));
         return ticketsToBeViewed;
     }
 

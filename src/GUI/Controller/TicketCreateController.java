@@ -19,8 +19,9 @@ public class TicketCreateController {
 
     private EventCoordModel eventCoordModel;
 
-    public TicketCreateController(){
+    public TicketCreateController() throws Exception {
         ticketModel = TicketModel.getInstance();
+        eventCoordModel = new EventCoordModel();
     }
 
     public void handleCreateCustomer(ActionEvent actionEvent) {

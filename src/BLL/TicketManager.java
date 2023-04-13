@@ -1,15 +1,10 @@
 package BLL;
 
-import BE.Customer;
-import BE.Event;
 import BE.Ticket;
 import DAL.DB.TicketDAO_DB;
-import DAL.ILoginDAO;
 import DAL.ITicketDAO;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 public class TicketManager {
 
@@ -21,8 +16,8 @@ public class TicketManager {
     }
 
 
-    public ArrayList<Ticket> getAllTickets(){
-        return iTicketDAO.getAllTickets();
+    public ArrayList<Ticket> getAllTickets(int eventID){
+        return iTicketDAO.getAllTickets(eventID);
     }
 
     public void createCustomer(String name, String lastName, String email) {
@@ -33,6 +28,7 @@ public class TicketManager {
     }
 
     public void createTicket(int event, String name, String lastName, String email, String ticketType, String qr) {
+
        // todo qr code
     }
 }

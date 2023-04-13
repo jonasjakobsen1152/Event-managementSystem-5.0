@@ -1,10 +1,13 @@
 package GUI.Controller;
 
 import BE.Customer;
+import BE.Event;
 import BE.Ticket;
+import GUI.Model.EventCoordModel;
 import GUI.Model.TicketModel;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -45,8 +48,19 @@ public class TicketController implements Initializable {
 
     private Ticket selectedTicket;
 
+    private EventCoordModel eventCoordModel;
+
+    private int eventID;
+
 
     public void initialize(URL location, ResourceBundle resources) {
+        try {
+            eventCoordModel = new EventCoordModel();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        eventID = eventCoordModel.getSelectedEvent().getId();
+
         ticketModel = TicketModel.getInstance();
         showTickets();
 
@@ -57,7 +71,7 @@ public class TicketController implements Initializable {
 
     private void showTickets(){
         try {
-            tblTicket.setItems(ticketModel.getTicketsToBeViewed());
+            tblTicket.setItems(ticketModel.getTicketsToBeViewed(eventID));
 
             CLMID.setCellValueFactory(new PropertyValueFactory<Ticket,String>("id"));
             CLMName.setCellValueFactory(new PropertyValueFactory<Ticket,String>("Name"));
@@ -106,12 +120,5 @@ public class TicketController implements Initializable {
         alert.setTitle("Select a Customer");
         alert.setHeaderText(error);
         alert.show();
-    }
-
-    private void alertConfirmation(){
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Warning");
-        alert.setHeaderText("Are you sure you want to delete: " + selectedTicket.getName().concat("?"));
-        Optional<ButtonType> action = alert.showAndWait();
     }
 }
