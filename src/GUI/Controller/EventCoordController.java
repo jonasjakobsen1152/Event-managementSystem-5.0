@@ -77,6 +77,7 @@ public class EventCoordController extends BaseController implements Initializabl
         }
         tblAllEvents.setOnMouseClicked(event -> {
             Event selectedEvent = tblAllEvents.getSelectionModel().getSelectedItem();
+            eventCoordModel.setSelectedEvent(selectedEvent);
             if(selectedEvent != null) {
                 eventCoordModel.setSelectedEvent(selectedEvent);
                 txtEventName.setText(getSelectedEvent().getEventName());
@@ -94,8 +95,6 @@ public class EventCoordController extends BaseController implements Initializabl
     }
 
     private void updateEventCoordModel() throws Exception {
-        EventCoordModel updateEventCoordModel = new EventCoordModel();
-        eventCoordModel = updateEventCoordModel;
         tblAllEvents.setItems(eventCoordModel.getObservableEvents());
     }
 
@@ -111,12 +110,9 @@ public class EventCoordController extends BaseController implements Initializabl
         updateEventCoordModel();
     }
 
-    void showEvent(){
-
+    void showEvent() {
         tblAllEvents.setItems(eventCoordModel.getObservableEvents());
         clmEventName.setCellValueFactory(new PropertyValueFactory<Event, String>("eventName"));
-
-
 
     }
 
@@ -160,8 +156,9 @@ public class EventCoordController extends BaseController implements Initializabl
 
 
     private void updateEventModel() throws Exception {
-        EventCoordModel updateEventModel = new EventCoordModel();
-        eventCoordModel = updateEventModel;
+//        EventCoordModel updateEventModel = new EventCoordModel();
+//        eventCoordModel = updateEventModel;
+
         tblAllEvents.setItems(eventCoordModel.getObservableEvents());
     }
 

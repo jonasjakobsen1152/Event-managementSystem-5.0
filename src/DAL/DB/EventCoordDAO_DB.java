@@ -16,7 +16,7 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
         databaseConnector = new MyDatabaseConnector();
     }
 
-    public List<Event> getAllEvents() throws Exception {
+    public List<Event> getAllEvents() {
         ArrayList<Event> allEvents = new ArrayList<>();
 
         try(Connection conn = databaseConnector.getConnection();
@@ -37,13 +37,11 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
             Event event = new Event(id,eventName,eventDate,eventTime,eventNotes,eventLocation);
             allEvents.add(event);
             }
-            return allEvents;
-
-
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new Exception("Could not get Events from database", e);
+            //throw new Exception("Could not get Events from database", e);
         }
+        return allEvents;
     }
 
     public void updateEvent(Event event) {

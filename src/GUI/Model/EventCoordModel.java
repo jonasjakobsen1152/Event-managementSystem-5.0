@@ -18,7 +18,8 @@ public class EventCoordModel {
     private ObservableList<User> usersToBeViewed;
 
 
-    public EventCoordModel() throws Exception {
+    private EventCoordModel() throws Exception {
+
         eventCoordManager = new EventCoordManager();
         //Making usersToBeViewed Observable
         usersToBeViewed = FXCollections.observableArrayList();
@@ -27,6 +28,13 @@ public class EventCoordModel {
         //Making eventsToBeViewed Observable
         eventsToBeViewed = FXCollections.observableArrayList();
         eventsToBeViewed.addAll(eventCoordManager.getAllEvent());
+    }
+
+    public static EventCoordModel getInstance() throws Exception {
+        if(instance == null){
+            instance = new EventCoordModel();
+        }
+        return instance;
     }
 
     public void updateEvent(Event selectedEvent) throws Exception {
@@ -41,7 +49,9 @@ public class EventCoordModel {
         showList();
     }
 
-    public ObservableList<Event> getObservableEvents() {
+    public ObservableList<Event> getObservableEvents()  {
+        eventsToBeViewed.clear();
+        eventsToBeViewed.addAll(eventCoordManager.getAllEvent());
         return eventsToBeViewed;
     }
 
@@ -67,10 +77,4 @@ public class EventCoordModel {
         return usersToBeViewed;
     }
 
-    public static EventCoordModel getInstance() throws Exception {
-        if(instance == null){
-            instance = new EventCoordModel();
-        }
-        return instance;
-    }
 }

@@ -4,7 +4,7 @@ public class ETEBModel {
     private EventCoordModel eventCoordModel;
 
     public ETEBModel() throws Exception {
-        eventCoordModel = new EventCoordModel();
+        eventCoordModel = EventCoordModel.getInstance();
     }
     public void setEventCoordModel(EventCoordModel eventCoordModel){
         this.eventCoordModel = eventCoordModel;
