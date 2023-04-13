@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public interface ITicketDAO {
 
-    ArrayList<Ticket> getAllTickets();
+    ArrayList<Ticket> getAllTickets(int eventID);
 
     Customer createCustomer(String name, String lastName, String email);
 

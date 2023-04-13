@@ -3,7 +3,6 @@ package DAL.DB;
 import BE.Customer;
 import BE.Ticket;
 import DAL.ITicketDAO;
-import com.microsoft.sqlserver.jdbc.SQLServerException;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -17,25 +16,25 @@ public class TicketDAO_DB implements ITicketDAO {
     }
 
     @Override
-    public ArrayList<Ticket> getAllTickets() {
+    public ArrayList<Ticket> getAllTickets(int eventID) {
         ArrayList<Ticket> allTickets = new ArrayList<>();
 
         try(Connection conn = databaseConnector.getConnection();
             Statement stmt = conn.createStatement()) {
-            String sql = "SELECT * FROM dbo.TicketCustomer";
-
+            String sql = "SELECT * FROM dbo.TicketCustomer WHERE EventID = "+eventID+";";
+            
             ResultSet rs = stmt.executeQuery(sql);
 
             while(rs.next()){
                 int id = rs.getInt("ID");
-                int eventID = rs.getInt("EventID");
+                int eventIDFromSQL = rs.getInt("EventID");
                 String name = rs.getString("Name");
                 String lastName = rs.getString("LastName");
                 String email = rs.getString("Email");
                 String ticketType = rs.getString("TicketType");
                 String qrCode = rs.getString("QRCode");
 
-                Ticket ticket = new Ticket(id,eventID,name,lastName,email,ticketType,qrCode);
+                Ticket ticket = new Ticket(id,eventIDFromSQL,name,lastName,email,ticketType,qrCode);
                 allTickets.add(ticket);
             }
             return allTickets;
