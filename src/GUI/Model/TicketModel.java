@@ -48,7 +48,8 @@ public class TicketModel {
         ticketManager.deleteTicket(selectedTicket);
     }
 
-    public void createTicket(String name, String lastName, String email, String ticketType, String qr) {
-        ticketManager.createTicket(name,lastName,email,ticketType,qr);
+    public void createTicket(int event, String name, String lastName, String email, String ticketType, String qr) {
+    ticketManager.createTicket(event,name,lastName,email,ticketType,qr);
     }
+
 }
