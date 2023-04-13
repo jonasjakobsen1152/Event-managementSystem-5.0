@@ -32,7 +32,7 @@ public class EventCRUDController extends BaseController implements Initializable
     private Event selectedEvent;
 
     public EventCRUDController() throws Exception {
-        eventCoordModel = new EventCoordModel();
+        eventCoordModel = EventCoordModel.getInstance();
 
     }
 
