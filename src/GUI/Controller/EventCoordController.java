@@ -57,7 +57,7 @@ public class EventCoordController extends BaseController implements Initializabl
 
 
     public EventCoordController() throws Exception {
-        eventCoordModel = new EventCoordModel();
+        eventCoordModel = EventCoordModel.getInstance();
         eventCRUDController = new EventCRUDController();
         eventCRUDController.setModel(new ETEBModel());
         setModel(new ETEBModel());

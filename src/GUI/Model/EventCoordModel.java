@@ -13,6 +13,7 @@ public class EventCoordModel {
 
     EventCoordManager eventCoordManager;
     private Event selectedEvent;
+    private static EventCoordModel instance;
     private ObservableList<Event> eventsToBeViewed;
     private ObservableList<User> usersToBeViewed;
 
@@ -66,4 +67,10 @@ public class EventCoordModel {
         return usersToBeViewed;
     }
 
+    public static EventCoordModel getInstance() throws Exception {
+        if(instance == null){
+            instance = new EventCoordModel();
+        }
+        return instance;
+    }
 }
