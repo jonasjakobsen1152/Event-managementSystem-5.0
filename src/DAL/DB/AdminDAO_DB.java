@@ -150,9 +150,24 @@ public class AdminDAO_DB implements IAdminDAO {
             stmt.setString(2, EventName);
 
             stmt.executeUpdate();
+            deleteUsersInEvent(EventID);
 
         } catch (SQLException e) {
             throw new RuntimeException("Could not delete event", e);
+        }
+    }
+
+    public void deleteUsersInEvent(int iD){
+        String sql = "DELETE ALL FROM UserEvent WHERE EventID = ?;";
+
+        try (Connection conn = databaseConnector.getConnection()){
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setInt(1,iD);
+
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 

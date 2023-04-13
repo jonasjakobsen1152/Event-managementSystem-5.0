@@ -7,6 +7,7 @@
     -fx-background-color: #443C68;
     -fx-text-fill: white;
     -fx-font-size: 17;
+    -fx-cursor: hand;
 
 }
 
@@ -31,10 +32,12 @@
 
 .table-row-cell .text{
     -fx-fill: white;
+    -fx-cursor: hand;
 }
 
 .table-row-cell:selected .text {
     -fx-fill: orange;
+
 }
 
 .whiteText{
@@ -50,4 +53,6 @@ AllEvents{
 }
 .text{
     -fx-text-fill: white;
+
 }
+
