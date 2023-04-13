@@ -33,6 +33,7 @@ public class AdminController extends BaseController implements Initializable {
     public TableColumn clmEndTime;
     public TableColumn clmLocation;
     public TableColumn clmUsersToEvent;
+    public TableColumn clmEventDate;
     private User selectedUser;
     private int selectedEventId;
     private Event selectedEvent;
@@ -144,7 +145,7 @@ public class AdminController extends BaseController implements Initializable {
 
         clmEventName.setCellValueFactory(new PropertyValueFactory<Event, String>("eventName"));
         clmStartTime.setCellValueFactory(new PropertyValueFactory<Event, String>("eventTime"));
-        //clmEndTime.setCellValueFactory(new PropertyValueFactory<Event, String>("eventEndTime"));
+        clmEventDate.setCellValueFactory(new PropertyValueFactory<Event, String>("eventDate"));
         clmLocation.setCellValueFactory(new PropertyValueFactory<Event, String>("eventLocation"));
 
         tblShowEvents.setItems(adminModel.getObservableEvents());
