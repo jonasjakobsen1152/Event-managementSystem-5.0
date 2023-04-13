@@ -84,11 +84,27 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
             stmt.setString(2, EventName);
 
             stmt.executeUpdate();
+            deleteUsersInEvent(ID);
 
         } catch (SQLException e) {
             throw new RuntimeException("Could not delete event", e);
         }
     }
+
+    public void deleteUsersInEvent(int ID){
+        String sql = "DELETE ALL FROM UserEvent WHERE EventID = ?;";
+
+        try (Connection conn = databaseConnector.getConnection()){
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setInt(1,ID);
+
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     @Override
     public Event createEvent(String name, String date, String time, String location, String notes) {
