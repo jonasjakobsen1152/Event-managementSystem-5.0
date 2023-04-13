@@ -1,5 +1,6 @@
 package GUI.Controller;
 
+import GUI.Model.EventCoordModel;
 import GUI.Model.TicketModel;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -16,18 +17,21 @@ public class TicketCreateController {
 
     private TicketModel ticketModel;
 
+    private EventCoordModel eventCoordModel;
+
     public TicketCreateController(){
         ticketModel = TicketModel.getInstance();
     }
 
     public void handleCreateCustomer(ActionEvent actionEvent) {
-    String name = txtName.getText();
-    String lastName = txtLastName.getText();
-    String email = txtEmail.getText();
-    String ticketType = txtType.getText();
-    String QR = "";
+        int event = eventCoordModel.getSelectedEvent().getId();
+        String name = txtName.getText();
+        String lastName = txtLastName.getText();
+        String email = txtEmail.getText();
+        String ticketType = txtType.getText();
+        String QR = "";
 
-    ticketModel.createTicket(name,lastName,email,ticketType,QR);
+    ticketModel.createTicket(event,name,lastName,email,ticketType,QR);
     ticketModel.replaceOldTicketList();
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         stage.close();

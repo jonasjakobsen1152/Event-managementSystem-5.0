@@ -32,9 +32,7 @@ public class TicketManager {
         iTicketDAO.deleteTicket(selectedTicket);
     }
 
-    public void createTicket(String name, String lastName, String email, String ticketType, String qr) {
-        
-
-        //createTicket(name,lastName,email,ticketType,);
+    public void createTicket(int event, String name, String lastName, String email, String ticketType, String qr) {
+       // todo qr code
     }
 }
