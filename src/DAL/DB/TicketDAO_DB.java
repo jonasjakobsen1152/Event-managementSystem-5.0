@@ -22,7 +22,7 @@ public class TicketDAO_DB implements ITicketDAO {
         try(Connection conn = databaseConnector.getConnection();
             Statement stmt = conn.createStatement()) {
             String sql = "SELECT * FROM dbo.TicketCustomer WHERE EventID = "+eventID+";";
-            
+
             ResultSet rs = stmt.executeQuery(sql);
 
             while(rs.next()){

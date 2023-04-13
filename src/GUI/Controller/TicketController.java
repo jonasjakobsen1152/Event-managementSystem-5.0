@@ -56,10 +56,10 @@ public class TicketController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         try {
             eventCoordModel = new EventCoordModel();
+            eventID = eventCoordModel.getSelectedEvent().getId();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        eventID = eventCoordModel.getSelectedEvent().getId();
 
         ticketModel = TicketModel.getInstance();
         showTickets();
@@ -111,7 +111,7 @@ public class TicketController implements Initializable {
                 ticketModel.deleteTicket(selectedTicket);
             }
         }
-        ticketModel.replaceOldTicketList();
+        ticketModel.getTicketsToBeViewed(eventCoordModel.getSelectedEvent().getId());
     }
 
 

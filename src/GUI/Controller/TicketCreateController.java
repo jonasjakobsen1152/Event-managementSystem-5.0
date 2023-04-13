@@ -33,7 +33,7 @@ public class TicketCreateController {
         String QR = "";
 
     ticketModel.createTicket(event,name,lastName,email,ticketType,QR);
-    ticketModel.replaceOldTicketList();
+    ticketModel.getTicketsToBeViewed(eventCoordModel.getSelectedEvent().getId());
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         stage.close();
     }
