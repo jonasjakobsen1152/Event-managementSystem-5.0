@@ -37,17 +37,12 @@ public class TicketModel {
         return ticketsToBeViewed;
     }
 
-
-    public void createCustomer(String name, String lastName, String email) {
-        ticketManager.createCustomer(name,lastName,email);
-    }
-
     public void deleteTicket(Ticket selectedTicket) {
         ticketManager.deleteTicket(selectedTicket);
     }
 
-    public void createTicket(int event, String name, String lastName, String email, String ticketType, String qr) {
-    ticketManager.createTicket(event,name,lastName,email,ticketType,qr);
+    public void createTicket(int event, String name, String lastName, String email, String ticketType, String qr, int available) {
+    ticketManager.createTicket(event,name,lastName,email,ticketType,qr,available);
     }
 
 }

@@ -31,8 +31,9 @@ public class TicketCreateController {
         String email = txtEmail.getText();
         String ticketType = txtType.getText();
         String QR = "";
+        int available = 1;
 
-    ticketModel.createTicket(event,name,lastName,email,ticketType,QR);
+    ticketModel.createTicket(event,name,lastName,email,ticketType,QR,available);
     ticketModel.getTicketsToBeViewed(eventCoordModel.getSelectedEvent().getId());
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         stage.close();
