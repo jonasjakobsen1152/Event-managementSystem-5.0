@@ -29,8 +29,8 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class TicketController implements Initializable {
-
-    public TableView<Ticket> tblTicket;
+    @FXML
+    private TableView<Ticket> tblTicket;
     @FXML
     private TableColumn CLMID;
     @FXML
