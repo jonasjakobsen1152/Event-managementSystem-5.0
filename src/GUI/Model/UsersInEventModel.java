@@ -8,6 +8,8 @@ import com.microsoft.sqlserver.jdbc.SQLServerException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.util.List;
+
 public class UsersInEventModel {
     UsersInEventManager usersInEventManager;
 
@@ -38,6 +40,10 @@ public class UsersInEventModel {
     public void showlist(int selectedEventId) throws SQLServerException {
         usersInEventToBeViewed.clear();
         usersInEventToBeViewed.addAll(usersInEventManager.getUsersInEvent(selectedEventId));
+    }
+
+    public List<User> getAllUsersInEvent(int eventId) throws SQLServerException {
+        return usersInEventManager.getUsersInEvent(eventId);
     }
     public void removeUserFromEvent(User selectedUser,Event selectedEvent,int selectedUserInEventId) throws SQLServerException {
         usersInEventManager.removeUserFromEvent(selectedUser,selectedEvent,selectedUserInEventId);

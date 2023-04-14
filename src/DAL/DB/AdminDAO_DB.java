@@ -79,7 +79,7 @@ public class AdminDAO_DB implements IAdminDAO {
 
 
     @Override
-    public List<User> getAllUsers() {
+    public ArrayList<User> getAllUsers() {
         ArrayList<User> allUsers = new ArrayList<>();
 
         try (Connection conn = databaseConnector.getConnection();

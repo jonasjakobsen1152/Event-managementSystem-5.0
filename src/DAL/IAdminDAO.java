@@ -3,6 +3,7 @@ package DAL;
 import BE.Event;
 import BE.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface IAdminDAO {
@@ -13,7 +14,7 @@ public interface IAdminDAO {
 
     void deleteEvent(int EventID, String EventName);
 
-    public List<User> getAllUsers();
+    public ArrayList<User> getAllUsers();
 
 
    public void removeUser(int id, String userName);
