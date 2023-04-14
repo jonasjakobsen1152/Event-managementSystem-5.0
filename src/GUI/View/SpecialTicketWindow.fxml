@@ -15,9 +15,9 @@
       <MFXTextField fx:id="txtDescribeTicket" floatMode="ABOVE" layoutX="170.0" layoutY="55.0" prefHeight="49.0" prefWidth="286.0" />
       <Text layoutX="15.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Describe the ticket:" />
       <MFXButton fx:id="btnCreateSpecialTicket" buttonType="RAISED" depthLevel="LEVEL3" layoutX="464.0" layoutY="55.0" onAction="#handleCreateSpecialTicket" prefHeight="48.0" prefWidth="192.0" text="Create Special Ticket" />
-      <TableView fx:id="tblAllSpecialTickets" layoutX="36.0" layoutY="161.0" prefHeight="153.0" prefWidth="620.0" style="-fx-selection-bar: red;" styleClass="SidePane" stylesheets="@CoordinatorWindow.css">
+      <TableView fx:id="tblAllSpecialTickets" layoutX="36.0" layoutY="161.0" prefHeight="153.0" prefWidth="526.0" style="-fx-selection-bar: red;" styleClass="SidePane" stylesheets="@CoordinatorWindow.css">
          <columns>
-            <TableColumn fx:id="clmSpecialTickets" prefWidth="619.0" styleClass="SidePane" text="Special Tickets" />
+            <TableColumn fx:id="clmSpecialTickets" prefWidth="525.0" styleClass="SidePane" text="Special Tickets" />
          </columns>
          <effect>
             <ColorAdjust />
