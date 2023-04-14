@@ -35,7 +35,10 @@ public AdminManager(){
     }
 
     public void deleteEvent(Event selectedEvent) {
+        adminDAO.deleteUsersInEvent(selectedEvent.getId());
+    adminDAO.deleteTicketsInEvent(selectedEvent.getId());
     adminDAO.deleteEvent(selectedEvent.getId(),selectedEvent.getEventName());
+
     }
 
 }
