@@ -39,7 +39,10 @@ public class TicketCreateController {
         String QR = "";
         int available = 1;
 
+        // Creates the tickets for the specific event
     ticketModel.createTicket(event,name,lastName,email,ticketType,QR,available);
+
+    // Refreshes the list of tickets visible to the event coordinator by what event he is managing.
     ticketModel.getTicketsToBeViewed(eventCoordModel.getSelectedEvent().getId());
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         stage.close();
