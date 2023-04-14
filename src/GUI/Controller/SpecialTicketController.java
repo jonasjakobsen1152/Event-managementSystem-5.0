@@ -7,11 +7,15 @@ import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class SpecialTicketController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class SpecialTicketController implements Initializable {
     @FXML
     private TableView<SpecialTicket> tblAllSpecialTickets;
     @FXML
@@ -26,11 +30,17 @@ public class SpecialTicketController {
     private SpecialTicketModel specialTicketModel;
     private ObservableList<SpecialTicket> allSpecialTickets;
 
-    public SpecialTicketController() {
-
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
         specialTicketModel = new SpecialTicketModel();
         showSpecialTicket();
     }
+
+//    public SpecialTicketController() {
+//
+//        specialTicketModel = new SpecialTicketModel();
+//        showSpecialTicket();
+//    }
     public void showSpecialTicket(){
         allSpecialTickets = specialTicketModel.getSpecialTicketsToBeViewed();
         clmSpecialTickets.setCellValueFactory(new PropertyValueFactory<SpecialTicket,String>("TicketType"));
@@ -49,4 +59,5 @@ public class SpecialTicketController {
         allSpecialTickets = specialTicketModel.getSpecialTicketsToBeViewed();
 
     }
+
 }
