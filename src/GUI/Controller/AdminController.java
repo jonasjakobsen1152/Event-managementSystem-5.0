@@ -20,6 +20,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -44,9 +46,11 @@ public class AdminController extends BaseController implements Initializable {
     private Event selectedEvent;
     public AdminModel adminModel = new AdminModel();
     public UsersInEventModel usersInEventModel = new UsersInEventModel();
+    private List<User> allUsers;
 
 
     public AdminController() throws Exception {
+
     }
 
     @Override
@@ -220,6 +224,7 @@ public class AdminController extends BaseController implements Initializable {
 
         selectedEvent = tblShowEvents.getSelectionModel().getSelectedItem();
         selectedUser = tableViewCoord.getSelectionModel().getSelectedItem();
+        allUsers = usersInEventModel.getAllUsersInEvent(selectedEvent.getId());
         if(selectedEvent == null){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Select an event");
@@ -231,9 +236,19 @@ public class AdminController extends BaseController implements Initializable {
             alert.setTitle("Select a user");
             alert.setHeaderText("Choose a user to add");
             alert.show();
-        }
-        else {
-            usersInEventModel.addEventCoordinatorToEvent(selectedEvent, selectedUser);
+        } else {
+            String userNameToCheck = selectedUser.getUserName();
+            for(User userToCheck : allUsers) {
+                if(userToCheck.getUserName().equals(userNameToCheck)){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Alert");
+                    alert.setHeaderText("You cant add a event coordinator to the same Event more than once");
+                    alert.show();
+                }
+                else {
+                    usersInEventModel.addEventCoordinatorToEvent(selectedEvent, selectedUser);
+                }
+            }
         }
 
     }

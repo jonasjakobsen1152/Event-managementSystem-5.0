@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdminModel {
@@ -15,6 +16,8 @@ public class AdminModel {
     private ObservableList<Event> eventsToBeViewed;
 
     private ObservableList<User> usersInEvenTBV;
+
+    private ArrayList<User> allUsers;
 
     public AdminModel() {
         adminManager = new AdminManager();
@@ -56,4 +59,8 @@ public class AdminModel {
     }
 
 
+    public ArrayList<User> getAllUsers() {
+
+        return adminManager.getAllUsers();
+    }
 }

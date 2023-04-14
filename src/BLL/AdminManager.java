@@ -5,6 +5,7 @@ import BE.User;
 import DAL.DB.AdminDAO_DB;
 import DAL.IAdminDAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdminManager {
@@ -17,7 +18,7 @@ public AdminManager(){
         return adminDAO.createUser(username,password,role);
     }
 
-    public List<User> getAllUsers() {
+    public ArrayList<User> getAllUsers() {
         return adminDAO.getAllUsers();
     }
 
