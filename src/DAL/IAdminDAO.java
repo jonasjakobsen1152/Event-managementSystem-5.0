@@ -20,4 +20,6 @@ public interface IAdminDAO {
    public void removeUser(int id, String userName);
 
     List<Event> getAllEvent();
+    public void deleteTicketsInEvent(int id);
+    public void deleteUsersInEvent(int iD);
 }

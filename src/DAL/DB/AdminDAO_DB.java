@@ -150,7 +150,8 @@ public class AdminDAO_DB implements IAdminDAO {
             stmt.setString(2, EventName);
 
             stmt.executeUpdate();
-            deleteUsersInEvent(EventID);
+            //deleteUsersInEvent(EventID);
+            //deleteTicketsInEvent(EventID);
 
         } catch (SQLException e) {
             throw new RuntimeException("Could not delete event", e);
@@ -158,7 +159,7 @@ public class AdminDAO_DB implements IAdminDAO {
     }
 
     public void deleteUsersInEvent(int iD){
-        String sql = "DELETE ALL FROM UserEvent WHERE EventID = ?;";
+        String sql = "DELETE FROM UserEvent WHERE EventID = ?;";
 
         try (Connection conn = databaseConnector.getConnection()){
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -167,7 +168,20 @@ public class AdminDAO_DB implements IAdminDAO {
 
             stmt.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("SQL ERROR: Could not delete users in the event",e);
+        }
+    }
+
+    public void deleteTicketsInEvent(int id){
+        String sql = "DELETE FROM TicketCustomer WHERE EventID = ?;";
+        try (Connection conn = databaseConnector.getConnection()){
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setInt(1,id);
+
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("SQL ERROR: Could not delete tickets in the event",e);
         }
     }
 
