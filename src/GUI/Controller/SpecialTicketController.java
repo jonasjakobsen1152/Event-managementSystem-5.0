@@ -22,8 +22,11 @@ public class SpecialTicketController {
     public SpecialTicketModel specialTicketModel = new SpecialTicketModel();
 
     public void handlePrintSpecialTicket(ActionEvent actionEvent) {
+
     }
 
     public void handleCreateSpecialTicket(ActionEvent actionEvent) {
+        String ticketType = txtDescribeTicket.getText();
+        
     }
 }

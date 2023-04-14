@@ -1,6 +1,7 @@
 package BLL;
 
 import BE.SpecialTicket;
+import BLL.Util.QRCodeStringGenerator;
 import DAL.DB.SpecialTicketDAO_DB;
 import DAL.ISpecialTicketDAO;
 
@@ -13,9 +14,7 @@ public class SpecialTicketManager {
         specialTicketDAO = new SpecialTicketDAO_DB();
     }
 
-    public SpecialTicket createSpecialTicket(int id, String qr, String ticketType, int ticketAvailable){
-        return specialTicketDAO.createSpecielTicket(id,qr,ticketType,ticketAvailable);
-    }
+
 
     public List<SpecialTicket> getAllSpecialTicket(){
         return specialTicketDAO.getAllSpecialTickets();
@@ -26,4 +25,9 @@ public class SpecialTicketManager {
     }
 
 
+    public void createSpecialTicket(String ticketType, int ticketAvailable) {
+        QRCodeStringGenerator qrCodeStringGenerator = new QRCodeStringGenerator();
+        String generatedQR = qrCodeStringGenerator.getGeneratedString();
+        specialTicketDAO.createSpecielTicket(ticketType, generatedQR, ticketAvailable);
+    }
 }

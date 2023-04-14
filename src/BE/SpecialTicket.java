@@ -1,5 +1,7 @@
 package BE;
 
+import javafx.collections.ObservableList;
+
 public class SpecialTicket {
     private int id;
     private String qr;

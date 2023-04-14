@@ -1,13 +1,9 @@
 package DAL.DB;
 
 import BE.SpecialTicket;
-import BE.Ticket;
 import DAL.ISpecialTicketDAO;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class SpecialTicketDAO_DB implements ISpecialTicketDAO {
@@ -49,9 +45,33 @@ public class SpecialTicketDAO_DB implements ISpecialTicketDAO {
     }
 
     @Override
-    public SpecialTicket createSpecielTicket(int ID, String QR, String TicketType, int TicketAvailable) {
-        return null;
+    public SpecialTicket createSpecielTicket(String ticketType, String generatedQR, int ticketAvailable) {
+        try (Connection conn = databaseConnector.getConnection()) {
+            String sql = "Insert into dbo.specialTickets (QR, TicketType, TicketAvailable) VALUES (?,?,?,?)";
+
+            PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+            stmt.setString(1, generatedQR);
+            stmt.setString(2, ticketType);
+            stmt.setInt(3, ticketAvailable);
+
+            stmt.executeUpdate();
+
+            ResultSet rs = stmt.getGeneratedKeys();
+            int id = 0;
+
+            if (rs.next()) {
+                id = rs.getInt(1);
+            }
+
+            SpecialTicket specialTicket = new SpecialTicket(id, generatedQR, ticketType, ticketAvailable);
+            return specialTicket;
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
     }
-
-
 }

@@ -52,14 +52,18 @@ public class LoginController {
                 User loggedInUser = userToCheck;
                 if(userToCheck.getRoles().equals("Admin")){
                     handleOpenAdmin(actionEvent);
+                    allUsers.clear();
                     Stage stage = (Stage) btnLogInToApplication.getScene().getWindow();
                     stage.close();
+                    return;
                 }
                 else{
                     loginModel.setLoggedInUser(userToCheck);
+                    allUsers.clear();
                     openCoordinator();
                     Stage stage = (Stage) btnLogInToApplication.getScene().getWindow();
                     stage.close();
+                    return;
                 }
             }
 

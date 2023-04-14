@@ -2,6 +2,7 @@
 
 .AnchorPane{
     -fx-background-color: #18122B;
+    -fx-border-color: white;
 }
 .button{
     -fx-background-color: #443C68;
