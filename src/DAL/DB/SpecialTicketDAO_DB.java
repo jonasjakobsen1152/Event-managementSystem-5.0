@@ -20,7 +20,7 @@ public class SpecialTicketDAO_DB implements ISpecialTicketDAO {
         try (Connection conn = databaseConnector.getConnection();
              Statement stmt = conn.createStatement()) {
 
-            String sql = "SELECT * FROM SpecialTicket";
+            String sql = "SELECT * FROM SpecialTickets";
 
             ResultSet rs = stmt.executeQuery(sql);
 
@@ -45,9 +45,9 @@ public class SpecialTicketDAO_DB implements ISpecialTicketDAO {
     }
 
     @Override
-    public SpecialTicket createSpecielTicket(String ticketType, String generatedQR, int ticketAvailable) {
+    public SpecialTicket createSpecielTicket(String generatedQR, String ticketType, int ticketAvailable) {
         try (Connection conn = databaseConnector.getConnection()) {
-            String sql = "Insert into dbo.specialTickets (QR, TicketType, TicketAvailable) VALUES (?,?,?,?)";
+            String sql = "Insert into dbo.SpecialTickets (QR, TicketType, TicketAvailable) VALUES (?,?,?)";
 
             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 

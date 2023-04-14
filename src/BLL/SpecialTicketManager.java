@@ -28,6 +28,6 @@ public class SpecialTicketManager {
     public void createSpecialTicket(String ticketType, int ticketAvailable) {
         QRCodeStringGenerator qrCodeStringGenerator = new QRCodeStringGenerator();
         String generatedQR = qrCodeStringGenerator.getGeneratedString();
-        specialTicketDAO.createSpecielTicket(ticketType, generatedQR, ticketAvailable);
+        specialTicketDAO.createSpecielTicket(generatedQR, ticketType, ticketAvailable);
     }
 }
