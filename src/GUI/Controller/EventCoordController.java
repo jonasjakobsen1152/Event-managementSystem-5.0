@@ -245,4 +245,16 @@ public class EventCoordController extends BaseController implements Initializabl
             e.printStackTrace();
         }
     }
+
+    public void handleSpecialTicket(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/GUI/View/SpecialTicketWindow.fxml"));
+        AnchorPane pane = loader.load();
+        Stage dialogWindow = new Stage();
+        Scene scene = new Scene(pane);
+        dialogWindow.initModality(Modality.WINDOW_MODAL);
+        dialogWindow.initOwner((((Node)actionEvent.getSource()).getScene().getWindow()));
+        dialogWindow.setScene(scene);
+        dialogWindow.showAndWait();
+    }
 }
