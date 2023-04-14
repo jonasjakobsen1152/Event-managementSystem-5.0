@@ -161,8 +161,8 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
         ArrayList<Event> allEvents = new ArrayList<>();
         try(Connection conn = databaseConnector.getConnection();
             Statement stmt = conn.createStatement()){
-            String sql = "SELECT * FROM Event eve, UserEvent ue, Users us \n" +
-                    "WHERE us.LogInID = ue.UserID AND eve.ID = ue.EventID AND us.ID =" + user.getId() + ";";
+            String sql = "SELECT * FROM Events eve, UserEvent ue, Users us \n" +
+                    "WHERE us.LogInID = ue.UserID AND eve.ID = ue.EventID AND us.LogInID =" + user.getId() + ";";
 
             if (stmt.execute(sql)){
                 ResultSet rs = stmt.getResultSet();
