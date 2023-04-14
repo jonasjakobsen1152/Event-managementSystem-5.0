@@ -10,13 +10,31 @@ import java.util.ArrayList;
 
 public class LoginModel {
 
+    private static LoginModel instance;
     private LogInManager logInManager;
-
     private ArrayList<User> allUsers;
+    private User loggedInUser;
 
-    public LoginModel(){
+
+    private LoginModel() {
         logInManager = new LogInManager();
         allUsers = new ArrayList<>();
+    }
+
+    public static LoginModel getInstance(){
+        if (instance == null){
+            instance = new LoginModel();
+        }
+        return instance;
+    }
+
+    public User getLoggedInUser() {
+        return loggedInUser;
+    }
+
+    public void setLoggedInUser(User user){
+        loggedInUser = user;
+
     }
 
     public ArrayList<User> getAllUsers() throws SQLException {

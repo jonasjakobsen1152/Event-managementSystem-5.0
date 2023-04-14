@@ -32,7 +32,7 @@ public class LoginController {
     int userId = 0;
 
     public LoginController() throws SQLException {
-        loginModel = new LoginModel();
+        loginModel = LoginModel.getInstance();
 
         // Get a list of all users and use it to check against the entered userName and passWord
         allUsers = loginModel.getAllUsers();
