@@ -44,4 +44,14 @@ public class User {
     public void setRoles(String roles) {
         Roles = roles;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", passWord='" + passWord + '\'' +
+                ", Roles='" + Roles + '\'' +
+                '}';
+    }
 }
