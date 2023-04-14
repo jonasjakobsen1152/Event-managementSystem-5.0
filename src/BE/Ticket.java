@@ -15,7 +15,9 @@ public class Ticket {
 
     private String qr;
 
-    public Ticket(int id, int eventID, String name, String lastName, String email, String ticketType, String qr) {
+    private int available;
+
+    public Ticket(int id, int eventID, String name, String lastName, String email, String ticketType, String qr, int available) {
         this.id = id;
         this.eventID = eventID;
         this.name = name;
@@ -23,6 +25,7 @@ public class Ticket {
         this.email = email;
         this.ticketType = ticketType;
         this.qr = qr;
+        this.available = available;
     }
 
     public int getId() {
@@ -79,5 +82,13 @@ public class Ticket {
 
     public void setQr(String qr) {
         this.qr = qr;
+    }
+
+    public int getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(int available) {
+        this.available = available;
     }
 }

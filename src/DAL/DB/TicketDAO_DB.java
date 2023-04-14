@@ -33,8 +33,9 @@ public class TicketDAO_DB implements ITicketDAO {
                 String email = rs.getString("Email");
                 String ticketType = rs.getString("TicketType");
                 String qrCode = rs.getString("QRCode");
+                int available = 1;
 
-                Ticket ticket = new Ticket(id,eventIDFromSQL,name,lastName,email,ticketType,qrCode);
+                Ticket ticket = new Ticket(id,eventIDFromSQL,name,lastName,email,ticketType,qrCode, available);
                 allTickets.add(ticket);
             }
             return allTickets;

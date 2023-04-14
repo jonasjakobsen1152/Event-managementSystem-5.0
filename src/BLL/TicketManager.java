@@ -15,19 +15,15 @@ public class TicketManager {
         iTicketDAO = new TicketDAO_DB();
     }
 
-
     public ArrayList<Ticket> getAllTickets(int eventID){
         return iTicketDAO.getAllTickets(eventID);
     }
 
-    public void createCustomer(String name, String lastName, String email) {
-        iTicketDAO.createCustomer(name,lastName,email);
-    }
     public void deleteTicket(Ticket selectedTicket) {
         iTicketDAO.deleteTicket(selectedTicket);
     }
 
-    public void createTicket(int event, String name, String lastName, String email, String ticketType, String qr) {
+    public void createTicket(int event, String name, String lastName, String email, String ticketType, String qr, int available) {
 
        // todo qr code
     }
