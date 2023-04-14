@@ -42,4 +42,5 @@ public class LogInDAO_DB implements ILoginDAO {
             }
             return allUsers;
         }
+
     }
