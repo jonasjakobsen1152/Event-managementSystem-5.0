@@ -3,6 +3,8 @@ package GUI.Controller;
 import GUI.Model.ETEBModel;
 import GUI.Model.EventCoordModel;
 
+import java.sql.SQLException;
+
 public abstract class BaseController {
     public ETEBModel model;
 
@@ -14,5 +16,5 @@ public abstract class BaseController {
     }
 
 
-    public abstract void setup(); //This is here so we can override it in MainController
+    public abstract void setup() throws SQLException; //This is here so we can override it in MainController
 }

@@ -7,6 +7,7 @@ import BLL.EventCoordManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.sql.SQLException;
 import java.util.Date;
 
 public class EventCoordModel {
@@ -49,9 +50,10 @@ public class EventCoordModel {
         showList();
     }
 
-    public ObservableList<Event> getObservableEvents()  {
+    public ObservableList<Event> getObservableEvents(User user) throws SQLException {
         eventsToBeViewed.clear();
-        eventsToBeViewed.addAll(eventCoordManager.getAllEvent());
+        eventsToBeViewed.addAll(eventCoordManager.getLoggedInUserEvent(user));
+        //eventsToBeViewed.addAll(eventCoordManager.getAllEvent());
         return eventsToBeViewed;
     }
 

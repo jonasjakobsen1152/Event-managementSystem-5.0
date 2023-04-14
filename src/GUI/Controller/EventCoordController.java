@@ -5,6 +5,7 @@ import BE.User;
 import GUI.Model.AdminModel;
 import GUI.Model.ETEBModel;
 import GUI.Model.EventCoordModel;
+import GUI.Model.LoginModel;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -27,6 +28,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -44,6 +46,7 @@ public class EventCoordController extends BaseController implements Initializabl
     public Text txtEventDate;
     private EventCoordModel eventCoordModel;
     public EventCRUDController eventCRUDController;
+    public LoginModel loginModel;
     private Event selectedEvent;
     public TableView<Event> tblShowEvents;
     public TableColumn clmUsername;
@@ -57,6 +60,7 @@ public class EventCoordController extends BaseController implements Initializabl
 
 
     public EventCoordController() throws Exception {
+        loginModel = LoginModel.getInstance();
         eventCoordModel = EventCoordModel.getInstance();
         eventCRUDController = new EventCRUDController();
         eventCRUDController.setModel(new ETEBModel());
@@ -69,7 +73,11 @@ public class EventCoordController extends BaseController implements Initializabl
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        showEvent();
+        try {
+            showEvent();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         try {
             updateEventCoordModel();
         } catch (Exception e) {
@@ -95,7 +103,7 @@ public class EventCoordController extends BaseController implements Initializabl
     }
 
     private void updateEventCoordModel() throws Exception {
-        tblAllEvents.setItems(eventCoordModel.getObservableEvents());
+        tblAllEvents.setItems(eventCoordModel.getObservableEvents(loginModel.getLoggedInUser()));
     }
 
     public void handleCreateNewEvent(ActionEvent actionEvent) throws Exception {
@@ -110,8 +118,8 @@ public class EventCoordController extends BaseController implements Initializabl
         updateEventCoordModel();
     }
 
-    void showEvent() {
-        tblAllEvents.setItems(eventCoordModel.getObservableEvents());
+    void showEvent() throws SQLException {
+        tblAllEvents.setItems(eventCoordModel.getObservableEvents(loginModel.getLoggedInUser()));
         clmEventName.setCellValueFactory(new PropertyValueFactory<Event, String>("eventName"));
 
     }
@@ -159,7 +167,7 @@ public class EventCoordController extends BaseController implements Initializabl
 //        EventCoordModel updateEventModel = new EventCoordModel();
 //        eventCoordModel = updateEventModel;
 
-        tblAllEvents.setItems(eventCoordModel.getObservableEvents());
+        tblAllEvents.setItems(eventCoordModel.getObservableEvents(loginModel.getLoggedInUser()));
     }
 
 
@@ -214,7 +222,7 @@ public class EventCoordController extends BaseController implements Initializabl
 
 
     @Override
-    public void setup() {
+    public void setup() throws SQLException {
         eventCoordModel = getModel().getEventCoordModel();
         showEvent();
     }
