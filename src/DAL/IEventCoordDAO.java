@@ -3,6 +3,7 @@ package DAL;
 import BE.Event;
 import BE.User;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface IEventCoordDAO {
@@ -17,4 +18,5 @@ public interface IEventCoordDAO {
     public List<User> getAllUsers();
 
     List<Event> getAllEvents() ;
+    public List<Event> getLoggedInUserEvent(User user) throws SQLException;
 }

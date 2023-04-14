@@ -9,7 +9,7 @@ public interface ITicketDAO {
 
     ArrayList<Ticket> getAllTickets(int eventID);
 
-    Customer createCustomer(String name, String lastName, String email);
-
     void deleteTicket(Ticket selectedTicket);
+
+    Ticket createTicket(int event, String name, String lastName, String email, String ticketType, String newQR, int available);
 }

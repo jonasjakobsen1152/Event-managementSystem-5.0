@@ -1,6 +1,5 @@
 package DAL.DB;
 
-import BE.Customer;
 import BE.Ticket;
 import DAL.ITicketDAO;
 
@@ -33,8 +32,9 @@ public class TicketDAO_DB implements ITicketDAO {
                 String email = rs.getString("Email");
                 String ticketType = rs.getString("TicketType");
                 String qrCode = rs.getString("QRCode");
+                int available = 1;
 
-                Ticket ticket = new Ticket(id,eventIDFromSQL,name,lastName,email,ticketType,qrCode);
+                Ticket ticket = new Ticket(id,eventIDFromSQL,name,lastName,email,ticketType,qrCode, available);
                 allTickets.add(ticket);
             }
             return allTickets;
@@ -44,7 +44,40 @@ public class TicketDAO_DB implements ITicketDAO {
         }
 
     }
+    @Override
+    public Ticket createTicket(int event, String name, String lastName, String email, String ticketType, String newQR, int available) {
+        try (Connection conn = databaseConnector.getConnection()){
+            String sql = "Insert into dbo.TicketCustomer (EventID,Name,LastName,Email,TicketType,QRCode,TicketAvailable) VALUES (?,?,?,?,?,?,?,?)";
 
+            PreparedStatement stmt = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+
+            stmt.setInt(1,event);
+            stmt.setString(2,name);
+            stmt.setString(3,lastName);
+            stmt.setString(4,email);
+            stmt.setString(5,ticketType);
+            stmt.setString(6,newQR);
+            stmt.setInt(7,available);
+
+            stmt.executeUpdate();
+
+            ResultSet rs = stmt.getGeneratedKeys();
+            int id = 0;
+
+            if (rs.next()){
+                id = rs.getInt(1);
+            }
+
+            Ticket ticket = new Ticket(id,event,name,lastName,email,ticketType,newQR,available);
+            return ticket;
+
+        } catch (SQLException e) {
+            throw new RuntimeException("SQL Error: Could not create ticket");
+        }
+
+
+    }
+/*
     @Override
     public Customer createCustomer(String name, String lastName, String email) {
         try (Connection conn = databaseConnector.getConnection()){
@@ -72,6 +105,7 @@ public class TicketDAO_DB implements ITicketDAO {
             throw new RuntimeException("SQL Error: Could not create customer");
         }
     }
+ */
 
     @Override
     public void deleteTicket(Ticket selectedTicket) {
@@ -89,6 +123,4 @@ public class TicketDAO_DB implements ITicketDAO {
             throw new RuntimeException("Could not delete ticket",e);
         }
     }
-
-
 }

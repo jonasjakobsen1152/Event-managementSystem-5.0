@@ -49,12 +49,14 @@ public class LoginController {
         for (User userToCheck : allUsers) {
             if (userToCheck.getUserName().equals(userNameToCheck) && userToCheck.getPassWord().equals(passWordToCheck)) {
                 userId = userToCheck.getId();
+                User loggedInUser = userToCheck;
                 if(userToCheck.getRoles().equals("Admin")){
                     handleOpenAdmin(actionEvent);
                     Stage stage = (Stage) btnLogInToApplication.getScene().getWindow();
                     stage.close();
                 }
                 else{
+                    loginModel.setLoggedInUser(userToCheck);
                     openCoordinator();
                     Stage stage = (Stage) btnLogInToApplication.getScene().getWindow();
                     stage.close();

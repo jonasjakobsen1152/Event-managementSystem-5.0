@@ -87,7 +87,7 @@ public class TicketController implements Initializable {
     }
 
 
-    public void handleCreateCustomer(ActionEvent actionEvent) throws IOException {
+    public void handleCreateTicket(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/GUI/View/TicketsCreate.fxml"));
         AnchorPane pane = loader.load();
@@ -99,7 +99,7 @@ public class TicketController implements Initializable {
         dialogWindow.showAndWait();
     }
 
-    public void handleDeleteCustomer(ActionEvent actionEvent) {
+    public void handleDeleteTicket(ActionEvent actionEvent) {
         if(selectedTicket == null){
         alertUser("Please select a ticket to delete");
         }

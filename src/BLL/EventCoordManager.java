@@ -5,6 +5,7 @@ import BE.User;
 import DAL.DB.EventCoordDAO_DB;
 import DAL.IEventCoordDAO;
 
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
@@ -34,6 +35,10 @@ public class EventCoordManager {
 
     public void deleteEvent(Event selectedEvent) {
         eventDAO.deleteEvent(selectedEvent.getId(),selectedEvent.getEventName());
+    }
+
+    public List<Event> getLoggedInUserEvent(User user) throws SQLException {
+        return eventDAO.getLoggedInUserEvent(user);
     }
 
 //    public Event updateEvent(String EventName, String EventDate, String EventTime, String EventNotes, String EventLocation) {

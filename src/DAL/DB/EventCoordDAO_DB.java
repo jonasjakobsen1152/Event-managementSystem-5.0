@@ -156,4 +156,29 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
         }
         return allUsers;
     }
+
+    public List<Event> getLoggedInUserEvent(User user) throws SQLException {
+        ArrayList<Event> allEvents = new ArrayList<>();
+        try(Connection conn = databaseConnector.getConnection();
+            Statement stmt = conn.createStatement()){
+            String sql = "SELECT * FROM Events eve, UserEvent ue, Users us \n" +
+                    "WHERE us.LogInID = ue.UserID AND eve.ID = ue.EventID AND us.LogInID =" + user.getId() + ";";
+
+            if (stmt.execute(sql)){
+                ResultSet rs = stmt.getResultSet();
+                while(rs.next()){
+                    int id = rs.getInt("ID");
+                    String eventName = rs.getString("EventName");
+                    String eventDate = rs.getString("EventDate");
+                    String eventTime = rs.getString("EventTime");
+                    String eventNotes = rs.getString("EventNotes");
+                    String eventLocation = rs.getString("EventLocation");
+                    Event event = new Event(id,eventName,eventDate,eventTime,eventNotes,eventLocation);
+                    allEvents.add(event);
+                }
+            }
+        }
+        return allEvents;
+    }
+
 }
