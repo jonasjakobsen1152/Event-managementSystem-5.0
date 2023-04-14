@@ -18,8 +18,8 @@
             <TableColumn fx:id="CLMQR" prefWidth="216.0" text="QR" />
         </columns>
       </TableView>
-      <MFXButton buttonType="RAISED" layoutX="37.0" layoutY="429.0" onAction="#handleCreateCustomer" prefHeight="47.0" prefWidth="145.0" text="Create Customer" />
-      <MFXButton buttonType="RAISED" layoutX="725.0" layoutY="429.0" onAction="#handleDeleteCustomer" prefHeight="47.0" prefWidth="152.0" text="Delete Customor" />
+      <MFXButton buttonType="RAISED" layoutX="37.0" layoutY="429.0" onAction="#handleCreateTicket" prefHeight="47.0" prefWidth="145.0" text="Create Ticket" />
+      <MFXButton buttonType="RAISED" layoutX="725.0" layoutY="429.0" onAction="#handleDeleteTicket" prefHeight="47.0" prefWidth="152.0" text="Delete Ticket" />
       <Text layoutX="434.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customers" wrappingWidth="60.13671875" />
    </children>
 </AnchorPane>

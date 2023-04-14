@@ -13,7 +13,7 @@
       <MFXTextField fx:id="txtName" floatMode="ABOVE" layoutX="107.0" layoutY="33.0" prefHeight="49.0" prefWidth="235.0" />
       <MFXTextField fx:id="txtLastName" floatMode="ABOVE" layoutX="106.0" layoutY="97.0" prefHeight="49.0" prefWidth="235.0" />
       <MFXTextField fx:id="txtEmail" floatMode="ABOVE" layoutX="108.0" layoutY="161.0" prefHeight="49.0" prefWidth="235.0" />
-      <MFXButton fx:id="btnCreateCustomer" buttonType="RAISED" layoutX="106.0" layoutY="319.0" onAction="#handleCreateCustomer" prefHeight="49.0" prefWidth="235.0" text="Create Customer" />
+      <MFXButton fx:id="btnCreateTicket" buttonType="RAISED" layoutX="106.0" layoutY="319.0" onAction="#handleCreateTicket" prefHeight="49.0" prefWidth="235.0" text="Create Ticket" />
       <Label layoutX="24.0" layoutY="247.0" prefHeight="17.0" prefWidth="78.0" text="Ticket Type" />
       <MFXTextField fx:id="txtType" floatMode="ABOVE" layoutX="106.0" layoutY="231.0" prefHeight="49.0" prefWidth="235.0" />
    </children>
