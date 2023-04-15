@@ -4,17 +4,19 @@ package BLL.Util;
 import BE.Event;
 import BE.Ticket;
 import com.itextpdf.barcodes.BarcodeQRCode;
+import com.itextpdf.io.image.ImageData;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.element.IBlockElement;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Tab;
 import com.itextpdf.layout.element.Table;
 
+import javax.swing.text.StyleConstants;
 import java.awt.*;
 import java.io.*;
 
@@ -29,6 +31,7 @@ public class PDFCreator {
 
             Document document = new Document(pdfDocument);
             pdfDocument.setDefaultPageSize(PageSize.A4);
+            pdfDocument.addNewPage();
 
             Paragraph paragraph = new Paragraph();
 
@@ -38,12 +41,6 @@ public class PDFCreator {
                     + "\r\n" + "\r\n" + "Event Location: " + selectedEvent.getEventLocation() + "\r\n" + "\r\n" + "Event notes: " + selectedEvent.getEventNotes());
 
             document.add(paragraph);
-
-            BarcodeQRCode qrCode = new BarcodeQRCode();
-            qrCode.setCode(selectedTicket.getQr());
-            Image image = qrCode.createAwtImage(java.awt.Color.white, java.awt.Color.BLACK);
-            document.add((IBlockElement) image);
-
 
             document.close();
 
