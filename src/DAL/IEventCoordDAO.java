@@ -17,6 +17,6 @@ public interface IEventCoordDAO {
 
     public List<User> getAllUsers();
 
-    List<Event> getAllEvents() ;
+    List<Event> getAllEvents() throws Exception;
     public List<Event> getLoggedInUserEvent(User user) throws SQLException;
 }

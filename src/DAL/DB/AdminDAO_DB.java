@@ -69,8 +69,7 @@ public class AdminDAO_DB implements IAdminDAO {
             stmt.executeUpdate();
 
 
-        } catch (SQLServerException e) {
-            throw new RuntimeException(e);
+
         } catch (SQLException e) {
             throw new RuntimeException("Could not delete user", e);
         }
@@ -98,7 +97,7 @@ public class AdminDAO_DB implements IAdminDAO {
                 allUsers.add(user);
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            throw new RuntimeException("Could not receive user information from the database", ex);
         }
         return allUsers;
     }
@@ -132,7 +131,7 @@ public class AdminDAO_DB implements IAdminDAO {
             }
             return allEvents;
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Could not receive event information from the database" ,e);
         }
     }
 
@@ -168,7 +167,7 @@ public class AdminDAO_DB implements IAdminDAO {
 
             stmt.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException("SQL ERROR: Could not delete users in the event",e);
+            throw new RuntimeException("Could not delete users in the event",e);
         }
     }
 
@@ -181,7 +180,7 @@ public class AdminDAO_DB implements IAdminDAO {
 
             stmt.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException("SQL ERROR: Could not delete tickets in the event",e);
+            throw new RuntimeException("Could not delete tickets in the event",e);
         }
     }
 

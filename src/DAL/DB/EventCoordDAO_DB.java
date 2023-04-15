@@ -16,7 +16,7 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
         databaseConnector = new MyDatabaseConnector();
     }
 
-    public List<Event> getAllEvents() {
+    public List<Event> getAllEvents() throws Exception {
         ArrayList<Event> allEvents = new ArrayList<>();
 
         try(Connection conn = databaseConnector.getConnection();
@@ -38,8 +38,7 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
             allEvents.add(event);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
-            //throw new Exception("Could not get Events from database", e);
+            throw new Exception("Could not get Events from database", e);
         }
         return allEvents;
     }
@@ -64,7 +63,7 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
 
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Could not update event", e);
         }
 
     }
@@ -99,7 +98,7 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
 
             stmt.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Could not delete users in event", e);
         }
     }
 
@@ -151,7 +150,7 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
 
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Could not add event coordinator to the event",e);
         }
     }
 
@@ -175,7 +174,7 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
                 allUsers.add(user);
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            throw new RuntimeException("Could not receive user information from the database", ex);
         }
         return allUsers;
     }
