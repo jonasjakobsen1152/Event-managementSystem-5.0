@@ -105,7 +105,7 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
 
 
     @Override
-    public Event createEvent(String name, String date, String time, String location, String notes) {
+    public Event createEvent(String name, String date, String time, String location, String notes, User loggedInUser) {
         try (Connection conn = databaseConnector.getConnection()){
             String sql = "INSERT INTO Events (EventName, EventDate, EventTime, EventNotes, EventLocation) VALUES (?,?,?,?,?)";
 
@@ -126,9 +126,32 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
                 id = rs.getInt(1);
             }
             Event event = new Event(id, name, date, time, location, location);
+            addEventCoordinatorToEvent(event,loggedInUser);
             return event;
         }catch (SQLException e){
             throw new RuntimeException("SQL Error: could not create Event", e);
+        }
+    }
+
+    public void addEventCoordinatorToEvent(Event selectedEvent, User selectedUser) throws SQLServerException {
+        String sql ="INSERT INTO UserEvent (UserID, EventID) VALUES (?,?);";
+
+        try(Connection connection = databaseConnector.getConnection()){
+
+            PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+            int selectedEventID = selectedEvent.getId();
+            int selectedUserID = selectedUser.getId();
+
+            stmt.setInt(1, selectedUserID);
+            stmt.setInt(2, selectedEventID);
+
+            stmt.executeUpdate();
+
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 

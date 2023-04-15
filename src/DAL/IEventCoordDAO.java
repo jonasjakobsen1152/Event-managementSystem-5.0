@@ -13,7 +13,7 @@ public interface IEventCoordDAO {
 
     public void deleteEvent(int EventID, String EventName);
 
-    Event createEvent(String name, String date, String time, String location, String notes);
+    Event createEvent(String name, String date, String time, String location, String notes, User loggedInUser);
 
     public List<User> getAllUsers();
 
