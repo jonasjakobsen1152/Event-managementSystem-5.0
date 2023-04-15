@@ -1,6 +1,7 @@
 package GUI.Model;
 
 
+import BE.Event;
 import BE.Ticket;
 import BLL.TicketManager;
 import javafx.collections.FXCollections;
@@ -45,4 +46,7 @@ public class TicketModel {
     ticketManager.createTicket(event,name,lastName,email,ticketType,qr,available);
     }
 
+    public void printTicket(Ticket selectedTicket, Event selectedEvent) {
+        ticketManager.printTiket(selectedTicket,selectedEvent);
+    }
 }

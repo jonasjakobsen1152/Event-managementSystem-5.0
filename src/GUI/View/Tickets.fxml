@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="522.0" prefWidth="928.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.TicketController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="522.0" prefWidth="928.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.TicketController">
    <children>
       <TableView fx:id="tblTicket" layoutX="37.0" layoutY="37.0" prefHeight="382.0" prefWidth="840.0">
         <columns>
@@ -20,6 +20,7 @@
       </TableView>
       <MFXButton buttonType="RAISED" layoutX="37.0" layoutY="429.0" onAction="#handleCreateTicket" prefHeight="47.0" prefWidth="145.0" text="Create Ticket" />
       <MFXButton buttonType="RAISED" layoutX="725.0" layoutY="429.0" onAction="#handleDeleteTicket" prefHeight="47.0" prefWidth="152.0" text="Delete Ticket" />
-      <Text layoutX="434.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customers" wrappingWidth="60.13671875" />
+      <Text layoutX="427.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customers" wrappingWidth="60.13671875" />
+      <MFXButton buttonType="RAISED" layoutX="341.0" layoutY="429.0" onAction="#handlePrintTicket" prefHeight="47.0" prefWidth="247.0" text="Print Ticket" />
    </children>
 </AnchorPane>
