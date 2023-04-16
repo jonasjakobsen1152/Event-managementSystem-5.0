@@ -21,7 +21,7 @@ public class EventCoordManager {
        return eventDAO.createEvent(name,date,time,notes, location, loggedInUser);
     }
 
-    public List<Event> getAllEvent()  {
+    public List<Event> getAllEvent() throws Exception {
         return eventDAO.getAllEvents();
     }
 

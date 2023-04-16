@@ -124,7 +124,7 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
             if (rs.next()) {
                 id = rs.getInt(1);
             }
-            Event event = new Event(id, name, date, time, location, location);
+            Event event = new Event(id, name, date, time, notes, location);
             addEventCoordinatorToEvent(event,loggedInUser);
             return event;
         }catch (SQLException e){
