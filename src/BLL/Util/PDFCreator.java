@@ -28,14 +28,14 @@ public class PDFCreator {
             Document document = new Document(pdfDocument);
             pdfDocument.setDefaultPageSize(PageSize.A4);
             pdfDocument.addNewPage();
-
+            //Creates a new paragraph that strings can be added to
             Paragraph paragraph = new Paragraph();
-
+            //Adds strings to the paragraph
             paragraph.add(selectedTicket.getTicketType() + " ticket for the EASV Event: " + " " + selectedEvent.getEventName() + "\r\n" + "\r\n");
             paragraph.add("Issued To: " + selectedTicket.getName() + " " + selectedTicket.getLastName() + "\r\n" + "With Email: " + selectedTicket.getEmail() + "\r\n" + "\r\n");
             paragraph.add("Event information:" + "\r\n" + "\r\n" + "Event Date: " + selectedEvent.getEventDate() + "\r\n" + "\r\n" + "Event Time: " + selectedEvent.getEventTime()
                     + "\r\n" + "\r\n" + "Event Location: " + selectedEvent.getEventLocation() + "\r\n" + "\r\n" + "Event notes: " + selectedEvent.getEventNotes() + "\r\n" + "________________________________________________________________________");
-
+            //Gets the QRCode image and puts it onto the pdf.
             ImageData imageData = ImageDataFactory.create("QRCODE.png");
             Image image = new Image(imageData);
             paragraph.add(image);
