@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap%27%27');
+
+.AnchorPane{
+    -fx-background-color: #18122B;
+    -fx-border-color: white;
+}
+.button{
+    -fx-background-color: #443C68;
+    -fx-text-fill: white;
+    -fx-font-size: 17;
+    -fx-cursor: hand;
+
+}
+
+.title{
+    -fx-fill: white;
+    -fx-font-size: 18;
+    -fx-font-family: 'Concert One', cursive;
+
+}
+
+.SidePane {
+    -fx-background-color: #393053;
+}
+
+.cell {
+    -fx-text-fill: white;
+}
+
+.label{
+    -fx-text-fill: white;
+}
+
+.table-row-cell .text{
+    -fx-fill: white;
+    -fx-cursor: hand;
+}
+
+.table-row-cell:selected .text {
+    -fx-fill: orange;
+
+}
+
+.whiteText{
+    -fx-background-color: white;
+}
+
+.Ticket{
+    -fx-background-color: #635985;
+}
+
+AllEvents{
+    -fx-font-fill:  white;
+}
+.text{
+    -fx-text-fill: white;
+
+}
+
