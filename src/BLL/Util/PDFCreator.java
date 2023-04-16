@@ -3,20 +3,12 @@ package BLL.Util;
 
 import BE.Event;
 import BE.Ticket;
-import com.itextpdf.barcodes.BarcodeQRCode;
-import com.itextpdf.io.image.ImageData;
-import com.itextpdf.io.image.ImageDataFactory;
-import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.layout.element.Tab;
-import com.itextpdf.layout.element.Table;
 
-import javax.swing.text.StyleConstants;
 import java.awt.*;
 import java.io.*;
 
