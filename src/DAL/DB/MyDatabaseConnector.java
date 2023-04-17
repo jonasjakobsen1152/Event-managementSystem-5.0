@@ -15,6 +15,7 @@ public class MyDatabaseConnector {
      */
     public MyDatabaseConnector()
     {
+        //Gets connection to the database
         dataSource = new SQLServerDataSource();
         dataSource.setServerName("10.176.111.34");
         dataSource.setDatabaseName("EASV_BAR_HUNTER");

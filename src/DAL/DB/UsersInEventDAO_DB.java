@@ -21,6 +21,7 @@ public class UsersInEventDAO_DB implements IUsersInEventDAO {
 
     @Override
     public void addEventCoordinatorToEvent(Event selectedEvent, User selectedUser) throws SQLServerException {
+        //SQL string that makes it possible to add more users to an event
         String sql ="INSERT INTO UserEvent (UserID, EventID) VALUES (?,?);";
 
         try(Connection connection = dbConnector.getConnection()){
@@ -46,7 +47,7 @@ public class UsersInEventDAO_DB implements IUsersInEventDAO {
     public List<User> getCoordinatorsInEvent(int selectedEventId) throws SQLServerException {
         ArrayList<User> allUser = new ArrayList<>();
         try(Connection connection = dbConnector.getConnection()){
-
+            //SQL string that gets all the information from the coordinator table and only shows information to the selected event
             String sql = "SELECT * FROM Events eve, UserEvent ue, Users us \n" +
                     "WHERE us.LogInID = ue.UserID AND eve.ID = ue.EventID AND eve.ID =" + selectedEventId + ";";
 
@@ -74,6 +75,7 @@ public class UsersInEventDAO_DB implements IUsersInEventDAO {
 
     @Override
     public void removeUserFromEvent(User selectedUser, Event selectedEvent, int selectedUserInEvent) {
+        //SQL string removes the user from the selected event.
         String sql = "DELETE FROM UserEvent \n" +
                 "WHERE UserEvent.UserID = ? \n" +
                 "AND UserEvent.EventID = ? AND UserEvent.ID = ?;";
@@ -94,7 +96,7 @@ public class UsersInEventDAO_DB implements IUsersInEventDAO {
 
     public int getUserEventId(int userId, int eventId){
         int userEventId = 0;
-
+        //SQL string gets the user id and event id and compare them to the UserEvent Tabel.
         String sql = "SELECT * FROM UserEvent ue WHERE ue.UserID =" + userId + "\n" +
                 "AND ue.EventID = " + eventId + ";";
 

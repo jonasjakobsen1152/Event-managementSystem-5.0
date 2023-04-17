@@ -46,7 +46,7 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
     public void updateEvent(Event event) {
 
         try (Connection conn = databaseConnector.getConnection()) {
-
+        //SQL string that can update the events
             String sql = "UPDATE Events SET EventName = ?, EventDate = ?, EventTime = ?, EventNotes = ?, EventLocation = ? WHERE ID = ?";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -72,7 +72,7 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
     public void deleteEvent(int ID, String EventName) {
 
         try (Connection conn = databaseConnector.getConnection()) {
-
+            //SQL string that makes it possible to delete events from the program and database
             String sql = "DELETE FROM Events WHERE ID = ? AND EventName = ?;";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -89,6 +89,7 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
     }
 
     public void deleteUsersInEvent(int ID){
+        //SQL string that deletes all information that is connected to the deleted event
         String sql = "DELETE ALL FROM UserEvent WHERE EventID = ?;";
 
         try (Connection conn = databaseConnector.getConnection()){
@@ -106,6 +107,7 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
     @Override
     public Event createEvent(String name, String date, String time, String location, String notes, User loggedInUser) {
         try (Connection conn = databaseConnector.getConnection()){
+            //SQL string that makes it possible to create an event
             String sql = "INSERT INTO Events (EventName, EventDate, EventTime, EventNotes, EventLocation) VALUES (?,?,?,?,?)";
 
             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -133,6 +135,7 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
     }
 
     public void addEventCoordinatorToEvent(Event selectedEvent, User selectedUser) throws SQLServerException {
+        //SQL string that makes it possible to put EventCoordinators into events, when they create it.
         String sql ="INSERT INTO UserEvent (UserID, EventID) VALUES (?,?);";
 
         try(Connection connection = databaseConnector.getConnection()){
@@ -160,6 +163,7 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
 
         try (Connection conn = databaseConnector.getConnection();
              Statement stmt = conn.createStatement()) {
+            //SQL string that gets all the information from the User tabel
             String sql = "Select * From Users";
 
             ResultSet rs = stmt.executeQuery(sql);
@@ -183,6 +187,7 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
         ArrayList<Event> allEvents = new ArrayList<>();
         try(Connection conn = databaseConnector.getConnection();
             Statement stmt = conn.createStatement()){
+            //SQL string that gets the right information about the person that logs in
             String sql = "SELECT * FROM Events eve, UserEvent ue, Users us \n" +
                     "WHERE us.LogInID = ue.UserID AND eve.ID = ue.EventID AND us.LogInID =" + user.getId() + ";";
 

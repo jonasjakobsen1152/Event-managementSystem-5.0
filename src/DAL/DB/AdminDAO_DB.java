@@ -23,7 +23,7 @@ public class AdminDAO_DB implements IAdminDAO {
 
     @Override
     public User createUser(String UserName, String Password, String Roles) {
-
+        //SQL string that creates the user
         String sql = "INSERT INTO Users (UserName, Password, Roles) VALUES (?,?,?);";
 
         try (Connection conn = databaseConnector.getConnection()) {
@@ -58,7 +58,7 @@ public class AdminDAO_DB implements IAdminDAO {
     public void deleteUser(int LogInID, String UserName) {
 
         try (Connection conn = databaseConnector.getConnection()) {
-
+            //SQL string that deletes the user
             String sql = "DELETE FROM Users WHERE LogInID = ? AND UserName = ?;";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -83,6 +83,7 @@ public class AdminDAO_DB implements IAdminDAO {
 
         try (Connection conn = databaseConnector.getConnection();
              Statement stmt = conn.createStatement()) {
+            //SQL string that gets all the information from the User tabel
             String sql = "Select * From Users";
 
             ResultSet rs = stmt.executeQuery(sql);
@@ -104,7 +105,7 @@ public class AdminDAO_DB implements IAdminDAO {
 
     @Override
     public void removeUser(int id, String userName) {
-        //TODO Remove user from events as admin
+
     }
 
     @Override
@@ -140,7 +141,7 @@ public class AdminDAO_DB implements IAdminDAO {
     public void deleteEvent(int EventID, String EventName) {
 
         try (Connection conn = databaseConnector.getConnection()) {
-
+            //SQL string that makes it possible to delete events from the admin window
             String sql = "DELETE FROM Events WHERE ID = ? AND EventName = ?;";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -158,6 +159,7 @@ public class AdminDAO_DB implements IAdminDAO {
     }
 
     public void deleteUsersInEvent(int iD){
+        //SQL string that deletes all information that is connected to the deleted event
         String sql = "DELETE FROM UserEvent WHERE EventID = ?;";
 
         try (Connection conn = databaseConnector.getConnection()){
@@ -172,6 +174,7 @@ public class AdminDAO_DB implements IAdminDAO {
     }
 
     public void deleteTicketsInEvent(int id){
+        //SQl string that makes it possible to delete tickets from the giving event
         String sql = "DELETE FROM TicketCustomer WHERE EventID = ?;";
         try (Connection conn = databaseConnector.getConnection()){
             PreparedStatement stmt = conn.prepareStatement(sql);

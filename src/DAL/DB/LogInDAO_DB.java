@@ -24,6 +24,7 @@ public class LogInDAO_DB implements ILoginDAO {
 
             try (Connection conn = databaseConnector.getConnection();
                  Statement stmt = conn.createStatement()) {
+                //SQL string that gets all the information from the User tabel
                 String sql = "Select * From dbo.Users";
 
                 ResultSet rs = stmt.executeQuery(sql);

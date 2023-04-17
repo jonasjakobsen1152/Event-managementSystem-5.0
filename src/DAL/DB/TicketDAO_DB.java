@@ -20,6 +20,7 @@ public class TicketDAO_DB implements ITicketDAO {
 
         try(Connection conn = databaseConnector.getConnection();
             Statement stmt = conn.createStatement()) {
+            //SQL string that gets all the information from the TicketCustomer Table
             String sql = "SELECT * FROM dbo.TicketCustomer WHERE EventID = "+eventID+";";
 
             ResultSet rs = stmt.executeQuery(sql);
@@ -47,6 +48,7 @@ public class TicketDAO_DB implements ITicketDAO {
     @Override
     public Ticket createTicket(int event, String name, String lastName, String email, String ticketType, String newQR, int available) {
         try (Connection conn = databaseConnector.getConnection()){
+            //SQl string that makes it possible to create a ticket
             String sql = "Insert into dbo.TicketCustomer (EventID,Name,LastName,Email,TicketType,QRCode,TicketAvailable) VALUES (?,?,?,?,?,?,?)";
 
             PreparedStatement stmt = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
@@ -81,6 +83,7 @@ public class TicketDAO_DB implements ITicketDAO {
     @Override
     public void deleteTicket(Ticket selectedTicket) {
         try (Connection conn = databaseConnector.getConnection()) {
+            //SQL string that makes it possible to delete tickets
             String sql = "DELETE FROM dbo.TicketCustomer WHERE ID = ? AND Email = ?";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
