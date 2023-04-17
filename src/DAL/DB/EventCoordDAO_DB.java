@@ -16,7 +16,7 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
         databaseConnector = new MyDatabaseConnector();
     }
 
-    public List<Event> getAllEvents() {
+    public List<Event> getAllEvents() throws Exception {
         ArrayList<Event> allEvents = new ArrayList<>();
 
         try(Connection conn = databaseConnector.getConnection();
@@ -38,8 +38,7 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
             allEvents.add(event);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
-            //throw new Exception("Could not get Events from database", e);
+            throw new Exception("Could not get Events from database", e);
         }
         return allEvents;
     }
@@ -64,7 +63,7 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
 
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Could not update event", e);
         }
 
     }
@@ -99,13 +98,13 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
 
             stmt.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Could not delete users in event", e);
         }
     }
 
 
     @Override
-    public Event createEvent(String name, String date, String time, String location, String notes) {
+    public Event createEvent(String name, String date, String time, String location, String notes, User loggedInUser) {
         try (Connection conn = databaseConnector.getConnection()){
             String sql = "INSERT INTO Events (EventName, EventDate, EventTime, EventNotes, EventLocation) VALUES (?,?,?,?,?)";
 
@@ -125,10 +124,33 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
             if (rs.next()) {
                 id = rs.getInt(1);
             }
-            Event event = new Event(id, name, date, time, location, location);
+            Event event = new Event(id, name, date, time, notes, location);
+            addEventCoordinatorToEvent(event,loggedInUser);
             return event;
         }catch (SQLException e){
             throw new RuntimeException("SQL Error: could not create Event", e);
+        }
+    }
+
+    public void addEventCoordinatorToEvent(Event selectedEvent, User selectedUser) throws SQLServerException {
+        String sql ="INSERT INTO UserEvent (UserID, EventID) VALUES (?,?);";
+
+        try(Connection connection = databaseConnector.getConnection()){
+
+            PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+            int selectedEventID = selectedEvent.getId();
+            int selectedUserID = selectedUser.getId();
+
+            stmt.setInt(1, selectedUserID);
+            stmt.setInt(2, selectedEventID);
+
+            stmt.executeUpdate();
+
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Could not add event coordinator to the event",e);
         }
     }
 
@@ -152,7 +174,7 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
                 allUsers.add(user);
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            throw new RuntimeException("Could not receive user information from the database", ex);
         }
         return allUsers;
     }

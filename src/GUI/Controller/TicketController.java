@@ -122,4 +122,8 @@ public class TicketController implements Initializable {
         alert.setHeaderText(error);
         alert.show();
     }
+
+    public void handlePrintTicket(ActionEvent actionEvent) {
+        ticketModel.printTicket(selectedTicket,eventCoordModel.getSelectedEvent());
+    }
 }

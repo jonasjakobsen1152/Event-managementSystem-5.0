@@ -1,6 +1,8 @@
 package BLL;
 
+import BE.Event;
 import BE.Ticket;
+import BLL.Util.PDFCreator;
 import BLL.Util.QRCodeStringGenerator;
 import DAL.DB.TicketDAO_DB;
 import DAL.ITicketDAO;
@@ -29,5 +31,11 @@ public class TicketManager {
         String newQR = qrCodeStringGenerator.getGeneratedString();
 
         iTicketDAO.createTicket(event,name,lastName,email,ticketType,newQR,available);
+    }
+
+    public void printTiket(Ticket selectedTicket, Event selectedEvent) {
+        PDFCreator pdfCreator = new PDFCreator();
+
+        pdfCreator.printTicket(selectedTicket,selectedEvent);
     }
 }

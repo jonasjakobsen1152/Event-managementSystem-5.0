@@ -6,9 +6,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="522.0" prefWidth="928.0" styleClass="AnchorPane" stylesheets="@Tickets.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.TicketController">
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="522.0" prefWidth="928.0" styleClass="AnchorPane" stylesheets="@Tickets.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.TicketController">
    <children>
-      <TableView fx:id="tblTicket" layoutX="37.0" layoutY="37.0" prefHeight="382.0" prefWidth="840.0" styleClass="SidePane" stylesheets="@Tickets.css">
+      <TableView fx:id="tblTicket" layoutX="45.0" layoutY="47.0" prefHeight="382.0" prefWidth="840.0" styleClass="SidePane" stylesheets="@Tickets.css">
+
         <columns>
             <TableColumn fx:id="CLMID" prefWidth="75.0" styleClass="SidePane" text="Reference" />
           <TableColumn fx:id="CLMName" prefWidth="133.0" styleClass="SidePane" text="Name" />
@@ -18,8 +21,10 @@
             <TableColumn fx:id="CLMQR" prefWidth="216.0" styleClass="SidePane" text="QR" />
         </columns>
       </TableView>
-      <MFXButton buttonType="RAISED" layoutX="37.0" layoutY="429.0" onAction="#handleCreateTicket" prefHeight="47.0" prefWidth="145.0" text="Create Ticket" />
-      <MFXButton buttonType="RAISED" layoutX="725.0" layoutY="429.0" onAction="#handleDeleteTicket" prefHeight="47.0" prefWidth="152.0" text="Delete Ticket" />
-      <Text layoutX="410.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Customers" wrappingWidth="94.13671875" />
+
+      <MFXButton buttonType="RAISED" layoutX="45.0" layoutY="453.0" onAction="#handleCreateTicket" prefHeight="47.0" prefWidth="145.0" text="Create Ticket" />
+      <MFXButton buttonType="RAISED" layoutX="733.0" layoutY="453.0" onAction="#handleDeleteTicket" prefHeight="47.0" prefWidth="152.0" text="Delete Ticket" />
+      <Text layoutX="411.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Customers" wrappingWidth="106.13671875" />
+      <MFXButton buttonType="RAISED" layoutX="341.0" layoutY="453.0" onAction="#handlePrintTicket" prefHeight="47.0" prefWidth="247.0" text="Print Ticket" />
    </children>
 </AnchorPane>

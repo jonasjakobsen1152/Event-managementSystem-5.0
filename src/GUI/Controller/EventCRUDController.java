@@ -1,7 +1,9 @@
 package GUI.Controller;
 
 import BE.Event;
+import BE.User;
 import GUI.Model.EventCoordModel;
+import GUI.Model.LoginModel;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,8 +33,13 @@ public class EventCRUDController extends BaseController implements Initializable
     public Button btnUpdate;
     private Event selectedEvent;
 
+    public LoginModel loginModel;
+
+
+
     public EventCRUDController() throws Exception {
         eventCoordModel = EventCoordModel.getInstance();
+        loginModel = LoginModel.getInstance();
 
     }
 
@@ -59,8 +66,9 @@ public class EventCRUDController extends BaseController implements Initializable
         String time = txtTime.getText();
         String location = txtLocation.getText();
         String notes = txtNotes.getText();
+        User loggedInUser = loginModel.getLoggedInUser();
         try {
-            eventCoordModel.createEvent(name,date,time, location, notes);
+            eventCoordModel.createEvent(name,date,time, location, notes, loggedInUser);
             Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
             stage.close();
         } catch (Exception e) {

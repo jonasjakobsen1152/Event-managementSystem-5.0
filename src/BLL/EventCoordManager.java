@@ -17,11 +17,11 @@ public class EventCoordManager {
         eventDAO = new EventCoordDAO_DB();
     }
 
-    public Event createEvent(String name, String date, String time, String notes, String location) {
-       return eventDAO.createEvent(name,date,time,notes, location);
+    public Event createEvent(String name, String date, String time, String notes, String location, User loggedInUser) {
+       return eventDAO.createEvent(name,date,time,notes, location, loggedInUser);
     }
 
-    public List<Event> getAllEvent()  {
+    public List<Event> getAllEvent() throws Exception {
         return eventDAO.getAllEvents();
     }
 

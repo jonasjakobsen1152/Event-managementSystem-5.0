@@ -238,16 +238,20 @@ public class AdminController extends BaseController implements Initializable {
             alert.show();
         } else {
             String userNameToCheck = selectedUser.getUserName();
-            for(User userToCheck : allUsers) {
-                if(userToCheck.getUserName().equals(userNameToCheck)){
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Alert");
-                    alert.setHeaderText("You cant add a event coordinator to the same Event more than once");
-                    alert.show();
+            if (allUsers.size() > 0) {
+                for (User userToCheck : allUsers) {
+                    if (userToCheck.getUserName().equals(userNameToCheck)) {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Alert");
+                        alert.setHeaderText("You cant add a event coordinator to the same Event more than once");
+                        alert.show();
+                    } else {
+                        usersInEventModel.addEventCoordinatorToEvent(selectedEvent, selectedUser);
+                    }
                 }
-                else {
-                    usersInEventModel.addEventCoordinatorToEvent(selectedEvent, selectedUser);
-                }
+            }
+            else {
+                usersInEventModel.addEventCoordinatorToEvent(selectedEvent, selectedUser);
             }
         }
 

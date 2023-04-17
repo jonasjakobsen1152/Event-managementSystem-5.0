@@ -2,6 +2,8 @@
 
 .AnchorPane{
     -fx-background-color: #18122B;
+    -fx-border-color: white;
+
 }
 .button{
     -fx-background-color: #443C68;
@@ -26,34 +28,7 @@
     -fx-text-fill: white;
 }
 
-.label{
+.label {
     -fx-text-fill: white;
-    -fx-background-color: #393053;
-}
-
-.table-row-cell .text{
-    -fx-fill: white;
-    -fx-cursor: hand;
-}
-
-.table-row-cell:selected .text {
-    -fx-fill: orange;
-
-}
-
-.whiteText{
-    -fx-background-color: white;
-}
-
-.Ticket{
-    -fx-background-color: #635985;
-}
-
-AllEvents{
-    -fx-font-fill:  white;
-}
-.text{
-    -fx-text-fill: white;
-
 }
 
