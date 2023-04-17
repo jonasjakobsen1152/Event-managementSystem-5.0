@@ -62,7 +62,7 @@ public class AdminController extends BaseController implements Initializable {
 
         tblShowEvents.setOnMouseClicked(event -> {
             selectedEvent = tblShowEvents.getSelectionModel().getSelectedItem();
-            if (selectedEvent == null){ //Fortæller user at personen skal lave en category
+            if (selectedEvent == null){ //Tells the user that the person wants to create a category
                 alertUser("Please choose an event");
             }
             else {
@@ -80,7 +80,6 @@ public class AdminController extends BaseController implements Initializable {
     }
 
     //Creates a new event coordinator
-
     public void handleCreateCoord(ActionEvent actionEvent) {
         String username = txtCoordUsername.getText();
         String password = txtCoordPassword.getText();

@@ -59,5 +59,4 @@ public class SpecialTicketController implements Initializable {
         allSpecialTickets = specialTicketModel.getSpecialTicketsToBeViewed();
 
     }
-
 }
