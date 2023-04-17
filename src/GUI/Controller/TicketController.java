@@ -23,6 +23,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -70,16 +71,16 @@ public class TicketController implements Initializable {
         });
     }
 
-    private void showTickets(){
+    private void showTickets() {
         try {
             tblTicket.setItems(ticketModel.getTicketsToBeViewed(eventID));
 
-            CLMID.setCellValueFactory(new PropertyValueFactory<Ticket,String>("id"));
-            CLMName.setCellValueFactory(new PropertyValueFactory<Ticket,String>("Name"));
-            CLMLastName.setCellValueFactory(new PropertyValueFactory<Ticket,String>("LastName"));
-            CLMEmail.setCellValueFactory(new PropertyValueFactory<Ticket,String>("Email"));
-            CLMType.setCellValueFactory(new PropertyValueFactory<Ticket,String>("TicketType"));
-            CLMQR.setCellValueFactory(new PropertyValueFactory<Ticket,String>("Qr"));
+            CLMID.setCellValueFactory(new PropertyValueFactory<Ticket, String>("id"));
+            CLMName.setCellValueFactory(new PropertyValueFactory<Ticket, String>("Name"));
+            CLMLastName.setCellValueFactory(new PropertyValueFactory<Ticket, String>("LastName"));
+            CLMEmail.setCellValueFactory(new PropertyValueFactory<Ticket, String>("Email"));
+            CLMType.setCellValueFactory(new PropertyValueFactory<Ticket, String>("TicketType"));
+            CLMQR.setCellValueFactory(new PropertyValueFactory<Ticket, String>("Qr"));
         } catch (Exception e) {
             e.printStackTrace();
             // Handle the exception here
@@ -94,21 +95,20 @@ public class TicketController implements Initializable {
         Stage dialogWindow = new Stage();
         Scene scene = new Scene(pane);
         dialogWindow.initModality(Modality.WINDOW_MODAL);
-        dialogWindow.initOwner((((Node)actionEvent.getSource()).getScene().getWindow()));
+        dialogWindow.initOwner((((Node) actionEvent.getSource()).getScene().getWindow()));
         dialogWindow.setScene(scene);
         dialogWindow.showAndWait();
     }
 
     public void handleDeleteTicket(ActionEvent actionEvent) {
-        if(selectedTicket == null){
-        alertUser("Please select a ticket to delete");
-        }
-        else{
+        if (selectedTicket == null) {
+            alertUser("Please select a ticket to delete");
+        } else {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Warning");
             alert.setHeaderText("Are you sure you want to delete: " + selectedTicket.getName().concat("?"));
             Optional<ButtonType> action = alert.showAndWait();
-            if(action.get() == ButtonType.OK){
+            if (action.get() == ButtonType.OK) {
                 ticketModel.deleteTicket(selectedTicket);
             }
         }
@@ -116,7 +116,7 @@ public class TicketController implements Initializable {
     }
 
 
-    private void alertUser(String error){
+    private void alertUser(String error) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Select a Customer");
         alert.setHeaderText(error);
@@ -124,6 +124,10 @@ public class TicketController implements Initializable {
     }
 
     public void handlePrintTicket(ActionEvent actionEvent) {
-        ticketModel.printTicket(selectedTicket,eventCoordModel.getSelectedEvent());
+        if (selectedTicket == null) {
+            JOptionPane.showMessageDialog(null, "Please select a ticket to print.", "Ticket Printer", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            ticketModel.printTicket(selectedTicket, eventCoordModel.getSelectedEvent());
+        }
     }
 }
