@@ -107,15 +107,21 @@ public class EventCoordController extends BaseController implements Initializabl
     }
 
     public void handleCreateNewEvent(ActionEvent actionEvent) throws Exception {
+
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/GUI/View/EventCRUDWindow.fxml"));
         AnchorPane pane = loader.load();
+
+        EventCRUDController eventCRUDController = loader.getController();
+        eventCRUDController.setModel(super.getModel());
+
+        eventCRUDController.setup();
+
         Stage dialogWindow = new Stage();
         Scene scene = new Scene(pane);
         dialogWindow.initModality(Modality.WINDOW_MODAL);
-        dialogWindow.initOwner((((Node) actionEvent.getSource()).getScene().getWindow()));
+        dialogWindow.initOwner((((Node)actionEvent.getSource()).getScene().getWindow()));
         dialogWindow.setScene(scene);
-        eventCRUDController.setup();
         dialogWindow.showAndWait();
         updateEventCoordModel();
     }

@@ -61,6 +61,7 @@ public class EventCRUDController extends BaseController implements Initializable
     }
 
     public void handleCreateEvent(ActionEvent actionEvent) {
+
         String name = txtName.getText();
         String date = txtDate.getText();
         String time = txtTime.getText();
@@ -104,6 +105,7 @@ public class EventCRUDController extends BaseController implements Initializable
     }
 
     public void setup() {
+        btnUpdate.setVisible(false);
     }
 
     public void setEvent(Event selectedEvent) {
