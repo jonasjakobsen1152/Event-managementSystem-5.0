@@ -1,10 +1,12 @@
 package BLL;
 
 import BE.SpecialTicket;
+import BLL.Util.PDFCreator;
 import BLL.Util.QRCodeStringGenerator;
 import DAL.DB.SpecialTicketDAO_DB;
 import DAL.ISpecialTicketDAO;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 public class SpecialTicketManager {
@@ -29,5 +31,11 @@ public class SpecialTicketManager {
         QRCodeStringGenerator qrCodeStringGenerator = new QRCodeStringGenerator();
         String generatedQR = qrCodeStringGenerator.getGeneratedString();
         specialTicketDAO.createSpecielTicket(generatedQR, ticketType, ticketAvailable);
+    }
+
+    public void printSpecialTicket(SpecialTicket selectedSpecialTicket) throws FileNotFoundException {
+        PDFCreator pdfCreator = new PDFCreator();
+
+        pdfCreator.printSpecialTicket(selectedSpecialTicket);
     }
 }

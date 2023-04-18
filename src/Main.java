@@ -12,14 +12,20 @@ import java.io.IOException;
 import static javafx.application.Application.launch;
 
 public class Main extends Application {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args)  {
         launch(args);
     }
     @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/GUI/View/Login.fxml"));
+    public void start(Stage primaryStage) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/GUI/View/Login.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         primaryStage.setScene(new Scene(root));
 
         primaryStage.show();
     }
+
 }

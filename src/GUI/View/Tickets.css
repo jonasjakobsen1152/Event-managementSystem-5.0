@@ -22,13 +22,20 @@
 
 .SidePane {
     -fx-background-color: #393053;
+    -fx-border-color: #18122B;
 }
 
-.cell {
-    -fx-text-fill: white;
-}
 
 .label {
     -fx-text-fill: white;
 }
 
+.table-row-cell .text{
+    -fx-fill: white;
+    -fx-cursor: hand;
+}
+
+.table-row-cell:selected .text {
+    -fx-fill: orange;
+
+}

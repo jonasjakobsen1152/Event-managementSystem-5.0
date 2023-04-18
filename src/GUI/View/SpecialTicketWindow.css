@@ -21,6 +21,7 @@
 
 .SidePane {
     -fx-background-color: #393053;
+    -fx-border-color: #18122B;
 }
 
 .cell {

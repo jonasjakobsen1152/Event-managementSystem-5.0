@@ -6,6 +6,8 @@ import BLL.SpecialTicketManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.io.FileNotFoundException;
+
 public class SpecialTicketModel {
 
     SpecialTicketManager specialTicketManager;
@@ -29,4 +31,7 @@ public class SpecialTicketModel {
         specialTicketManager.createSpecialTicket(ticketType,ticketAvailable);
     }
 
+    public void printSpecialTicket(SpecialTicket selectedSpecialTicket) throws FileNotFoundException {
+        specialTicketManager.printSpecialTicket(selectedSpecialTicket);
+    }
 }

@@ -7,16 +7,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="607.0" prefWidth="1369.0" styleClass="AnchorPane" stylesheets="@CoordinatorWindow.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.EventCoordController">
+<AnchorPane prefHeight="607.0" prefWidth="1369.0" styleClass="AnchorPane" stylesheets="@CoordinatorWindow.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.EventCoordController">
    <children>
       <AnchorPane prefHeight="607.0" prefWidth="263.0" styleClass="SidePane" stylesheets="@CoordinatorWindow.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <MFXButton fx:id="btnCreateNewEvent" buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="42.0" onAction="#handleCreateNewEvent" prefHeight="48.0" prefWidth="215.0" text="Create New Event" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="42.0" />
-            <MFXButton fx:id="btnUpdateEvent" buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="136.0" onAction="#handleUpdateEvent" prefHeight="48.0" prefWidth="215.0" text="Update Event" AnchorPane.leftAnchor="20.0" />
-            <MFXButton fx:id="btnViewTickets" buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="334.0" onAction="#handleViewTickets" prefHeight="48.0" prefWidth="215.0" text="Event Tickets" AnchorPane.leftAnchor="20.0" />
-            <MFXButton fx:id="btnDeleteTickets" buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="232.0" onAction="#handleDeleteEvent" prefHeight="48.0" prefWidth="215.0" text="Delete Events" AnchorPane.leftAnchor="20.0" />
+            <MFXButton fx:id="btnUpdateEvent" buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="120.0" onAction="#handleUpdateEvent" prefHeight="48.0" prefWidth="215.0" text="Update Event" AnchorPane.leftAnchor="20.0" />
+            <MFXButton fx:id="btnViewTickets" buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="355.0" onAction="#handleViewTickets" prefHeight="48.0" prefWidth="215.0" text="Manage  Tickets" AnchorPane.leftAnchor="20.0" />
+            <MFXButton fx:id="btnDeleteTickets" buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="199.0" onAction="#handleDeleteEvent" prefHeight="48.0" prefWidth="215.0" text="Delete Event" AnchorPane.leftAnchor="20.0" />
             <MFXButton buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="519.0" onAction="#handleExitCoordinatorWindow" prefHeight="48.0" prefWidth="215.0" text="Exit To LogIn" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="28.0" />
-            <MFXButton buttonType="RAISED" depthLevel="LEVEL3" layoutX="26.0" layoutY="428.0" onAction="#handleSpecialTicket" prefHeight="48.0" prefWidth="215.0" text="Special Ticket" />
+            <MFXButton buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="436.0" onAction="#handleSpecialTicket" prefHeight="48.0" prefWidth="215.0" text="Manage Special Ticket" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="309.0" layoutY="85.0" prefHeight="431.0" prefWidth="751.0" styleClass="SidePane" AnchorPane.bottomAnchor="91.0" AnchorPane.leftAnchor="309.0" AnchorPane.rightAnchor="309.0" AnchorPane.topAnchor="85.0">

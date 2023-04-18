@@ -90,7 +90,7 @@ public class EventCoordDAO_DB implements IEventCoordDAO {
 
     public void deleteUsersInEvent(int ID){
         //SQL string that deletes all information that is connected to the deleted event
-        String sql = "DELETE ALL FROM UserEvent WHERE EventID = ?;";
+        String sql = "DELETE FROM UserEvent WHERE EventID = ?;";
 
         try (Connection conn = databaseConnector.getConnection()){
             PreparedStatement stmt = conn.prepareStatement(sql);

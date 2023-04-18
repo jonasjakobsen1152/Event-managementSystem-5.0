@@ -12,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -25,10 +26,10 @@ public class SpecialTicketController implements Initializable {
     @FXML
     private MFXTextField txtDescribeTicket;
     @FXML
-    private MFXButton btnPrintSpecialTicket;
-    @FXML
     private SpecialTicketModel specialTicketModel;
     private ObservableList<SpecialTicket> allSpecialTickets;
+
+    private SpecialTicket selectedSpecialTicket;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -36,11 +37,6 @@ public class SpecialTicketController implements Initializable {
         showSpecialTicket();
     }
 
-//    public SpecialTicketController() {
-//
-//        specialTicketModel = new SpecialTicketModel();
-//        showSpecialTicket();
-//    }
     public void showSpecialTicket(){
         allSpecialTickets = specialTicketModel.getSpecialTicketsToBeViewed();
         clmSpecialTickets.setCellValueFactory(new PropertyValueFactory<SpecialTicket,String>("TicketType"));
@@ -49,18 +45,21 @@ public class SpecialTicketController implements Initializable {
     }
 
     public void handlePrintSpecialTicket(ActionEvent actionEvent) {
-
+        selectedSpecialTicket = tblAllSpecialTickets.getSelectionModel().getSelectedItem();
+        try {
+            specialTicketModel.printSpecialTicket(selectedSpecialTicket);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void handleCreateSpecialTicket(ActionEvent actionEvent) {
         String describe = txtDescribeTicket.getText();
         specialTicketModel.createSpecialTicket(describe,1);
-        //showSpecialTicket();
         allSpecialTickets = specialTicketModel.getSpecialTicketsToBeViewed();
 
     }
 
     public void handleDeleteSpecialTicket(ActionEvent actionEvent) {
-
     }
 }

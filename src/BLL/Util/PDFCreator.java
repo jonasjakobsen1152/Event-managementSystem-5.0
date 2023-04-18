@@ -2,6 +2,7 @@ package BLL.Util;
 
 
 import BE.Event;
+import BE.SpecialTicket;
 import BE.Ticket;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
@@ -53,5 +54,19 @@ public class PDFCreator {
             throw new RuntimeException(e);
         }
 
+    }
+
+    public void printSpecialTicket(SpecialTicket selectedSpecialTicket) throws FileNotFoundException {
+        PdfWriter pdfWriter = new PdfWriter("SpecialTicket.pdf");
+        PdfDocument pdfDocument = new PdfDocument(pdfWriter);
+
+        Document document = new Document(pdfDocument);
+        pdfDocument.setDefaultPageSize(PageSize.A4);
+        pdfDocument.addNewPage();
+        //Creates a new paragraph that strings can be added to
+        Paragraph paragraph = new Paragraph();
+        //Adds strings to the paragraph
+
+        
     }
 }
