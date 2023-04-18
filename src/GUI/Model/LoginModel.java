@@ -34,7 +34,6 @@ public class LoginModel {
 
     public void setLoggedInUser(User user){
         loggedInUser = user;
-        System.out.println(loggedInUser.toString());
 
     }
 
