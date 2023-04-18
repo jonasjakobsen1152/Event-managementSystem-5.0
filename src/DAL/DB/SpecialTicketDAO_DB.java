@@ -41,7 +41,18 @@ public class SpecialTicketDAO_DB implements ISpecialTicketDAO {
 
     @Override
     public void deleteSpecialTicket(SpecialTicket selectedSpecialTicket) {
-        //TODO MAKE IT JONAS
+        try (Connection conn = databaseConnector.getConnection()) {
+            //SQL string that makes it possible to delete SpecialTickets
+            String sql = "DELETE FROM dbo.SpecialTickets WHERE ID = ?";
+
+            PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+            stmt.setInt(1, selectedSpecialTicket.getId());
+
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 

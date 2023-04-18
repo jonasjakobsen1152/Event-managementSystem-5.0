@@ -61,6 +61,6 @@ public class SpecialTicketController implements Initializable {
     }
 
     public void handleDeleteSpecialTicket(ActionEvent actionEvent) {
-        
+
     }
 }
