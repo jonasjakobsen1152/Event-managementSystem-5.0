@@ -59,4 +59,8 @@ public class SpecialTicketController implements Initializable {
         allSpecialTickets = specialTicketModel.getSpecialTicketsToBeViewed();
 
     }
+
+    public void handleDeleteSpecialTicket(ActionEvent actionEvent) {
+        
+    }
 }

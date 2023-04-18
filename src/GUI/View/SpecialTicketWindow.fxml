@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="405.0" prefWidth="720.0" styleClass="SidePane" stylesheets="@SpecialTicketWindow.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.SpecialTicketController">
    <children>
       <MFXButton fx:id="btnPrintSpecialTicket" buttonType="RAISED" depthLevel="LEVEL3" layoutX="14.0" layoutY="332.0" onAction="#handlePrintSpecialTicket" prefHeight="48.0" prefWidth="181.0" text="Print Special Ticket" />
@@ -24,5 +23,6 @@
          </effect>
       </TableView>
       <Text layoutX="221.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Creating Special Ticket Window" />
+      <MFXButton fx:id="btnDeleteSpecialTicket" buttonType="RAISED" depthLevel="LEVEL3" layoutX="525.0" layoutY="332.0" onAction="#handleDeleteSpecialTicket" prefHeight="48.0" prefWidth="181.0" text="Print Special Ticket" />
    </children>
 </AnchorPane>
