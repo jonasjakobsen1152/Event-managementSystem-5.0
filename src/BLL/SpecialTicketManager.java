@@ -18,8 +18,8 @@ public class SpecialTicketManager {
 
 
 
-    public List<SpecialTicket> getAllSpecialTicket(){
-        return specialTicketDAO.getAllSpecialTickets();
+    public List<SpecialTicket> getAllSpecialTicket(int eventID){
+        return specialTicketDAO.getAllSpecialTickets(eventID);
     }
 
     public void deleteSpecialTicket(SpecialTicket selectedSpecialTicket){

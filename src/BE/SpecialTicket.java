@@ -7,6 +7,7 @@ public class SpecialTicket {
     private String qr;
     private String ticketType;
     private int ticketAvailable;
+    private String name;
 
     public SpecialTicket(int id, String qr, String ticketType, int ticketAvailable) {
         this.id = id;
@@ -14,7 +15,12 @@ public class SpecialTicket {
         this.ticketType = ticketType;
         this.ticketAvailable = ticketAvailable;
     }
-
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
     public int getId() {
         return id;
     }

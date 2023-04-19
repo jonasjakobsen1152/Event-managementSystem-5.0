@@ -23,6 +23,6 @@
          </effect>
       </TableView>
       <Text layoutX="221.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Creating Special Ticket Window" />
-      <MFXButton fx:id="btnDeleteSpecialTicket" buttonType="RAISED" depthLevel="LEVEL3" layoutX="525.0" layoutY="332.0" onAction="#handleDeleteSpecialTicket" prefHeight="48.0" prefWidth="181.0" text="Print Special Ticket" />
+      <MFXButton fx:id="btnDeleteSpecialTicket" buttonType="RAISED" depthLevel="LEVEL3" layoutX="525.0" layoutY="332.0" onAction="#handleDeleteSpecialTicket" prefHeight="48.0" prefWidth="181.0" text="Delete Special Ticket" />
    </children>
 </AnchorPane>

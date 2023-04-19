@@ -21,9 +21,9 @@ public class SpecialTicketModel {
 
     }
 
-    public ObservableList<SpecialTicket> getSpecialTicketsToBeViewed(){
+    public ObservableList<SpecialTicket> getSpecialTicketsToBeViewed(int eventID){
         specialTicketsToBeViewed.clear();
-        specialTicketsToBeViewed.addAll(specialTicketManager.getAllSpecialTicket());
+        specialTicketsToBeViewed.addAll(specialTicketManager.getAllSpecialTicket(eventID));
         return specialTicketsToBeViewed;
     }
 
@@ -33,5 +33,9 @@ public class SpecialTicketModel {
 
     public void printSpecialTicket(SpecialTicket selectedSpecialTicket) throws FileNotFoundException {
         specialTicketManager.printSpecialTicket(selectedSpecialTicket);
+    }
+
+    public void deleteSpecialTicket(SpecialTicket selectedSpecialTicket) {
+        specialTicketManager.deleteSpecialTicket(selectedSpecialTicket);
     }
 }

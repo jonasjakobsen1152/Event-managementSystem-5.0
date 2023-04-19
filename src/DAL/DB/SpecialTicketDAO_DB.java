@@ -14,7 +14,7 @@ public class SpecialTicketDAO_DB implements ISpecialTicketDAO {
         databaseConnector = new MyDatabaseConnector();
     }
 
-    public ArrayList<SpecialTicket> getAllSpecialTickets() {
+    public ArrayList<SpecialTicket> getAllSpecialTickets(int eventID) {
         ArrayList<SpecialTicket> allSpecialTickets = new ArrayList<>();
 
         try (Connection conn = databaseConnector.getConnection();
@@ -38,6 +38,7 @@ public class SpecialTicketDAO_DB implements ISpecialTicketDAO {
         }
         return allSpecialTickets;
     }
+
 
     @Override
     public void deleteSpecialTicket(SpecialTicket selectedSpecialTicket) {
