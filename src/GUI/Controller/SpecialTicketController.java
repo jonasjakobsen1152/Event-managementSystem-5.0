@@ -35,7 +35,7 @@ public class SpecialTicketController implements Initializable {
 
     private SpecialTicket selectedSpecialTicket;
     private EventCoordModel eventCoordModel;
-    private int eventID;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -46,14 +46,13 @@ public class SpecialTicketController implements Initializable {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        eventID = eventCoordModel.getSelectedEvent().getId();
     }
 
     public void showSpecialTicket(){
-        tblAllSpecialTickets.setItems(specialTicketModel.getSpecialTicketsToBeViewed(eventID));
+        tblAllSpecialTickets.setItems(specialTicketModel.getSpecialTicketsToBeViewed());
 
-        tblAllSpecialTickets.setItems(specialTicketModel.getSpecialTicketsToBeViewed(eventID));
-        allSpecialTickets = specialTicketModel.getSpecialTicketsToBeViewed(eventID);
+        tblAllSpecialTickets.setItems(specialTicketModel.getSpecialTicketsToBeViewed());
+        allSpecialTickets = specialTicketModel.getSpecialTicketsToBeViewed();
         clmSpecialTickets.setCellValueFactory(new PropertyValueFactory<SpecialTicket,String>("TicketType"));
         tblAllSpecialTickets.setItems(allSpecialTickets);
 
@@ -71,7 +70,7 @@ public class SpecialTicketController implements Initializable {
     public void handleCreateSpecialTicket(ActionEvent actionEvent) {
         String describe = txtDescribeTicket.getText();
         specialTicketModel.createSpecialTicket(describe,1);
-        allSpecialTickets = specialTicketModel.getSpecialTicketsToBeViewed(eventID);
+        allSpecialTickets = specialTicketModel.getSpecialTicketsToBeViewed();
 
     }
     private void alertUser(String error) {
@@ -93,6 +92,6 @@ public class SpecialTicketController implements Initializable {
                 specialTicketModel.deleteSpecialTicket(selectedSpecialTicket);
             }
         }
-        specialTicketModel.getSpecialTicketsToBeViewed(eventID);
+        specialTicketModel.getSpecialTicketsToBeViewed();
     }
 }

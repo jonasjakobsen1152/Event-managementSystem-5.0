@@ -21,9 +21,9 @@ public class SpecialTicketModel {
 
     }
 
-    public ObservableList<SpecialTicket> getSpecialTicketsToBeViewed(int eventID){
+    public ObservableList<SpecialTicket> getSpecialTicketsToBeViewed(){
         specialTicketsToBeViewed.clear();
-        specialTicketsToBeViewed.addAll(specialTicketManager.getAllSpecialTicket(eventID));
+        specialTicketsToBeViewed.addAll(specialTicketManager.getAllSpecialTicket());
         return specialTicketsToBeViewed;
     }
 
