@@ -7,6 +7,7 @@ import DAL.DB.SpecialTicketDAO_DB;
 import DAL.ISpecialTicketDAO;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 public class SpecialTicketManager {
@@ -33,7 +34,7 @@ public class SpecialTicketManager {
         specialTicketDAO.createSpecielTicket(generatedQR, ticketType, ticketAvailable);
     }
 
-    public void printSpecialTicket(SpecialTicket selectedSpecialTicket) throws FileNotFoundException {
+    public void printSpecialTicket(SpecialTicket selectedSpecialTicket) throws IOException {
         PDFCreator pdfCreator = new PDFCreator();
 
         pdfCreator.printSpecialTicket(selectedSpecialTicket);

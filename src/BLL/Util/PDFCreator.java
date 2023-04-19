@@ -16,13 +16,12 @@ import com.itextpdf.layout.element.Paragraph;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.net.MalformedURLException;
 
 
 public class PDFCreator {
 
-    public void printTicket(Ticket selectedTicket, Event selectedEvent) {
-        try {
-
+    public void printTicket(Ticket selectedTicket, Event selectedEvent) throws IOException {
             PdfWriter pdfWriter = new PdfWriter("Ticket.pdf");
             PdfDocument pdfDocument = new PdfDocument(pdfWriter);
 
@@ -49,14 +48,9 @@ public class PDFCreator {
 
             Desktop.getDesktop().open(file);
 
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
     }
 
-    public void printSpecialTicket(SpecialTicket selectedSpecialTicket) throws FileNotFoundException {
+    public void printSpecialTicket(SpecialTicket selectedSpecialTicket) throws IOException {
         PdfWriter pdfWriter = new PdfWriter("SpecialTicket.pdf");
         PdfDocument pdfDocument = new PdfDocument(pdfWriter);
 
@@ -66,7 +60,20 @@ public class PDFCreator {
         //Creates a new paragraph that strings can be added to
         Paragraph paragraph = new Paragraph();
         //Adds strings to the paragraph
+        paragraph.add("A Special Ticket for use at EASV: ");
+        paragraph.add(selectedSpecialTicket.getTicketType() + "\r\n" + "\r\n");
 
-        
+
+        ImageData imageData = ImageDataFactory.create("QRCODE.png");
+        Image image = new Image(imageData);
+        paragraph.add(image);
+        document.add(paragraph);
+
+        document.close();
+
+
+        File file = new File("SpecialTicket.pdf");
+
+        Desktop.getDesktop().open(file);
     }
 }

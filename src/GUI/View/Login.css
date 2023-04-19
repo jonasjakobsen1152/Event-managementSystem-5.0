@@ -8,11 +8,23 @@
     -fx-fill: white;
 }
 
-.button{
+.title{
     -fx-font-family: 'Concert One', cursive;
-
+    -fx-fill: white;
+    -fx-font-size: 16;
 }
 
 .textfill {
     -fx-text-fill: white;
+}
+
+.frontPane {
+    -fx-background-color: #393053;
+}
+
+.button{
+    -fx-background-color: #443C68;
+    -fx-text-fill: white;
+    -fx-font-size: 17;
+    -fx-cursor: hand;
 }

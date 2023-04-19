@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class SpecialTicketModel {
 
@@ -31,7 +32,7 @@ public class SpecialTicketModel {
         specialTicketManager.createSpecialTicket(ticketType,ticketAvailable);
     }
 
-    public void printSpecialTicket(SpecialTicket selectedSpecialTicket) throws FileNotFoundException {
+    public void printSpecialTicket(SpecialTicket selectedSpecialTicket) throws IOException {
         specialTicketManager.printSpecialTicket(selectedSpecialTicket);
     }
 

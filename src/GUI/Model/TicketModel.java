@@ -7,6 +7,8 @@ import BLL.TicketManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.io.IOException;
+
 public class TicketModel {
     private static TicketModel instance;
 
@@ -46,7 +48,7 @@ public class TicketModel {
     ticketManager.createTicket(event,name,lastName,email,ticketType,qr,available);
     }
 
-    public void printTicket(Ticket selectedTicket, Event selectedEvent) {
+    public void printTicket(Ticket selectedTicket, Event selectedEvent) throws IOException {
         ticketManager.printTiket(selectedTicket,selectedEvent);
     }
 }

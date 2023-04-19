@@ -2,20 +2,21 @@
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@Login.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.LoginController">
+<AnchorPane prefHeight="484.0" prefWidth="676.0" styleClass="background" stylesheets="@Login.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.LoginController">
    <children>
-      <Text fill="WHITE" layoutX="108.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Password:" />
-      <Text fill="WHITE" layoutX="107.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Username:" />
-      <Text layoutX="108.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="whitetext" text="Password:" />
-      <Text layoutX="107.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="whitetext" text="Username:" />
-      <Button layoutX="515.0" layoutY="25.0" mnemonicParsing="false" onAction="#handleOpenAdmin" text="Admin open test" />
-      <MFXButton fx:id="btnLogInToApplication" buttonType="RAISED" depthLevel="LEVEL3" layoutX="193.0" layoutY="271.0" onAction="#HandlelogInToApplication" prefHeight="45.0" prefWidth="235.0" text="Login" />
-      <MFXTextField fx:id="txtUserName" floatMode="ABOVE" layoutX="193.0" layoutY="75.0" prefHeight="45.0" prefWidth="235.0" />
-      <MFXTextField fx:id="txtPassWord" floatMode="ABOVE" layoutX="193.0" layoutY="153.0" prefHeight="45.0" prefWidth="235.0" />
-      <Text fx:id="txtFailedLogin" fill="RED" layoutX="201.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="235.0" />
+      <AnchorPane layoutX="54.0" layoutY="49.0" prefHeight="382.0" prefWidth="567.0" styleClass="frontPane" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
+         <children>
+            <Text layoutX="192.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Event Management System" />
+            <Text fx:id="txtFailedLogin" fill="RED" layoutX="171.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="235.0" />
+         </children>
+      </AnchorPane>
+      <MFXButton fx:id="btnLogInToApplication" buttonType="RAISED" depthLevel="LEVEL3" layoutX="220.0" layoutY="294.0" onAction="#HandlelogInToApplication" prefHeight="45.0" prefWidth="235.0" text="Login" />
+      <Text layoutX="135.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="whitetext" text="Password:" />
+      <Text layoutX="134.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="whitetext" text="Username:" />
+      <MFXTextField fx:id="txtUserName" floatMode="ABOVE" layoutX="220.0" layoutY="138.0" prefHeight="45.0" prefWidth="235.0" />
+      <MFXTextField fx:id="txtPassWord" floatMode="ABOVE" layoutX="220.0" layoutY="216.0" prefHeight="45.0" prefWidth="235.0" />
    </children>
 </AnchorPane>

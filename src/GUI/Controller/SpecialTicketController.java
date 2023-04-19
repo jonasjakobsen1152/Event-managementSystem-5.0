@@ -18,6 +18,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -71,8 +72,8 @@ public class SpecialTicketController implements Initializable {
         selectedSpecialTicket = tblAllSpecialTickets.getSelectionModel().getSelectedItem();
         try {
             specialTicketModel.printSpecialTicket(selectedSpecialTicket);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+        } catch (IOException e) {
+           alertUser("Could not print ticket");
         }
     }
 

@@ -129,10 +129,14 @@ public class TicketController implements Initializable {
     }
 
     public void handlePrintTicket(ActionEvent actionEvent) {
-        if (selectedTicket == null) {
-            JOptionPane.showMessageDialog(null, "Please select a ticket to print.", "Ticket Printer", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            ticketModel.printTicket(selectedTicket, eventCoordModel.getSelectedEvent());
+        try {
+            if (selectedTicket == null) {
+                JOptionPane.showMessageDialog(null, "Please select a ticket to print.", "Ticket Printer", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                ticketModel.printTicket(selectedTicket, eventCoordModel.getSelectedEvent());
+            }
+        } catch (IOException e) {
+            alertUser("Could not print Ticket");
         }
     }
 }

@@ -7,6 +7,7 @@ import BLL.Util.QRCodeStringGenerator;
 import DAL.DB.TicketDAO_DB;
 import DAL.ITicketDAO;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class TicketManager {
@@ -33,7 +34,7 @@ public class TicketManager {
         iTicketDAO.createTicket(event,name,lastName,email,ticketType,newQR,available);
     }
 
-    public void printTiket(Ticket selectedTicket, Event selectedEvent) {
+    public void printTiket(Ticket selectedTicket, Event selectedEvent) throws IOException {
         PDFCreator pdfCreator = new PDFCreator();
 
         pdfCreator.printTicket(selectedTicket,selectedEvent);
