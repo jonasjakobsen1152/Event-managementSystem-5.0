@@ -83,16 +83,19 @@ public class EventCoordController extends BaseController implements Initializabl
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        tblAllEvents.setOnMouseClicked(event -> {
-            Event selectedEvent = tblAllEvents.getSelectionModel().getSelectedItem();
-            eventCoordModel.setSelectedEvent(selectedEvent);
-            if(selectedEvent != null) {
+        tblAllEvents.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Event>() {
+            @Override
+            public void changed(ObservableValue<? extends Event> observable, Event oldValue, Event newValue) {
+                selectedEvent = tblAllEvents.getSelectionModel().getSelectedItem();
                 eventCoordModel.setSelectedEvent(selectedEvent);
-                txtEventName.setText(getSelectedEvent().getEventName());
-                txtEventDate.setText(getSelectedEvent().getEventDate());
-                txtEventLocation.setText(getSelectedEvent().getEventLocation());
-                txtEventNotes.setText(getSelectedEvent().getEventNotes());
-                txtEventTime.setText(getSelectedEvent().getEventTime());
+                if(selectedEvent != null) {
+                    eventCoordModel.setSelectedEvent(selectedEvent);
+                    txtEventName.setText(getSelectedEvent().getEventName());
+                    txtEventDate.setText(getSelectedEvent().getEventDate());
+                    txtEventLocation.setText(getSelectedEvent().getEventLocation());
+                    txtEventNotes.setText(getSelectedEvent().getEventNotes());
+                    txtEventTime.setText(getSelectedEvent().getEventTime());
+                }
             }
         });
     }

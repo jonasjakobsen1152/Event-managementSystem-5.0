@@ -7,6 +7,8 @@ import GUI.Model.EventCoordModel;
 import GUI.Model.TicketModel;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -66,8 +68,11 @@ public class TicketController implements Initializable {
         ticketModel = TicketModel.getInstance();
         showTickets();
 
-        tblTicket.setOnMouseClicked(event -> {
-            selectedTicket = tblTicket.getSelectionModel().getSelectedItem();
+        tblTicket.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Ticket>() {
+            @Override
+            public void changed(ObservableValue<? extends Ticket> observable, Ticket oldValue, Ticket newValue) {
+                selectedTicket = tblTicket.getSelectionModel().getSelectedItem();
+            }
         });
     }
 

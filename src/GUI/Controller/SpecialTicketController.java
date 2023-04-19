@@ -5,6 +5,8 @@ import GUI.Model.EventCoordModel;
 import GUI.Model.SpecialTicketModel;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -46,8 +48,12 @@ public class SpecialTicketController implements Initializable {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        tblAllSpecialTickets.setOnMouseClicked(event -> {
-            selectedSpecialTicket = tblAllSpecialTickets.getSelectionModel().getSelectedItem();
+
+        tblAllSpecialTickets.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<SpecialTicket>() {
+            @Override
+            public void changed(ObservableValue<? extends SpecialTicket> observable, SpecialTicket oldValue, SpecialTicket newValue) {
+                selectedSpecialTicket = tblAllSpecialTickets.getSelectionModel().getSelectedItem();
+            }
         });
     }
 
