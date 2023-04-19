@@ -46,6 +46,9 @@ public class SpecialTicketController implements Initializable {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+        tblAllSpecialTickets.setOnMouseClicked(event -> {
+            selectedSpecialTicket = tblAllSpecialTickets.getSelectionModel().getSelectedItem();
+        });
     }
 
     public void showSpecialTicket(){
@@ -86,7 +89,6 @@ public class SpecialTicketController implements Initializable {
         } else {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Warning");
-            alert.setHeaderText("Are you sure you want to delete: " + selectedSpecialTicket.getName().concat("?"));
             Optional<ButtonType> action = alert.showAndWait();
             if (action.get() == ButtonType.OK) {
                 specialTicketModel.deleteSpecialTicket(selectedSpecialTicket);
