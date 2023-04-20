@@ -16,7 +16,7 @@
                 <TableColumn prefWidth="90.0" text="Event" />
             </columns>
         </TableView>
-        <Button layoutX="150.0" layoutY="279.0" mnemonicParsing="false" onAction="#handleCreateCoord" text="Create Coordinator" />
+        <Button layoutX="14.0" layoutY="279.0" mnemonicParsing="false" onAction="#handleCreateCoord" text="Create Coordinator" />
         <TextField fx:id="txtCoordUsername" layoutX="150.0" layoutY="315.0" />
         <TextField fx:id="txtCoordPassword" layoutX="150.0" layoutY="350.0" />
         <Label layoutX="27.0" layoutY="319.0" text="Coordinator username" />
@@ -30,15 +30,15 @@
             </columns>
         </TableView>
         <Button layoutX="294.0" layoutY="279.0" mnemonicParsing="false" onAction="#handleDeleteCoord" text="Delete Coordinator" />
-        <Button layoutX="508.0" layoutY="279.0" mnemonicParsing="false" onAction="#handleDeleteEvent" text="Delete Event" />
-        <Button layoutX="706.0" layoutY="279.0" mnemonicParsing="false" onAction="#handleViewEventNotes" text="View event notes" />
+        <Button layoutX="808.0" layoutY="279.0" mnemonicParsing="false" onAction="#handleDeleteEvent" text="Delete Event" />
+        <Button layoutX="446.0" layoutY="279.0" mnemonicParsing="false" onAction="#handleViewEventNotes" text="View event notes" />
         <TableView fx:id="tblCoordToEvents" layoutX="925.0" layoutY="16.0" prefHeight="255.0" prefWidth="256.0">
             <columns>
                 <TableColumn fx:id="clmUsersToEvent" prefWidth="255.0" text="Event Coordinators til eventet" />
             </columns>
         </TableView>
-      <Button layoutX="952.0" layoutY="279.0" mnemonicParsing="false" onAction="#handleAddEventCoordinator" text="Tilføj" />
-      <Button layoutX="1105.0" layoutY="279.0" mnemonicParsing="false" onAction="#handleRemoveCoordFromEvent" text="Fjern" />
+      <Button layoutX="925.0" layoutY="279.0" mnemonicParsing="false" onAction="#handleAddEventCoordinator" text="Add Coordinators" />
+      <Button layoutX="1058.0" layoutY="279.0" mnemonicParsing="false" onAction="#handleRemoveCoordFromEvent" text="Delete Coordinators" />
       <Button layoutX="14.0" layoutY="392.0" mnemonicParsing="false" onAction="#handleExitAdminWindow" text="Exit to login" />
     </children>
 </AnchorPane>
