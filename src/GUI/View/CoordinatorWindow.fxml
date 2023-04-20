@@ -15,7 +15,7 @@
             <MFXButton fx:id="btnUpdateEvent" buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="120.0" onAction="#handleUpdateEvent" prefHeight="48.0" prefWidth="215.0" text="Update Event" AnchorPane.leftAnchor="20.0" />
             <MFXButton fx:id="btnViewTickets" buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="355.0" onAction="#handleViewTickets" prefHeight="48.0" prefWidth="215.0" text="Manage  Tickets" AnchorPane.leftAnchor="20.0" />
             <MFXButton fx:id="btnDeleteTickets" buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="199.0" onAction="#handleDeleteEvent" prefHeight="48.0" prefWidth="215.0" text="Delete Event" AnchorPane.leftAnchor="20.0" />
-            <MFXButton buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="519.0" onAction="#handleExitCoordinatorWindow" prefHeight="48.0" prefWidth="215.0" text="Exit To LogIn" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="28.0" />
+            <MFXButton buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="519.0" onAction="#handleExitCoordinatorWindow" prefHeight="48.0" prefWidth="215.0" text="Logout" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="28.0" />
             <MFXButton buttonType="RAISED" depthLevel="LEVEL3" layoutX="20.0" layoutY="436.0" onAction="#handleSpecialTicket" prefHeight="48.0" prefWidth="215.0" text="Manage Special Ticket" />
          </children>
       </AnchorPane>
