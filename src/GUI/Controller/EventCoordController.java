@@ -48,15 +48,6 @@ public class EventCoordController extends BaseController implements Initializabl
     public EventCRUDController eventCRUDController;
     public LoginModel loginModel;
     private Event selectedEvent;
-    public TableView<Event> tblShowEvents;
-    public TableColumn clmUsername;
-    public TableColumn clmPassword;
-    public TableView<User> tableViewCoord;
-    public TableColumn clmStartTime;
-    public TableColumn clmLocation;
-    public TableColumn clmEndTime;
-    private ETEBModel model;
-    private BaseController baseController;
 
 
     public EventCoordController() throws Exception {

@@ -53,7 +53,6 @@ public class EventCoordModel {
     public ObservableList<Event> getObservableEvents(User user) throws SQLException {
         eventsToBeViewed.clear();
         eventsToBeViewed.addAll(eventCoordManager.getLoggedInUserEvent(user));
-        //eventsToBeViewed.addAll(eventCoordManager.getAllEvent());
         return eventsToBeViewed;
     }
 
@@ -75,8 +74,5 @@ public class EventCoordModel {
         showList();
     }
 
-    public ObservableList<User> getObservableUsers() {
-        return usersToBeViewed;
-    }
 
 }

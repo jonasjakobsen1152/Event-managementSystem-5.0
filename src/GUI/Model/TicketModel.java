@@ -28,7 +28,7 @@ public class TicketModel {
         }
         return instance;
     }
-
+    
     public ObservableList<Ticket> getTicketsToBeViewed(int eventID) {
         ticketsToBeViewed.clear();
         ticketsToBeViewed.addAll(ticketManager.getAllTickets(eventID));
