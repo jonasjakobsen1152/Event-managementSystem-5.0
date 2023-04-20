@@ -219,7 +219,7 @@ public class AdminController extends BaseController implements Initializable {
     }
 
 
-    public void handleAddEventCoordinator(ActionEvent actionEvent) throws SQLServerException {
+    public void handleAddEventCoordinator(ActionEvent actionEvent){
 
         selectedEvent = tblShowEvents.getSelectionModel().getSelectedItem();
         selectedUser = tableViewCoord.getSelectionModel().getSelectedItem();
