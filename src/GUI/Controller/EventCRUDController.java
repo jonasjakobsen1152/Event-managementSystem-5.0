@@ -112,6 +112,4 @@ public class EventCRUDController extends BaseController implements Initializable
         this.selectedEvent = selectedEvent;
     }
 
-    public void setOnEventUpdated(Object o) {
-    }
 }

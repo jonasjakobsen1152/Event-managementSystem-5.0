@@ -15,9 +15,6 @@ public class AdminModel {
     private ObservableList<User> usersToBeViewed;
     private ObservableList<Event> eventsToBeViewed;
 
-    private ObservableList<User> usersInEvenTBV;
-
-    private ArrayList<User> allUsers;
 
     public AdminModel() {
         adminManager = new AdminManager();
@@ -40,10 +37,6 @@ public class AdminModel {
         usersToBeViewed.remove(selectedUser);
     }
 
-    public void removeCoord(User selectedUser) {
-        adminManager.removeCoord(selectedUser);
-        usersToBeViewed.remove(selectedUser);
-    }
 
     public ObservableList<User> getObservableUsers() {
         return usersToBeViewed;

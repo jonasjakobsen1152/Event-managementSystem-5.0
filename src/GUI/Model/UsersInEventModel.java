@@ -32,10 +32,7 @@ public class UsersInEventModel {
     public ObservableList<User> getUsersInEventToBeViewed() {
         return usersInEventToBeViewed;
     }
-
-    public void setUsersInEventToBeViewed(ObservableList<User> usersInEventToBeViewed) {
-        this.usersInEventToBeViewed = usersInEventToBeViewed;
-    }
+    
 
     public void showlist(int selectedEventId) throws SQLServerException {
         usersInEventToBeViewed.clear();
