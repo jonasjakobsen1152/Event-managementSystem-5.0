@@ -223,37 +223,42 @@ public class AdminController extends BaseController implements Initializable {
 
         selectedEvent = tblShowEvents.getSelectionModel().getSelectedItem();
         selectedUser = tableViewCoord.getSelectionModel().getSelectedItem();
-        allUsers = usersInEventModel.getAllUsersInEvent(selectedEvent.getId());
-        if(selectedEvent == null){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Select an event");
-            alert.setHeaderText("Choose a event to add to");
-            alert.show();
-        }
-        else if (selectedUser == null){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Select a user");
-            alert.setHeaderText("Choose a user to add");
-            alert.show();
-        } else {
-            String userNameToCheck = selectedUser.getUserName();
-            if (allUsers.size() > 0) {
-                for (User userToCheck : allUsers) {
-                    if (userToCheck.getUserName().equals(userNameToCheck)) {
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setTitle("Alert");
-                        alert.setHeaderText("You cant add a event coordinator to the same Event more than once");
-                        alert.show();
-                    } else {
-                        usersInEventModel.addEventCoordinatorToEvent(selectedEvent, selectedUser);
+        try {
+            allUsers = usersInEventModel.getAllUsersInEvent(selectedEvent.getId());
+            if (selectedEvent == null) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Select an event");
+                alert.setHeaderText("Choose a event to add to");
+                alert.show();
+            } else if (selectedUser == null) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Select a user");
+                alert.setHeaderText("Choose a user to add");
+                alert.show();
+            } else {
+                String userNameToCheck = selectedUser.getUserName();
+                if (allUsers.size() > 0) {
+                    for (User userToCheck : allUsers) {
+                        if (userToCheck.getUserName().equals(userNameToCheck)) {
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("Alert");
+                            alert.setHeaderText("You cant add a event coordinator to the same Event more than once");
+                            alert.show();
+                        } else {
+                            usersInEventModel.addEventCoordinatorToEvent(selectedEvent, selectedUser);
+                        }
                     }
+                } else {
+                    usersInEventModel.addEventCoordinatorToEvent(selectedEvent, selectedUser);
                 }
             }
-            else {
-                usersInEventModel.addEventCoordinatorToEvent(selectedEvent, selectedUser);
-            }
         }
-
+        catch(SQLServerException e){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Could not create a user");
+            alert.setHeaderText("Could not create a user. Please check your internet connection");
+            alert.show();
+        }
     }
 
     public void handleRemoveCoordFromEvent(ActionEvent actionEvent) throws SQLServerException {
