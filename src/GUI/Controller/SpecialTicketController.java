@@ -20,10 +20,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class SpecialTicketController implements Initializable {
+    public TableColumn clmQRCode;
     @FXML
     private TableView<SpecialTicket> tblAllSpecialTickets;
     @FXML
@@ -64,6 +66,8 @@ public class SpecialTicketController implements Initializable {
         tblAllSpecialTickets.setItems(specialTicketModel.getSpecialTicketsToBeViewed());
         allSpecialTickets = specialTicketModel.getSpecialTicketsToBeViewed();
         clmSpecialTickets.setCellValueFactory(new PropertyValueFactory<SpecialTicket,String>("TicketType"));
+        clmQRCode.setCellValueFactory(new PropertyValueFactory<SpecialTicket,String>("Qr"));
+
         tblAllSpecialTickets.setItems(allSpecialTickets);
 
     }
@@ -84,9 +88,16 @@ public class SpecialTicketController implements Initializable {
 
     public void handleCreateSpecialTicket(ActionEvent actionEvent) {
         String describe = txtDescribeTicket.getText();
-        specialTicketModel.createSpecialTicket(describe,1);
-        allSpecialTickets = specialTicketModel.getSpecialTicketsToBeViewed();
-
+        if(describe.isEmpty()){
+            alertUser("Special Ticket cannot be empty");
+            return;
+        }
+        try {
+            specialTicketModel.createSpecialTicket(describe, 1);
+            allSpecialTickets = specialTicketModel.getSpecialTicketsToBeViewed();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
     private void alertUser(String error) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

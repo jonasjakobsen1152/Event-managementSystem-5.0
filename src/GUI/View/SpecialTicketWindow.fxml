@@ -8,21 +8,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="405.0" prefWidth="720.0" styleClass="SidePane" stylesheets="@SpecialTicketWindow.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.SpecialTicketController">
+<AnchorPane prefHeight="405.0" prefWidth="720.0" styleClass="SidePane" stylesheets="@SpecialTicketWindow.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.SpecialTicketController">
    <children>
-      <MFXButton fx:id="btnPrintSpecialTicket" buttonType="RAISED" depthLevel="LEVEL3" layoutX="14.0" layoutY="332.0" onAction="#handlePrintSpecialTicket" prefHeight="48.0" prefWidth="181.0" text="Print Ticket" />
-      <MFXTextField fx:id="txtDescribeTicket" floatMode="ABOVE" layoutX="185.0" layoutY="54.0" prefHeight="49.0" prefWidth="286.0" />
+      <MFXButton fx:id="btnPrintSpecialTicket" buttonType="RAISED" depthLevel="LEVEL3" layoutX="14.0" layoutY="332.0" onAction="#handlePrintSpecialTicket" prefHeight="48.0" prefWidth="181.0" text="Print Ticket" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="14.0" />
+      <MFXTextField fx:id="txtDescribeTicket" floatMode="ABOVE" layoutX="185.0" layoutY="54.0" prefHeight="49.0" prefWidth="286.0" AnchorPane.leftAnchor="184.0" AnchorPane.rightAnchor="249.0" />
       <Text layoutX="14.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Describe the ticket:" />
-      <MFXButton fx:id="btnCreateSpecialTicket" buttonType="RAISED" depthLevel="LEVEL3" layoutX="507.0" layoutY="55.0" onAction="#handleCreateSpecialTicket" prefHeight="48.0" prefWidth="192.0" text="Create Ticket" />
-      <TableView fx:id="tblAllSpecialTickets" layoutX="83.0" layoutY="126.0" prefHeight="153.0" prefWidth="526.0" style="-fx-selection-bar: red;" styleClass="SidePane" stylesheets="@CoordinatorWindow.css">
+      <MFXButton fx:id="btnCreateSpecialTicket" buttonType="RAISED" depthLevel="LEVEL3" layoutX="507.0" layoutY="55.0" onAction="#handleCreateSpecialTicket" prefHeight="48.0" prefWidth="192.0" text="Create Ticket" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="55.0" />
+      <TableView fx:id="tblAllSpecialTickets" layoutX="11.0" layoutY="126.0" prefHeight="153.0" prefWidth="696.0" style="-fx-selection-bar: red;" styleClass="SidePane" stylesheets="@CoordinatorWindow.css" AnchorPane.bottomAnchor="126.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="125.0">
          <columns>
-            <TableColumn fx:id="clmSpecialTickets" prefWidth="525.0" styleClass="SidePane" text="Special Tickets" />
+            <TableColumn fx:id="clmSpecialTickets" prefWidth="335.0" styleClass="SidePane" text="Special Tickets" />
+            <TableColumn fx:id="clmQRCode" prefWidth="359.0" styleClass="SidePane" text="QR Code" />
          </columns>
          <effect>
             <ColorAdjust />
          </effect>
       </TableView>
       <Text layoutX="235.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Creating Special Ticket Window" />
-      <MFXButton fx:id="btnDeleteSpecialTicket" buttonType="RAISED" depthLevel="LEVEL3" layoutX="525.0" layoutY="332.0" onAction="#handleDeleteSpecialTicket" prefHeight="48.0" prefWidth="181.0" text="Delete Ticket" />
+      <MFXButton fx:id="btnDeleteSpecialTicket" buttonType="RAISED" depthLevel="LEVEL3" layoutX="525.0" layoutY="332.0" onAction="#handleDeleteSpecialTicket" prefHeight="48.0" prefWidth="181.0" text="Delete Ticket" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="14.0" />
    </children>
 </AnchorPane>

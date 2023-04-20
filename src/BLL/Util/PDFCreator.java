@@ -59,7 +59,7 @@ public class PDFCreator {
         paragraph.add("Event Time: " + selectedEvent.getEventTime() + "\r\n" + "\r\n");
         paragraph.add("Event Location: " + selectedEvent.getEventLocation() + "\r\n" + "\r\n"); // Spaces between the text on the pdf
         paragraph.add("Event notes: " + selectedEvent.getEventNotes() + "\r\n");
-        paragraph.add("________________________________________________________________________"); // A nice "custom" bar for the pdf
+        paragraph.add("________________________________________________________________________"); // A "nice" custom bar for the pdf
         return paragraph;
     }
 

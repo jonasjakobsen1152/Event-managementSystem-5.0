@@ -58,7 +58,7 @@ public class SpecialTicketDAO_DB implements ISpecialTicketDAO {
 
 
     @Override
-    public SpecialTicket createSpecielTicket(String generatedQR, String ticketType, int ticketAvailable) {
+    public SpecialTicket createSpecielTicket(String generatedQR, String ticketType, int ticketAvailable) throws SQLException {
         try (Connection conn = databaseConnector.getConnection()) {
             //SQL string that makes it possible to create our special tickets
             String sql = "Insert into dbo.SpecialTickets (QR, TicketType, TicketAvailable) VALUES (?,?,?)";
@@ -82,8 +82,6 @@ public class SpecialTicketDAO_DB implements ISpecialTicketDAO {
             return specialTicket;
 
 
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
         }
     }
 }

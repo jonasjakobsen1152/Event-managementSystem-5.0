@@ -7,6 +7,7 @@ import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 public class TicketCreateController {
@@ -31,20 +32,33 @@ public class TicketCreateController {
     }
 
     public void handleCreateTicket(ActionEvent actionEvent) {
-        int event = eventCoordModel.getSelectedEvent().getId();
         String name = txtName.getText();
         String lastName = txtLastName.getText();
         String email = txtEmail.getText();
         String ticketType = txtType.getText();
         String QR = "";
-        int available = 1;
 
-        // Creates the tickets for the specific event
-    ticketModel.createTicket(event,name,lastName,email,ticketType,QR,available);
+        if(name.isEmpty() || lastName.isEmpty() || email.isEmpty() || ticketType.isEmpty() || QR.isEmpty()){
+            alertUser("Text fields cannot be empty");
+        }
+        else{
+            int event = eventCoordModel.getSelectedEvent().getId();
+            int available = 1;
 
-    // Refreshes the list of tickets visible to the event coordinator by what event he is managing.
-    ticketModel.getTicketsToBeViewed(eventCoordModel.getSelectedEvent().getId());
-        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        stage.close();
+            // Creates the tickets for the specific event
+            ticketModel.createTicket(event,name,lastName,email,ticketType,QR,available);
+
+            // Refreshes the list of tickets visible to the event coordinator by what event he is managing.
+            ticketModel.getTicketsToBeViewed(eventCoordModel.getSelectedEvent().getId());
+            Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+            stage.close();
+        }
+    }
+
+    private void alertUser(String error) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Select a special ticket");
+        alert.setHeaderText(error);
+        alert.show();
     }
 }

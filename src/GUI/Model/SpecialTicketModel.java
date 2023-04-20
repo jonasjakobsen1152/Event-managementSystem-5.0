@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class SpecialTicketModel {
 
@@ -28,7 +29,7 @@ public class SpecialTicketModel {
         return specialTicketsToBeViewed;
     }
 
-    public void createSpecialTicket(String ticketType, int ticketAvailable){
+    public void createSpecialTicket(String ticketType, int ticketAvailable) throws SQLException {
         specialTicketManager.createSpecialTicket(ticketType,ticketAvailable);
     }
 

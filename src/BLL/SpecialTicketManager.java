@@ -8,6 +8,7 @@ import DAL.ISpecialTicketDAO;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 public class SpecialTicketManager {
@@ -28,7 +29,7 @@ public class SpecialTicketManager {
     }
 
 
-    public void createSpecialTicket(String ticketType, int ticketAvailable) {
+    public void createSpecialTicket(String ticketType, int ticketAvailable) throws SQLException {
         QRCodeStringGenerator qrCodeStringGenerator = new QRCodeStringGenerator();
         String generatedQR = qrCodeStringGenerator.getGeneratedString();
         specialTicketDAO.createSpecielTicket(generatedQR, ticketType, ticketAvailable);
