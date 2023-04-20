@@ -92,8 +92,8 @@ public class TicketController implements Initializable {
         }
     }
 
-
-    public void handleCreateTicket(ActionEvent actionEvent) throws IOException {
+    @FXML
+    private void handleCreateTicket(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/GUI/View/TicketsCreate.fxml"));
         AnchorPane pane = loader.load();
@@ -104,8 +104,8 @@ public class TicketController implements Initializable {
         dialogWindow.setScene(scene);
         dialogWindow.showAndWait();
     }
-
-    public void handleDeleteTicket(ActionEvent actionEvent) {
+    @FXML
+    private void handleDeleteTicket(ActionEvent actionEvent) {
         if (selectedTicket == null) {
             alertUser("Please select a ticket to delete");
         } else {
@@ -120,23 +120,24 @@ public class TicketController implements Initializable {
         ticketModel.getTicketsToBeViewed(eventID);
     }
 
+    @FXML
+    private void handlePrintTicket(ActionEvent actionEvent) {
+        try {
+            if (selectedTicket == null) {
+                alertUser("Please select a Ticket");
+            } else { // Calls the method printTicket from TicketModel
+                ticketModel.printTicket(selectedTicket, eventCoordModel.getSelectedEvent());
+            }
+        } catch (IOException e) {
+            alertUser("Could not print Ticket");
+        }
+    }
+
 
     private void alertUser(String error) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Select a Customer");
         alert.setHeaderText(error);
         alert.show();
-    }
-
-    public void handlePrintTicket(ActionEvent actionEvent) {
-        try {
-            if (selectedTicket == null) {
-                JOptionPane.showMessageDialog(null, "Please select a ticket to print.", "Ticket Printer", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                ticketModel.printTicket(selectedTicket, eventCoordModel.getSelectedEvent());
-            }
-        } catch (IOException e) {
-            alertUser("Could not print Ticket");
-        }
     }
 }
