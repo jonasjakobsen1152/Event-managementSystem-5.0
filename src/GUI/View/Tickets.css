@@ -3,8 +3,8 @@
 .AnchorPane{
     -fx-background-color: #18122B;
     -fx-border-color: white;
-
 }
+
 .button{
     -fx-background-color: #443C68;
     -fx-text-fill: white;
@@ -17,22 +17,25 @@
     -fx-fill: white;
     -fx-font-size: 18;
     -fx-font-family: 'Concert One', cursive;
-
 }
 
-.SidePane {
+.table-view {
     -fx-background-color: #393053;
     -fx-border-color: #18122B;
 }
 
+.tableColumn{
+    -fx-background-color: #443C68;
+    -fx-fill: white;
+    -fx-border-color: #18122B;
+    -fx-cursor: hand;
+}
 
 .label {
     -fx-text-fill: white;
 }
-
-.table-row-cell .text{
+.text{
     -fx-fill: white;
-    -fx-cursor: hand;
 }
 
 .table-row-cell:selected .text {

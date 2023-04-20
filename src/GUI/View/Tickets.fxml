@@ -6,19 +6,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="522.0" prefWidth="928.0" styleClass="AnchorPane" stylesheets="@Tickets.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.TicketController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="522.0" prefWidth="928.0" styleClass="AnchorPane" stylesheets="@Tickets.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.TicketController">
    <children>
       <TableView fx:id="tblTicket" layoutX="45.0" layoutY="47.0" prefHeight="382.0" prefWidth="840.0" styleClass="SidePane" stylesheets="@Tickets.css">
 
         <columns>
-            <TableColumn fx:id="CLMID" prefWidth="75.0" styleClass="SidePane" text="Reference" />
-          <TableColumn fx:id="CLMName" prefWidth="133.0" styleClass="SidePane" text="Name" />
-          <TableColumn fx:id="CLMLastName" prefWidth="118.0" styleClass="SidePane" text="Last Name" />
-            <TableColumn fx:id="CLMEmail" prefWidth="169.0" styleClass="SidePane" text="Email" />
-            <TableColumn fx:id="CLMType" prefWidth="128.0" styleClass="SidePane" text="Type" />
-            <TableColumn fx:id="CLMQR" prefWidth="216.0" styleClass="SidePane" text="QR" />
+            <TableColumn fx:id="CLMID" prefWidth="75.0" styleClass="tableColumn" text="Reference" />
+          <TableColumn fx:id="CLMName" prefWidth="133.0" styleClass="tableColumn" text="Name" />
+          <TableColumn fx:id="CLMLastName" prefWidth="118.0" styleClass="tableColumn" text="Last Name" />
+            <TableColumn fx:id="CLMEmail" prefWidth="169.0" styleClass="tableColumn" text="Email" />
+            <TableColumn fx:id="CLMType" prefWidth="128.0" styleClass="tableColumn" text="Type" />
+            <TableColumn fx:id="CLMQR" prefWidth="216.0" styleClass="tableColumn" text="QR" />
         </columns>
       </TableView>
 
