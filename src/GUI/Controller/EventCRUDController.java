@@ -68,6 +68,10 @@ public class EventCRUDController extends BaseController implements Initializable
         String location = txtLocation.getText();
         String notes = txtNotes.getText();
         User loggedInUser = loginModel.getLoggedInUser();
+        if(name.isEmpty() || date.isEmpty() || time.isEmpty() || location.isEmpty() || notes.isEmpty()){
+            alertUser("Text fields cannot be empty");
+        }
+        else{
         try {
             eventCoordModel.createEvent(name,date,time, location, notes, loggedInUser);
             Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
@@ -75,6 +79,7 @@ public class EventCRUDController extends BaseController implements Initializable
         } catch (Exception e) {
             alertUser("Invalid data inputs");
             throw new RuntimeException(e);
+        }
         }
 
     }

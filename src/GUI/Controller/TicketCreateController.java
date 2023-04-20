@@ -38,7 +38,7 @@ public class TicketCreateController {
         String ticketType = txtType.getText();
         String QR = "";
 
-        if(name.isEmpty() || lastName.isEmpty() || email.isEmpty() || ticketType.isEmpty() || QR.isEmpty()){
+        if(name.isEmpty() || lastName.isEmpty() || email.isEmpty() || ticketType.isEmpty()){
             alertUser("Text fields cannot be empty");
         }
         else{
