@@ -69,11 +69,16 @@ public class SpecialTicketController implements Initializable {
     }
 
     public void handlePrintSpecialTicket(ActionEvent actionEvent) {
-        selectedSpecialTicket = tblAllSpecialTickets.getSelectionModel().getSelectedItem();
-        try {
-            specialTicketModel.printSpecialTicket(selectedSpecialTicket);
-        } catch (IOException e) {
-           alertUser("Could not print ticket");
+        if(selectedSpecialTicket == null){
+            alertUser("Could not print ticket");
+        }
+        else {
+            selectedSpecialTicket = tblAllSpecialTickets.getSelectionModel().getSelectedItem();
+            try {
+                specialTicketModel.printSpecialTicket(selectedSpecialTicket);
+            } catch (IOException e) {
+                alertUser("Could not print ticket");
+            }
         }
     }
 
